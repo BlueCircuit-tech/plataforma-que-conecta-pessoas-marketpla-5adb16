@@ -430,6 +430,232 @@
       </script>
     </section>
 
+    <section data-tela="cursos" class="hidden">
+      <div class="px-4 pt-2 pb-6 space-y-4">
+        <!-- Cabeçalho da Tela -->
+        <div class="flex items-start justify-between">
+          <div>
+            <h1 class="font-display text-2xl font-bold text-marca-900 tracking-tight">Cursos</h1>
+            <p class="text-sm text-gray-500 mt-0.5">Capacitação profissional automotiva</p>
+          </div>
+          <button onclick="toast('Notificações em breve','info')" class="relative p-2 rounded-xl hover:bg-gray-100 active:scale-95 transition-all">
+            <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg>
+            <span class="absolute top-1.5 right-1.5 w-2 h-2 bg-marca-500 rounded-full"></span>
+          </button>
+        </div>
+
+        <!-- Continuar Assistindo -->
+        <div id="cursos-continuar" class="bg-white rounded-2xl p-3 shadow-sm border border-gray-100 cursor-pointer active:scale-[0.98] transition-all" onclick="cursos_continuar()">
+          <div class="flex items-center gap-2 mb-2.5">
+            <svg class="w-4 h-4 text-marca-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            <span class="text-xs font-semibold text-marca-700 uppercase tracking-wide">Continuar Assistindo</span>
+          </div>
+          <div class="flex gap-3">
+            <div class="w-28 h-20 rounded-xl bg-gradient-to-br from-marca-700 to-marca-900 flex items-center justify-center flex-shrink-0 relative overflow-hidden">
+              <div class="absolute inset-0 opacity-10">
+                <svg class="w-full h-full" viewBox="0 0 100 100"><circle cx="50" cy="50" r="35" fill="none" stroke="white" stroke-width="0.5"/><circle cx="50" cy="50" r="25" fill="none" stroke="white" stroke-width="0.5"/></svg>
+              </div>
+              <span class="text-white font-display font-bold text-lg relative z-10">IE</span>
+              <div class="absolute bottom-1.5 right-1.5 bg-black/60 rounded px-1 py-0.5">
+                <span class="text-white text-[10px] font-medium">65%</span>
+              </div>
+            </div>
+            <div class="flex-1 min-w-0">
+              <h3 class="text-sm font-semibold text-gray-800 leading-tight truncate">Injeção Eletrônica: Diagnóstico Avançado</h3>
+              <p class="text-xs text-gray-500 mt-1">Ana Beatriz Rocha</p>
+              <div class="mt-2 h-1.5 bg-gray-100 rounded-full overflow-hidden">
+                <div class="h-full bg-marca-500 rounded-full transition-all" style="width:65%"></div>
+              </div>
+              <p class="text-[10px] text-gray-400 mt-1">Falta 1h 28min para concluir</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Busca -->
+        <div class="relative">
+          <svg class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+          <input type="text" id="cursos-busca" placeholder="Buscar cursos ou instrutores..." oninput="cursos_buscar(this.value)" class="w-full pl-9 pr-9 py-2.5 bg-white border border-gray-200 rounded-xl text-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-marca-500/30 focus:border-marca-400 transition-all" />
+          <button id="cursos-limpa-busca" onclick="cursos_limparBusca()" class="hidden absolute right-3 top-1/2 -translate-y-1/2 p-0.5 rounded-full hover:bg-gray-100 active:scale-90 transition-all">
+            <svg class="w-3.5 h-3.5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+          </button>
+        </div>
+
+        <!-- Filtro de Categorias -->
+        <div class="flex gap-2 overflow-x-auto pb-1 -mx-4 px-4 scrollbar-hide" style="scrollbar-width:none;-ms-overflow-style:none;">
+          <button onclick="cursos_categoria('todos')" data-cat-btn="todos" class="cursos-cat-btn flex-shrink-0 px-4 py-2 rounded-xl text-xs font-semibold transition-all active:scale-95 bg-marca-800 text-white">Todos</button>
+          <button onclick="cursos_categoria('mecanica')" data-cat-btn="mecanica" class="cursos-cat-btn flex-shrink-0 px-4 py-2 rounded-xl text-xs font-semibold transition-all active:scale-95 bg-gray-100 text-gray-600 hover:bg-gray-200">Mec. Geral</button>
+          <button onclick="cursos_categoria('eletrica')" data-cat-btn="eletrica" class="cursos-cat-btn flex-shrink-0 px-4 py-2 rounded-xl text-xs font-semibold transition-all active:scale-95 bg-gray-100 text-gray-600 hover:bg-gray-200">Elétrica</button>
+          <button onclick="cursos_categoria('funilaria')" data-cat-btn="funilaria" class="cursos-cat-btn flex-shrink-0 px-4 py-2 rounded-xl text-xs font-semibold transition-all active:scale-95 bg-gray-100 text-gray-600 hover:bg-gray-200">Funilaria</button>
+          <button onclick="cursos_categoria('gestao')" data-cat-btn="gestao" class="cursos-cat-btn flex-shrink-0 px-4 py-2 rounded-xl text-xs font-semibold transition-all active:scale-95 bg-gray-100 text-gray-600 hover:bg-gray-200">Gestão</button>
+          <button onclick="cursos_categoria('cuidados')" data-cat-btn="cuidados" class="cursos-cat-btn flex-shrink-0 px-4 py-2 rounded-xl text-xs font-semibold transition-all active:scale-95 bg-gray-100 text-gray-600 hover:bg-gray-200">Cuidados</button>
+        </div>
+
+        <!-- Filtro de Nível -->
+        <div class="flex gap-2">
+          <button onclick="cursos_nivel('todos')" data-nivel-btn="todos" class="cursos-nivel-btn flex-1 py-2 rounded-xl text-xs font-semibold transition-all active:scale-95 bg-marca-800 text-white">Todos</button>
+          <button onclick="cursos_nivel('basico')" data-nivel-btn="basico" class="cursos-nivel-btn flex-1 py-2 rounded-xl text-xs font-semibold transition-all active:scale-95 bg-gray-100 text-gray-600 hover:bg-gray-200">Básico</button>
+          <button onclick="cursos_nivel('intermediario')" data-nivel-btn="intermediario" class="cursos-nivel-btn flex-1 py-2 rounded-xl text-xs font-semibold transition-all active:scale-95 bg-gray-100 text-gray-600 hover:bg-gray-200">Intermediário</button>
+          <button onclick="cursos_nivel('avancado')" data-nivel-btn="avancado" class="cursos-nivel-btn flex-1 py-2 rounded-xl text-xs font-semibold transition-all active:scale-95 bg-gray-100 text-gray-600 hover:bg-gray-200">Avançado</button>
+        </div>
+
+        <!-- Contador de Resultados -->
+        <p id="cursos-contador" class="text-xs text-gray-500"></p>
+
+        <!-- Grid de Cursos -->
+        <div id="cursos-grid" class="grid grid-cols-2 gap-3"></div>
+
+        <!-- Estado Vazio -->
+        <div id="cursos-vazio" class="hidden text-center py-12">
+          <div class="w-20 h-20 mx-auto bg-gray-100 rounded-full flex items-center justify-center mb-4">
+            <svg class="w-8 h-8 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <h3 class="font-display font-semibold text-gray-700 text-sm">Nenhum curso encontrado</h3>
+          <p class="text-xs text-gray-400 mt-1">Tente ajustar os filtros ou a busca</p>
+          <button onclick="cursos_resetarFiltros()" class="mt-4 px-5 py-2 bg-marca-800 text-white text-xs font-semibold rounded-xl active:scale-95 transition-all hover:bg-marca-900">Limpar Filtros</button>
+        </div>
+      </div>
+
+      <script>
+        const cursos_dados = [
+          { id:1, titulo:"Manutenção Preventiva de Motor", categoria:"mecanica", categoriaNome:"Mecânica Geral", nivel:"basico", instrutor:"Carlos Eduardo Mendes", duracao:"2h 30min", aulas:12, thumbIniciais:"MM", thumbCor:"from-marca-800 to-marca-900", descricao:"Aprenda as técnicas essenciais de manutenção preventiva em motores a gasolina e diesel. Abrange inspeção, troca de óleo, filtros e verificação de componentes." },
+          { id:2, titulo:"Injeção Eletrônica: Diagnóstico Avançado", categoria:"mecanica", categoriaNome:"Mecânica Geral", nivel:"avancado", instrutor:"Ana Beatriz Rocha", duracao:"4h 15min", aulas:18, thumbIniciais:"IE", thumbCor:"from-marca-700 to-orange-900", descricao:"Domine o diagnóstico avançado de sistemas de injeção eletrônica. Uso de scanners, leitura de falhas OBD-II e interpretação de parâmetros." },
+          { id:3, titulo:"Sistema Elétrico Automotivo Completo", categoria:"eletrica", categoriaNome:"Elétrica Automotiva", nivel:"intermediario", instrutor:"Roberto Carlos Lima", duracao:"3h 00min", aulas:15, thumbIniciais:"SE", thumbCor:"from-amber-700 to-marca-800", descricao:"Estudo completo do sistema elétrico automotivo: bateria, alternador, motor de partida, iluminação e circuitos auxiliares." },
+          { id:4, titulo:"Instalação de Som e Acessórios", categoria:"eletrica", categoriaNome:"Elétrica Automotiva", nivel:"basico", instrutor:"Felipe Augusto Costa", duracao:"1h 45min", aulas:8, thumbIniciais:"SA", thumbCor:"from-orange-600 to-amber-700", descricao:"Aprenda a instalar sistemas de som, alarmes, travas elétricas e acessórios automotivos com segurança e qualidade." },
+          { id:5, titulo:"Reparo de Lataria: Técnicas Essenciais", categoria:"funilaria", categoriaNome:"Funilaria e Pintura", nivel:"intermediario", instrutor:"Mariana Oliveira Souza", duracao:"3h 30min", aulas:14, thumbIniciais:"RL", thumbCor:"from-stone-600 to-marca-800", descricao:"Técnicas profissionais de reparo de lataria: desamassamento, soldagem, aplicação de massa e preparação para pintura." },
+          { id:6, titulo:"Pintura Automotiva: Técnicas Avançadas", categoria:"funilaria", categoriaNome:"Funilaria e Pintura", nivel:"avancado", instrutor:"João Pedro Almeida", duracao:"5h 00min", aulas:20, thumbIniciais:"PA", thumbCor:"from-gray-700 to-marca-900", descricao:"Curso avançado de pintura automotiva: técnicas de aplicação, lixamento, polimento, efeitos especiais e acabamento premium." },
+          { id:7, titulo:"Gestão Financeira para Oficinas", categoria:"gestao", categoriaNome:"Gestão de Oficina", nivel:"basico", instrutor:"Patrícia Helena Almeida", duracao:"2h 00min", aulas:10, thumbIniciais:"GF", thumbCor:"from-marca-600 to-marca-800", descricao:"Controle financeiro, precificação de serviços, fluxo de caixa e indicadores para gestão eficiente de oficinas mecânicas." },
+          { id:8, titulo:"Atendimento e Fidelização de Clientes", categoria:"gestao", categoriaNome:"Gestão de Oficina", nivel:"intermediario", instrutor:"Rafael Augusto Dias", duracao:"1h 30min", aulas:8, thumbIniciais:"AF", thumbCor:"from-orange-500 to-marca-700", descricao:"Estratégias de atendimento ao cliente, comunicação eficaz, pós-venda e programas de fidelidade para oficinas." },
+          { id:9, titulo:"Cuidados Essenciais com o Veículo", categoria:"cuidados", categoriaNome:"Cuidados com o Veículo", nivel:"basico", instrutor:"Lucas Henrique Ferreira", duracao:"0h 45min", aulas:5, thumbIniciais:"CV", thumbCor:"from-emerald-700 to-marca-800", descricao:"Guia completo para proprietários: verificação de fluidos, pressão dos pneus, limpeza e cuidados diários com o veículo." },
+          { id:10, titulo:"Manutenção Básica para Proprietários", categoria:"cuidados", categoriaNome:"Cuidados com o Veículo", nivel:"basico", instrutor:"Juliana Cristina Martins", duracao:"1h 00min", aulas:6, thumbIniciais:"MP", thumbCor:"from-teal-700 to-marca-800", descricao:"Aprenda a realizar verificações e pequenos reparos no seu veículo. Troca de lâmpadas, fusíveis, limpadores e diagnósticos simples." }
+        ];
+
+        let cursos_categoriaAtiva = 'todos';
+        let cursos_nivelAtivo = 'todos';
+        let cursos_buscaAtiva = '';
+
+        const nivelConfig = {
+          basico: { label: 'Básico', classe: 'bg-emerald-100 text-emerald-700' },
+          intermediario: { label: 'Intermediário', classe: 'bg-amber-100 text-amber-700' },
+          avancado: { label: 'Avançado', classe: 'bg-marca-100 text-marca-800' }
+        };
+
+        function cursos_categoria(cat) {
+          cursos_categoriaAtiva = cat;
+          document.querySelectorAll('.cursos-cat-btn').forEach(b => {
+            const isActive = b.dataset.catBtn === cat;
+            b.className = 'cursos-cat-btn flex-shrink-0 px-4 py-2 rounded-xl text-xs font-semibold transition-all active:scale-95 ' + (isActive ? 'bg-marca-800 text-white' : 'bg-gray-100 text-gray-600 hover:bg-gray-200');
+          });
+          cursos_renderizar();
+        }
+
+        function cursos_nivel(nivel) {
+          cursos_nivelAtivo = nivel;
+          document.querySelectorAll('.cursos-nivel-btn').forEach(b => {
+            const isActive = b.dataset.nivelBtn === nivel;
+            b.className = 'cursos-nivel-btn flex-1 py-2 rounded-xl text-xs font-semibold transition-all active:scale-95 ' + (isActive ? 'bg-marca-800 text-white' : 'bg-gray-100 text-gray-600 hover:bg-gray-200');
+          });
+          cursos_renderizar();
+        }
+
+        function cursos_buscar(termo) {
+          cursos_buscaAtiva = termo.toLowerCase().trim();
+          document.getElementById('cursos-limpa-busca').classList.toggle('hidden', !cursos_buscaAtiva);
+          cursos_renderizar();
+        }
+
+        function cursos_limparBusca() {
+          document.getElementById('cursos-busca').value = '';
+          cursos_buscaAtiva = '';
+          document.getElementById('cursos-limpa-busca').classList.add('hidden');
+          cursos_renderizar();
+        }
+
+        function cursos_resetarFiltros() {
+          cursos_categoria('todos');
+          cursos_nivel('todos');
+          cursos_limparBusca();
+          toast('Filtros limpos com sucesso', 'ok');
+        }
+
+        function cursos_abrirCurso(id) {
+          const curso = cursos_dados.find(c => c.id === id);
+          if (!curso) return;
+          const niv = nivelConfig[curso.nivel];
+          const html = '<div class="space-y-4">' +
+            '<div class="w-full h-44 rounded-xl bg-gradient-to-br ' + curso.thumbCor + ' flex items-center justify-center relative overflow-hidden"><div class="absolute inset-0 opacity-10"><svg class="w-full h-full" viewBox="0 0 200 200"><circle cx="100" cy="100" r="60" fill="none" stroke="white" stroke-width="0.5"/><circle cx="100" cy="100" r="40" fill="none" stroke="white" stroke-width="0.5"/><line x1="40" y1="100" x2="160" y2="100" stroke="white" stroke-width="0.3"/><line x1="100" y1="40" x2="100" y2="160" stroke="white" stroke-width="0.3"/></svg></div><span class="text-white font-display font-bold text-3xl relative z-10">' + curso.thumbIniciais + '</span></div>' +
+            '<div><span class="inline-block px-2.5 py-1 rounded-md text-[10px] font-semibold ' + niv.classe + ' mb-2">' + niv.label + '</span><h2 class="font-display text-lg font-bold text-gray-900">' + curso.titulo + '</h2></div>' +
+            '<div class="flex items-center gap-2"><div class="w-8 h-8 rounded-full bg-marca-100 flex items-center justify-center"><span class="text-marca-700 text-xs font-bold">' + curso.instrutor.split(' ').map(n=>n[0]).join('').slice(0,2) + '</span></div><div><p class="text-sm font-medium text-gray-800">' + curso.instrutor + '</p><p class="text-xs text-gray-500">Instrutor Certificado</p></div></div>' +
+            '<p class="text-sm text-gray-600 leading-relaxed">' + curso.descricao + '</p>' +
+            '<div class="flex gap-4 text-sm"><div class="flex items-center gap-1.5 text-gray-600"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>' + curso.duracao + '</div><div class="flex items-center gap-1.5 text-gray-600"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>' + curso.aulas + ' aulas</div></div>' +
+            '<div class="bg-gray-50 rounded-xl p-3"><h4 class="text-xs font-semibold text-gray-700 mb-2">Conteúdo do Curso</h4><div class="space-y-2">';
+          for (let i = 1; i <= Math.min(curso.aulas, 5); i++) {
+            html += '<div class="flex items-center gap-2 text-xs text-gray-600"><svg class="w-3.5 h-3.5 text-marca-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/></svg><span>Aula ' + i + ' — ' + curso.titulo.split(':')[0] + ' — Parte ' + i + '</span></div>';
+          }
+          html += '</div>' + (curso.aulas > 5 ? '<p class="text-[10px] text-gray-400 mt-1">+ ' + (curso.aulas - 5) + ' aulas restantes</p>' : '') + '</div>' +
+            '<div class="flex gap-2 pt-1"><button onclick="fecharModal();cursos_continuarCurso(' + curso.id + ')" class="flex-1 py-3 bg-marca-800 text-white text-sm font-semibold rounded-xl active:scale-95 transition-all hover:bg-marca-900">Assistir Agora</button><button onclick="fecharModal();toast(\'Curso adicionado aos favoritos\',\'ok\')" class="px-4 py-3 border border-gray-200 rounded-xl active:scale-95 transition-all hover:bg-gray-50"><svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg></button></div>' +
+          '</div>';
+          abrirModal(html, curso.titulo);
+        }
+
+        function cursos_continuarCurso(id) {
+          const curso = cursos_dados.find(c => c.id === id);
+          if (curso) {
+            toast('Reproduzindo: ' + curso.titulo, 'info');
+          }
+        }
+
+        function cursos_continuar() {
+          const curso = cursos_dados.find(c => c.id === 2);
+          if (curso) {
+            cursos_continuarCurso(curso.id);
+          }
+        }
+
+        function cursos_iniciaisAvatar(nome) {
+          return nome.split(' ').map(n => n[0]).join('').slice(0, 2).toUpperCase();
+        }
+
+        function cursos_renderizar() {
+          const grid = document.getElementById('cursos-grid');
+          const vazio = document.getElementById('cursos-vazio');
+          const contador = document.getElementById('cursos-contador');
+
+          let filtrados = cursos_dados.filter(c => {
+            const catMatch = cursos_categoriaAtiva === 'todos' || c.categoria === cursos_categoriaAtiva;
+            const nivelMatch = cursos_nivelAtivo === 'todos' || c.nivel === cursos_nivelAtivo;
+            const buscaMatch = !cursos_buscaAtiva || c.titulo.toLowerCase().includes(cursos_buscaAtiva) || c.instrutor.toLowerCase().includes(cursos_buscaAtiva) || c.categoriaNome.toLowerCase().includes(cursos_buscaAtiva);
+            return catMatch && nivelMatch && buscaMatch;
+          });
+
+          contador.textContent = filtrados.length + ' curso' + (filtrados.length !== 1 ? 's' : '') + ' encontrado' + (filtrados.length !== 1 ? 's' : '');
+
+          if (filtrados.length === 0) {
+            grid.classList.add('hidden');
+            vazio.classList.remove('hidden');
+            return;
+          }
+          grid.classList.remove('hidden');
+          vazio.classList.add('hidden');
+
+          grid.innerHTML = filtrados.map(c => {
+            const niv = nivelConfig[c.nivel];
+            const iniciais = cursos_iniciaisAvatar(c.instrutor);
+            return '<div onclick="cursos_abrirCurso(' + c.id + ')" class="card bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 cursor-pointer active:scale-[0.97] transition-all">' +
+              '<div class="bg-gradient-to-br ' + c.thumbCor + ' h-28 flex items-center justify-center relative"><div class="absolute inset-0 opacity-[0.07]" style="background:radial-gradient(circle at 30% 50%,white,transparent 60%)"></div><span class="text-white font-display font-bold text-xl tracking-wide relative z-10">' + c.thumbIniciais + '</span><div class="absolute top-2 right-2"><span class="px-1.5 py-0.5 bg-black/40 rounded text-[10px] text-white font-medium">' + c.nivel.charAt(0).toUpperCase() + '</span></div></div>' +
+              '<div class="p-3 space-y-2">' +
+                '<span class="text-[10px] font-medium text-marca-600 bg-marca-50 px-2 py-0.5 rounded-md">' + c.categoriaNome + '</span>' +
+                '<h3 class="text-xs font-semibold text-gray-800 leading-snug line-clamp-2">' + c.titulo + '</h3>' +
+                '<div class="flex items-center gap-1.5"><div class="w-5 h-5 rounded-full bg-marca-100 flex items-center justify-center flex-shrink-0"><span class="text-marca-700 text-[8px] font-bold">' + iniciais + '</span></div><span class="text-[11px] text-gray-500 truncate">' + c.instrutor + '</span></div>' +
+                '<div class="flex items-center justify-between pt-1 border-t border-gray-50"><div class="flex items-center gap-1 text-gray-400"><svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg><span class="text-[10px]">' + c.duracao + '</span></div><span class="text-[10px] font-medium px-2 py-0.5 rounded-md ' + niv.classe + '">' + niv.label + '</span></div>' +
+              '</div>' +
+            '</div>';
+          }).join('');
+        }
+
+        cursos_renderizar();
+      </script>
+    </section>
+
     <!-- TELAS -->
             </div>
         </main>
