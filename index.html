@@ -656,6 +656,570 @@
       </script>
     </section>
 
+    <section data-tela="detalhe-do-curso" class="hidden">
+  <div class="px-4 pt-4 pb-24 animate-entry">
+    <!-- Header da tela -->
+    <div class="mb-4">
+      <button onclick="mostrarTela('cursos')" class="flex items-center gap-1 text-marca-700 font-body text-sm mb-3 hover:text-marca-900 transition-colors">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+        Voltar para Cursos
+      </button>
+      <div class="flex items-start justify-between gap-3">
+        <div class="flex-1">
+          <span class="badge badge-amber text-xs">Mecânica Automotiva</span>
+          <h1 class="font-display text-xl font-bold text-marca-900 mt-1 leading-tight">Sistema de Freios ABS: Diagnóstico e Reparo</h1>
+          <p class="font-body text-sm text-marca-700/70 mt-1">Módulo avançado · 8h30min de conteúdo · Nível intermediário</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Player de vídeo -->
+    <div class="relative rounded-2xl overflow-hidden shadow-lg mb-5 bg-marca-900 aspect-video flex items-center justify-center cursor-pointer" onclick="detalhe_do_curso_toggleVideo()">
+      <div id="video-player-area" class="absolute inset-0 bg-gradient-to-br from-marca-800 to-marca-900 flex items-center justify-center">
+        <div class="text-center">
+          <div class="w-16 h-16 rounded-full bg-white/10 flex items-center justify-center mb-2 backdrop-blur-sm border border-white/20">
+            <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </div>
+          <p class="text-white/80 font-body text-sm" id="video-label">Aula 3.2 — Análise de falhas no módulo hidráulico</p>
+        </div>
+      </div>
+      <div class="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black/60 to-transparent">
+        <div class="flex items-center gap-2">
+          <div class="flex-1 h-1.5 bg-white/20 rounded-full overflow-hidden">
+            <div class="h-full bg-amber-400 rounded-full transition-all duration-300" style="width: 35%"></div>
+          </div>
+          <span class="text-white text-xs font-body">12:30 / 35:00</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Indicadores do curso -->
+    <div class="grid grid-cols-3 gap-2 mb-5">
+      <div class="card text-center py-3 px-2">
+        <div class="flex items-center justify-center gap-1 mb-1">
+          <svg class="w-4 h-4 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <span class="font-display font-bold text-marca-900 text-lg">8h30</span>
+        </div>
+        <span class="font-body text-xs text-marca-700/60">Duração total</span>
+      </div>
+      <div class="card text-center py-3 px-2">
+        <div class="flex items-center justify-center gap-1 mb-1">
+          <svg class="w-4 h-4 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+          <span class="font-display font-bold text-marca-900 text-lg">6</span>
+        </div>
+        <span class="font-body text-xs text-marca-700/60">Módulos</span>
+      </div>
+      <div class="card text-center py-3 px-2">
+        <div class="flex items-center justify-center gap-1 mb-1">
+          <svg class="w-4 h-4 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+          <span class="font-display font-bold text-marca-900 text-lg">4</span>
+        </div>
+        <span class="font-body text-xs text-marca-700/60">PDFs / Materiais</span>
+      </div>
+    </div>
+
+    <!-- Abas -->
+    <div class="flex gap-1 bg-marca-100 rounded-xl p-1 mb-4">
+      <button onclick="detalhe_do_curso_aba('conteudo')" id="aba-btn-conteudo" class="aba-btn flex-1 py-2.5 rounded-lg font-body font-semibold text-sm transition-all duration-200 bg-white text-marca-900 shadow-sm">Conteúdo</button>
+      <button onclick="detalhe_do_curso_aba('materiais')" id="aba-btn-materiais" class="aba-btn flex-1 py-2.5 rounded-lg font-body font-semibold text-sm transition-all duration-200 text-marca-700 hover:text-marca-900">Materiais</button>
+      <button onclick="detalhe_do_curso_aba('ofertas')" id="aba-btn-ofertas" class="aba-btn flex-1 py-2.5 rounded-lg font-body font-semibold text-sm transition-all duration-200 text-marca-700 hover:text-marca-900">Ofertas</button>
+    </div>
+
+    <!-- ABA: Conteúdo -->
+    <div id="aba-conteudo" class="aba-conteudo">
+      <div class="space-y-1" id="modulos-lista">
+        <!-- Módulo 1 -->
+        <div class="rounded-xl overflow-hidden">
+          <button onclick="detalhe_do_curso_toggleModulo(0)" class="w-full flex items-center gap-3 p-3 bg-white border border-marca-100 hover:border-amber-300 transition-colors text-left">
+            <div class="w-8 h-8 rounded-lg bg-marca-100 flex items-center justify-center flex-shrink-0">
+              <span class="font-display font-bold text-marca-700 text-sm">01</span>
+            </div>
+            <div class="flex-1 min-w-0">
+              <p class="font-body font-semibold text-sm text-marca-900">Introdução ao Sistema de Freios</p>
+              <p class="font-body text-xs text-marca-700/60">3 aulas · 1h45min · Concluído</p>
+            </div>
+            <svg id="modulo-chevron-0" class="w-4 h-4 text-marca-500 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div id="modulo-conteudo-0" class="hidden bg-marca-50/50 border-t border-marca-100">
+            <button onclick="mostrarTela('detalhe-do-curso')" class="w-full flex items-center gap-3 px-3 py-3 pl-[4.5rem] hover:bg-marca-100/50 transition-colors">
+              <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0"><svg class="w-3.5 h-3.5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg></div>
+              <span class="font-body text-sm text-marca-700 line-through">1.1 — Funcionamento do sistema de freios</span>
+            </button>
+            <button onclick="mostrarTela('detalhe-do-curso')" class="w-full flex items-center gap-3 px-3 py-3 pl-[4.5rem] hover:bg-marca-100/50 transition-colors">
+              <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0"><svg class="w-3.5 h-3.5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg></div>
+              <span class="font-body text-sm text-marca-700 line-through">1.2 — Componentes básicos e sua função</span>
+            </button>
+            <button onclick="mostrarTela('detalhe-do-curso')" class="w-full flex items-center gap-3 px-3 py-3 pl-[4.5rem] hover:bg-marca-100/50 transition-colors">
+              <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0"><svg class="w-3.5 h-3.5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg></div>
+              <span class="font-body text-sm text-marca-700 line-through">1.3 — Histórico da evolução dos freios</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Módulo 2 -->
+        <div class="rounded-xl overflow-hidden">
+          <button onclick="detalhe_do_curso_toggleModulo(1)" class="w-full flex items-center gap-3 p-3 bg-white border border-marca-100 hover:border-amber-300 transition-colors text-left">
+            <div class="w-8 h-8 rounded-lg bg-marca-100 flex items-center justify-center flex-shrink-0">
+              <span class="font-display font-bold text-marca-700 text-sm">02</span>
+            </div>
+            <div class="flex-1 min-w-0">
+              <p class="font-body font-semibold text-sm text-marca-900">Sistema Hidráulico e Fluido</p>
+              <p class="font-body text-xs text-marca-700/60">3 aulas · 2h10min · 2 concluídas</p>
+            </div>
+            <svg id="modulo-chevron-1" class="w-4 h-4 text-marca-500 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div id="modulo-conteudo-1" class="hidden bg-marca-50/50 border-t border-marca-100">
+            <button onclick="mostrarTela('detalhe-do-curso')" class="w-full flex items-center gap-3 px-3 py-3 pl-[4.5rem] hover:bg-marca-100/50 transition-colors">
+              <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0"><svg class="w-3.5 h-3.5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg></div>
+              <span class="font-body text-sm text-marca-700 line-through">2.1 — Circuito hidráulico: princípios</span>
+            </button>
+            <button onclick="mostrarTela('detalhe-do-curso')" class="w-full flex items-center gap-3 px-3 py-3 pl-[4.5rem] hover:bg-marca-100/50 transition-colors">
+              <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0"><svg class="w-3.5 h-3.5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg></div>
+              <span class="font-body text-sm text-marca-700 line-through">2.2 — Fluido de freio: tipos e especificações</span>
+            </button>
+            <button onclick="mostrarTela('detalhe-do-curso')" class="w-full flex items-center gap-3 px-3 py-3 pl-[4.5rem] hover:bg-marca-100/50 transition-colors bg-amber-50/50">
+              <div class="w-6 h-6 rounded-full bg-amber-100 flex items-center justify-center flex-shrink-0">
+                <svg class="w-3.5 h-3.5 text-amber-500" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+              </div>
+              <span class="font-body text-sm font-semibold text-marca-900">2.3 — Análise de falhas no módulo hidráulico</span>
+              <span class="ml-auto text-xs font-body text-amber-600 bg-amber-100 px-2 py-0.5 rounded-full font-medium">Assistindo</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Módulo 3 -->
+        <div class="rounded-xl overflow-hidden">
+          <button onclick="detalhe_do_curso_toggleModulo(2)" class="w-full flex items-center gap-3 p-3 bg-white border border-marca-100 hover:border-amber-300 transition-colors text-left">
+            <div class="w-8 h-8 rounded-lg bg-marca-100 flex items-center justify-center flex-shrink-0">
+              <span class="font-display font-bold text-marca-700 text-sm">03</span>
+            </div>
+            <div class="flex-1 min-w-0">
+              <p class="font-body font-semibold text-sm text-marca-900">Sistema ABS: Componentes e Funcionamento</p>
+              <p class="font-body text-xs text-marca-700/60">2 aulas · 1h30min · Não iniciado</p>
+            </div>
+            <svg id="modulo-chevron-2" class="w-4 h-4 text-marca-500 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div id="modulo-conteudo-2" class="hidden bg-marca-50/50 border-t border-marca-100">
+            <button onclick="mostrarTela('detalhe-do-curso')" class="w-full flex items-center gap-3 px-3 py-3 pl-[4.5rem] hover:bg-marca-100/50 transition-colors">
+              <div class="w-6 h-6 rounded-full border-2 border-marca-300 flex items-center justify-center flex-shrink-0"></div>
+              <svg class="w-4 h-4 text-marca-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              <span class="font-body text-sm text-marca-700">3.1 — Sensor de velocidade e anel fônico</span>
+            </button>
+            <button onclick="mostrarTela('detalhe-do-curso')" class="w-full flex items-center gap-3 px-3 py-3 pl-[4.5rem] hover:bg-marca-100/50 transition-colors">
+              <div class="w-6 h-6 rounded-full border-2 border-marca-300 flex items-center justify-center flex-shrink-0"></div>
+              <svg class="w-4 h-4 text-marca-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              <span class="font-body text-sm text-marca-700">3.2 — Unidade hidráulica (EHB)</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Módulo 4 -->
+        <div class="rounded-xl overflow-hidden">
+          <button onclick="detalhe_do_curso_toggleModulo(3)" class="w-full flex items-center gap-3 p-3 bg-white border border-marca-100 hover:border-amber-300 transition-colors text-left">
+            <div class="w-8 h-8 rounded-lg bg-marca-100 flex items-center justify-center flex-shrink-0">
+              <span class="font-display font-bold text-marca-700 text-sm">04</span>
+            </div>
+            <div class="flex-1 min-w-0">
+              <p class="font-body font-semibold text-sm text-marca-900">Diagnóstico e Scanner OBD-II</p>
+              <p class="font-body text-xs text-marca-700/60">2 aulas · 1h20min · Não iniciado</p>
+            </div>
+            <svg id="modulo-chevron-3" class="w-4 h-4 text-marca-500 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div id="modulo-conteudo-3" class="hidden bg-marca-50/50 border-t border-marca-100">
+            <button onclick="mostrarTela('detalhe-do-curso')" class="w-full flex items-center gap-3 px-3 py-3 pl-[4.5rem] hover:bg-marca-100/50 transition-colors">
+              <div class="w-6 h-6 rounded-full border-2 border-marca-300 flex items-center justify-center flex-shrink-0"></div>
+              <svg class="w-4 h-4 text-marca-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              <span class="font-body text-sm text-marca-700">4.1 — Leitura de códigos DTC no scanner</span>
+            </button>
+            <button onclick="mostrarTela('detalhe-do-curso')" class="w-full flex items-center gap-3 px-3 py-3 pl-[4.5rem] hover:bg-marca-100/50 transition-colors">
+              <div class="w-6 h-6 rounded-full border-2 border-marca-300 flex items-center justify-center flex-shrink-0"></div>
+              <svg class="w-4 h-4 text-marca-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              <span class="font-body text-sm text-marca-700">4.2 — Interpretação de sinais em tempo real</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Módulo 5 -->
+        <div class="rounded-xl overflow-hidden">
+          <button onclick="detalhe_do_curso_toggleModulo(4)" class="w-full flex items-center gap-3 p-3 bg-white border border-marca-100 hover:border-amber-300 transition-colors text-left">
+            <div class="w-8 h-8 rounded-lg bg-marca-100 flex items-center justify-center flex-shrink-0">
+              <span class="font-display font-bold text-marca-700 text-sm">05</span>
+            </div>
+            <div class="flex-1 min-w-0">
+              <p class="font-body font-semibold text-sm text-marca-900">Reparo e Manutenção Preventiva</p>
+              <p class="font-body text-xs text-marca-700/60">3 aulas · 2h05min · Não iniciado</p>
+            </div>
+            <svg id="modulo-chevron-4" class="w-4 h-4 text-marca-500 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div id="modulo-conteudo-4" class="hidden bg-marca-50/50 border-t border-marca-100">
+            <button onclick="mostrarTela('detalhe-do-curso')" class="w-full flex items-center gap-3 px-3 py-3 pl-[4.5rem] hover:bg-marca-100/50 transition-colors">
+              <div class="w-6 h-6 rounded-full border-2 border-marca-300 flex items-center justify-center flex-shrink-0"></div>
+              <svg class="w-4 h-4 text-marca-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              <span class="font-body text-sm text-marca-700">5.1 — Troca de fluido e sangria do sistema</span>
+            </button>
+            <button onclick="mostrarTela('detalhe-do-curso')" class="w-full flex items-center gap-3 px-3 py-3 pl-[4.5rem] hover:bg-marca-100/50 transition-colors">
+              <div class="w-6 h-6 rounded-full border-2 border-marca-300 flex items-center justify-center flex-shrink-0"></div>
+              <svg class="w-4 h-4 text-marca-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              <span class="font-body text-sm text-marca-700">5.2 — Pastilhas e discos: quando trocar</span>
+            </button>
+            <button onclick="mostrarTela('detalhe-do-curso')" class="w-full flex items-center gap-3 px-3 py-3 pl-[4.5rem] hover:bg-marca-100/50 transition-colors">
+              <div class="w-6 h-6 rounded-full border-2 border-marca-300 flex items-center justify-center flex-shrink-0"></div>
+              <svg class="w-4 h-4 text-marca-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              <span class="font-body text-sm text-marca-700">5.3 — Check-list de inspeção visual</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Módulo 6 -->
+        <div class="rounded-xl overflow-hidden">
+          <button onclick="detalhe_do_curso_toggleModulo(5)" class="w-full flex items-center gap-3 p-3 bg-white border border-marca-100 hover:border-amber-300 transition-colors text-left">
+            <div class="w-8 h-8 rounded-lg bg-marca-100 flex items-center justify-center flex-shrink-0">
+              <span class="font-display font-bold text-marca-700 text-sm">06</span>
+            </div>
+            <div class="flex-1 min-w-0">
+              <p class="font-body font-semibold text-sm text-marca-900">Normas de Segurança e Legislação</p>
+              <p class="font-body text-xs text-marca-700/60">2 aulas · 1h10min · Não iniciado</p>
+            </div>
+            <svg id="modulo-chevron-5" class="w-4 h-4 text-marca-500 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div id="modulo-conteudo-5" class="hidden bg-marca-50/50 border-t border-marca-100">
+            <button onclick="mostrarTela('detalhe-do-curso')" class="w-full flex items-center gap-3 px-3 py-3 pl-[4.5rem] hover:bg-marca-100/50 transition-colors">
+              <div class="w-6 h-6 rounded-full border-2 border-marca-300 flex items-center justify-center flex-shrink-0"></div>
+              <svg class="w-4 h-4 text-marca-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              <span class="font-body text-sm text-marca-700">6.1 — Normas CONTRAN e inspeção veicular</span>
+            </button>
+            <button onclick="mostrarTela('detalhe-do-curso')" class="w-full flex items-center gap-3 px-3 py-3 pl-[4.5rem] hover:bg-marca-100/50 transition-colors">
+              <div class="w-6 h-6 rounded-full border-2 border-marca-300 flex items-center justify-center flex-shrink-0"></div>
+              <svg class="w-4 h-4 text-marca-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              <span class="font-body text-sm text-marca-700">6.2 — EPIs e procedimentos seguros na oficina</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ABA: Materiais -->
+    <div id="aba-materiais" class="aba-conteudo hidden">
+      <div class="space-y-2">
+        <div class="card flex items-center gap-3 p-3 group cursor-pointer" onclick="detalhe_do_curso_downloadPDF('Guia de Diagnóstico ABS')">
+          <div class="w-10 h-10 rounded-xl bg-red-50 flex items-center justify-center flex-shrink-0 border border-red-100">
+            <svg class="w-5 h-5 text-red-500" fill="currentColor" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zm-1 2l5 5h-5V4zM8.5 13h7a.5.5 0 010 1h-7a.5.5 0 010-1zm0 2.5h7a.5.5 0 010 1h-7a.5.5 0 010-1zm0 2.5h5a.5.5 0 010 1h-5a.5.5 0 010-1z"/></svg>
+          </div>
+          <div class="flex-1 min-w-0">
+            <p class="font-body font-semibold text-sm text-marca-900 truncate">Guia de Diagnóstico ABS Completo</p>
+            <p class="font-body text-xs text-marca-700/60">PDF · 12 páginas · 3.2 MB</p>
+          </div>
+          <button class="flex-shrink-0 w-8 h-8 rounded-lg bg-amber-500 hover:bg-amber-600 active:scale-90 transition-all flex items-center justify-center">
+            <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+          </button>
+        </div>
+
+        <div class="card flex items-center gap-3 p-3 group cursor-pointer" onclick="detalhe_do_curso_downloadPDF('Esquema Elétrico ABS')">
+          <div class="w-10 h-10 rounded-xl bg-red-50 flex items-center justify-center flex-shrink-0 border border-red-100">
+            <svg class="w-5 h-5 text-red-500" fill="currentColor" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zm-1 2l5 5h-5V4zM8.5 13h7a.5.5 0 010 1h-7a.5.5 0 010-1zm0 2.5h7a.5.5 0 010 1h-7a.5.5 0 010-1zm0 2.5h5a.5.5 0 010 1h-5a.5.5 0 010-1z"/></svg>
+          </div>
+          <div class="flex-1 min-w-0">
+            <p class="font-body font-semibold text-sm text-marca-900 truncate">Esquema Elétrico — Sistema ABS VW</p>
+            <p class="font-body text-xs text-marca-700/60">PDF · 8 páginas · 1.8 MB</p>
+          </div>
+          <button class="flex-shrink-0 w-8 h-8 rounded-lg bg-amber-500 hover:bg-amber-600 active:scale-90 transition-all flex items-center justify-center">
+            <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+          </button>
+        </div>
+
+        <div class="card flex items-center gap-3 p-3 group cursor-pointer" onclick="detalhe_do_curso_downloadPDF('Tabela de Torques')">
+          <div class="w-10 h-10 rounded-xl bg-red-50 flex items-center justify-center flex-shrink-0 border border-red-100">
+            <svg class="w-5 h-5 text-red-500" fill="currentColor" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zm-1 2l5 5h-5V4zM8.5 13h7a.5.5 0 010 1h-7a.5.5 0 010-1zm0 2.5h7a.5.5 0 010 1h-7a.5.5 0 010-1zm0 2.5h5a.5.5 0 010 1h-5a.5.5 0 010-1z"/></svg>
+          </div>
+          <div class="flex-1 min-w-0">
+            <p class="font-body font-semibold text-sm text-marca-900 truncate">Tabela de Torques — Porcas de Roda</p>
+            <p class="font-body text-xs text-marca-700/60">PDF · 5 páginas · 1.1 MB</p>
+          </div>
+          <button class="flex-shrink-0 w-8 h-8 rounded-lg bg-amber-500 hover:bg-amber-600 active:scale-90 transition-all flex items-center justify-center">
+            <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+          </button>
+        </div>
+
+        <div class="card flex items-center gap-3 p-3 group cursor-pointer" onclick="detalhe_do_curso_downloadPDF('Checklist Manutenção')">
+          <div class="w-10 h-10 rounded-xl bg-red-50 flex items-center justify-center flex-shrink-0 border border-red-100">
+            <svg class="w-5 h-5 text-red-500" fill="currentColor" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zm-1 2l5 5h-5V4zM8.5 13h7a.5.5 0 010 1h-7a.5.5 0 010-1zm0 2.5h7a.5.5 0 010 1h-7a.5.5 0 010-1zm0 2.5h5a.5.5 0 010 1h-5a.5.5 0 010-1z"/></svg>
+          </div>
+          <div class="flex-1 min-w-0">
+            <p class="font-body font-semibold text-sm text-marca-900 truncate">Checklist de Manutenção Preventiva</p>
+            <p class="font-body text-xs text-marca-700/60">PDF · 3 páginas · 0.6 MB</p>
+          </div>
+          <button class="flex-shrink-0 w-8 h-8 rounded-lg bg-amber-500 hover:bg-amber-600 active:scale-90 transition-all flex items-center justify-center">
+            <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+          </button>
+        </div>
+
+        <div class="card flex items-center gap-3 p-3 group cursor-pointer" onclick="detalhe_do_curso_downloadPDF('Manual Montagem ABS')">
+          <div class="w-10 h-10 rounded-xl bg-red-50 flex items-center justify-center flex-shrink-0 border border-red-100">
+            <svg class="w-5 h-5 text-red-500" fill="currentColor" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zm-1 2l5 5h-5V4zM8.5 13h7a.5.5 0 010 1h-7a.5.5 0 010-1zm0 2.5h7a.5.5 0 010 1h-7a.5.5 0 010-1zm0 2.5h5a.5.5 0 010 1h-5a.5.5 0 010-1z"/></svg>
+          </div>
+          <div class="flex-1 min-w-0">
+            <p class="font-body font-semibold text-sm text-marca-900 truncate">Manual de Montagem e Regulagem ABS</p>
+            <p class="font-body text-xs text-marca-700/60">PDF · 18 páginas · 5.4 MB</p>
+          </div>
+          <button class="flex-shrink-0 w-8 h-8 rounded-lg bg-amber-500 hover:bg-amber-600 active:scale-90 transition-all flex items-center justify-center">
+            <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ABA: Ofertas -->
+    <div id="aba-ofertas" class="aba-conteudo hidden">
+      <p class="font-body text-xs text-marca-700/60 mb-3 flex items-center gap-1">
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        Ofertas exclusivas para alunos deste curso
+      </p>
+      <div class="space-y-3">
+        <!-- Patrocinador 1 -->
+        <div class="card p-3 cursor-pointer hover:border-amber-300 transition-all" onclick="detalhe_do_curso_verOferta(0)">
+          <div class="flex items-center gap-3 mb-2">
+            <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-600 to-blue-800 flex items-center justify-center flex-shrink-0">
+              <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
+            </div>
+            <div class="flex-1 min-w-0">
+              <p class="font-body font-bold text-sm text-marca-900">AutoPeças Brasil</p>
+              <p class="font-body text-xs text-marca-700/60">Patrocinador oficial</p>
+            </div>
+            <span class="badge badge-green text-xs">30% OFF</span>
+          </div>
+          <div class="rounded-xl overflow-hidden mb-2 bg-gradient-to-r from-blue-50 to-blue-100 h-28 flex items-center justify-center">
+            <div class="text-center">
+              <svg class="w-8 h-8 text-blue-300 mx-auto mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+              <p class="font-body text-xs text-blue-600 font-medium">Peças originais com desconto</p>
+            </div>
+          </div>
+          <p class="font-body text-sm text-marca-800">30% off em pastilhas e discos de freio para Honda Civic, Corolla e HB20. Cupom: <span class="font-bold text-amber-600">ALUNO30</span></p>
+          <p class="font-body text-xs text-marca-700/50 mt-1">Válido até 31/12/2026</p>
+        </div>
+
+        <!-- Patrocinador 2 -->
+        <div class="card p-3 cursor-pointer hover:border-amber-300 transition-all" onclick="detalhe_do_curso_verOferta(1)">
+          <div class="flex items-center gap-3 mb-2">
+            <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-red-600 to-red-800 flex items-center justify-center flex-shrink-0">
+              <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 111.024 5.535l-6.632 3.316m6.632-6l-3.316 6.632"/></svg>
+            </div>
+            <div class="flex-1 min-w-0">
+              <p class="font-body font-bold text-sm text-marca-900">Ferramentas Pro</p>
+              <p class="font-body text-xs text-marca-700/60">Patrocinador oficial</p>
+            </div>
+            <span class="badge badge-green text-xs">25% OFF</span>
+          </div>
+          <div class="rounded-xl overflow-hidden mb-2 bg-gradient-to-r from-red-50 to-red-100 h-28 flex items-center justify-center">
+            <div class="text-center">
+              <svg class="w-8 h-8 text-red-300 mx-auto mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+              <p class="font-body text-xs text-red-600 font-medium">Kit completo de ferramentas</p>
+            </div>
+          </div>
+          <p class="font-body text-sm text-marca-800">25% off no kit de ferramentas para freio ABS (extração de sensor, torquímetro digital, kit sangria). Cupom: <span class="font-bold text-amber-600">PROALUNO25</span></p>
+          <p class="font-body text-xs text-marca-700/50 mt-1">Válido até 15/02/2027</p>
+        </div>
+
+        <!-- Patrocinador 3 -->
+        <div class="card p-3 cursor-pointer hover:border-amber-300 transition-all" onclick="detalhe_do_curso_verOferta(2)">
+          <div class="flex items-center gap-3 mb-2">
+            <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-600 to-emerald-800 flex items-center justify-center flex-shrink-0">
+              <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+            </div>
+            <div class="flex-1 min-w-0">
+              <p class="font-body font-bold text-sm text-marca-900">Escola Técnica Senac</p>
+              <p class="font-body text-xs text-marca-700/60">Patrocinador oficial</p>
+            </div>
+            <span class="badge badge-amber text-xs">2ª matrícula</span>
+          </div>
+          <div class="rounded-xl overflow-hidden mb-2 bg-gradient-to-r from-emerald-50 to-emerald-100 h-28 flex items-center justify-center">
+            <div class="text-center">
+              <svg class="w-8 h-8 text-emerald-300 mx-auto mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 14l9-5-9-5-9 5 9 5z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 14l9-5-9-5-9 5 9 5z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 21l-6.16-3.422a12.083 12.083 0 01.665-6.479A11.952 11.952 0 0112 3.055"/></svg>
+              <p class="font-body text-xs text-emerald-600 font-medium">Curso complementar com desconto</p>
+            </div>
+          </div>
+          <p class="font-body text-sm text-marca-800">2ª matrícula com 50% OFF no curso "Injeção Eletrônica Avançada". Alunos da plataforma têm prioridade nas vagas. Cupom: <span class="font-bold text-amber-600">SENAC50</span></p>
+          <p class="font-body text-xs text-marca-700/50 mt-1">Válido até 30/06/2027</p>
+        </div>
+
+        <!-- Patrocinador 4 -->
+        <div class="card p-3 cursor-pointer hover:border-amber-300 transition-all" onclick="detalhe_do_curso_verOferta(3)">
+          <div class="flex items-center gap-3 mb-2">
+            <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-600 to-indigo-800 flex items-center justify-center flex-shrink-0">
+              <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+            </div>
+            <div class="flex-1 min-w-0">
+              <p class="font-body font-bold text-sm text-marca-900">Certificação CFC</p>
+              <p class="font-body text-xs text-marca-700/60">Patrocinador oficial</p>
+            </div>
+            <span class="badge badge-amber text-xs">GRÁTIS</span>
+          </div>
+          <div class="rounded-xl overflow-hidden mb-2 bg-gradient-to-r from-indigo-50 to-indigo-100 h-28 flex items-center justify-center">
+            <div class="text-center">
+              <svg class="w-8 h-8 text-indigo-300 mx-auto mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
+              <p class="font-body text-xs text-indigo-600 font-medium">Certificado reconhecido nacionalmente</p>
+            </div>
+          </div>
+          <p class="font-body text-sm text-marca-800">Exame de certificação oficial GRÁTIS para alunos da plataforma. O certificado é reconhecido pelo CFC e válido em todo território nacional.</p>
+          <p class="font-body text-xs text-marca-700/50 mt-1">Agende até 31/12/2026</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Seção de Avaliações -->
+    <div class="mt-6 mb-4">
+      <h2 class="font-display font-bold text-lg text-marca-900 mb-3">Avaliações do Curso</h2>
+      <div class="card p-4 mb-3">
+        <div class="flex items-center gap-3 mb-3">
+          <div class="text-center">
+            <span class="font-display font-bold text-3xl text-marca-900">4.7</span>
+            <div class="flex items-center justify-center gap-0.5 mt-1">
+              <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            </div>
+          </div>
+          <div class="flex-1">
+            <div class="space-y-1">
+              <div class="flex items-center gap-2"><span class="font-body text-xs text-marca-700 w-3">5</span><div class="flex-1 h-2 bg-marca-100 rounded-full overflow-hidden"><div class="h-full bg-amber-400 rounded-full" style="width:72%"></div></div><span class="font-body text-xs text-marca-700/60 w-8 text-right">72%</span></div>
+              <div class="flex items-center gap-2"><span class="font-body text-xs text-marca-700 w-3">4</span><div class="flex-1 h-2 bg-marca-100 rounded-full overflow-hidden"><div class="h-full bg-amber-400 rounded-full" style="width:18%"></div></div><span class="font-body text-xs text-marca-700/60 w-8 text-right">18%</span></div>
+              <div class="flex items-center gap-2"><span class="font-body text-xs text-marca-700 w-3">3</span><div class="flex-1 h-2 bg-marca-100 rounded-full overflow-hidden"><div class="h-full bg-amber-400 rounded-full" style="width:6%"></div></div><span class="font-body text-xs text-marca-700/60 w-8 text-right">6%</span></div>
+              <div class="flex items-center gap-2"><span class="font-body text-xs text-marca-700 w-3">2</span><div class="flex-1 h-2 bg-marca-100 rounded-full overflow-hidden"><div class="h-full bg-amber-400 rounded-full" style="width:3%"></div></div><span class="font-body text-xs text-marca-700/60 w-8 text-right">3%</span></div>
+              <div class="flex items-center gap-2"><span class="font-body text-xs text-marca-700 w-3">1</span><div class="flex-1 h-2 bg-marca-100 rounded-full overflow-hidden"><div class="h-full bg-amber-400 rounded-full" style="width:1%"></div></div><span class="font-body text-xs text-marca-700/60 w-8 text-right">1%</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="border-t border-marca-100 pt-3 space-y-3">
+          <div class="flex gap-3">
+            <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0"><span class="font-body font-bold text-blue-700 text-xs">RS</span></div>
+            <div class="flex-1"><p class="font-body text-sm text-marca-900 font-semibold">Roberto Silva</p><p class="font-body text-xs text-marca-700/60">Mecânico há 12 anos · SP</p><p class="font-body text-sm text-marca-700 mt-1">"Conteúdo muito bem estruturado! As aulas sobre diagnóstico por scanner OBD-II me ajudaram a resolver um problema que eu travava há semanas. Recomendo para todos os mecânicos."</p></div>
+          </div>
+          <div class="flex gap-3">
+            <div class="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0"><span class="font-body font-bold text-green-700 text-xs">MC</span></div>
+            <div class="flex-1"><p class="font-body text-sm text-marca-900 font-semibold">Maria Costa</p><p class="font-body text-xs text-marca-700/60">Proprietária de oficina · MG</p><p class="font-body text-sm text-marca-700 mt-1">"Faço todos os cursos da plataforma. A didática do professor é excelente e os materiais PDF fazem toda diferença no dia a dia da oficina. Parabéns!"</p></div>
+          </div>
+          <div class="flex gap-3">
+            <div class="w-8 h-8 rounded-full bg-amber-100 flex items-center justify-center flex-shrink-0"><span class="font-body font-bold text-amber-700 text-xs">JP</span></div>
+            <div class="flex-1"><p class="font-body text-sm text-marca-900 font-semibold">João Pereira</p><p class="font-body text-xs text-marca-700/60">Aprendiz de mecânica · RJ</p><p class="font-body text-sm text-marca-700 mt-1">"Estou começando na área e esse curso foi essencial. Consegui meu primeiro emprego como aprendiz graças ao certificado deste curso."</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Seção de Certificado -->
+    <div class="mb-6">
+      <div class="card p-4 border-2 border-dashed border-marca-200 bg-gradient-to-br from-white to-amber-50/30">
+        <div class="flex items-center gap-3 mb-3">
+          <div class="w-10 h-10 rounded-xl bg-amber-100 flex items-center justify-center flex-shrink-0">
+            <svg class="w-5 h-5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
+          </div>
+          <div>
+            <h3 class="font-display font-bold text-marca-900">Certificado de Conclusão</h3>
+            <p class="font-body text-xs text-marca-700/60">Disponível após conclusão de todas as aulas</p>
+          </div>
+        </div>
+        <!-- Barra de progresso -->
+        <div class="mb-2">
+          <div class="flex justify-between mb-1">
+            <span class="font-body text-xs text-marca-700">Progresso do curso</span>
+            <span class="font-body text-xs font-semibold text-amber-600" id="progresso-texto">5 de 13 aulas · 38%</span>
+          </div>
+          <div class="h-3 bg-marca-100 rounded-full overflow-hidden">
+            <div class="h-full bg-gradient-to-r from-amber-400 to-orange-500 rounded-full transition-all duration-500" id="progresso-bar" style="width: 38%"></div>
+          </div>
+        </div>
+        <p class="font-body text-xs text-marca-700/50">Complete todas as aulas e avaliações para emitir seu certificado reconhecido nacionalmente.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Botão flutuante de download -->
+  <div class="fixed bottom-16 left-0 right-0 px-4 z-40">
+    <div class="max-w-[430px] mx-auto">
+      <button onclick="detalhe_do_curso_abrirMateriais()" class="w-full py-3.5 bg-gradient-to-r from-marca-800 to-marca-900 text-white font-body font-bold rounded-2xl shadow-lg active:scale-95 transition-all flex items-center justify-center gap-2">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+        Baixar Material do Curso
+        <span class="bg-white/20 text-white text-xs px-2 py-0.5 rounded-full font-medium">4 PDFs</span>
+      </button>
+    </div>
+  </div>
+
+  <script>
+    var detalhe_do_curso_modulosAbertos = {};
+    var detalhe_do_curso_abaAtiva = 'conteudo';
+
+    function detalhe_do_curso_aba(nome) {
+      detalhe_do_curso_abaAtiva = nome;
+      var abas = ['conteudo', 'materiais', 'ofertas'];
+      abas.forEach(function(a) {
+        var btn = document.getElementById('aba-btn-' + a);
+        var conteudo = document.getElementById('aba-' + a);
+        if (a === nome) {
+          btn.className = 'aba-btn flex-1 py-2.5 rounded-lg font-body font-semibold text-sm transition-all duration-200 bg-white text-marca-900 shadow-sm';
+          conteudo.classList.remove('hidden');
+        } else {
+          btn.className = 'aba-btn flex-1 py-2.5 rounded-lg font-body font-semibold text-sm transition-all duration-200 text-marca-700 hover:text-marca-900';
+          conteudo.classList.add('hidden');
+        }
+      });
+    }
+
+    function detalhe_do_curso_toggleModulo(idx) {
+      var el = document.getElementById('modulo-conteudo-' + idx);
+      var chevron = document.getElementById('modulo-chevron-' + idx);
+      if (detalhe_do_curso_modulosAbertos[idx]) {
+        el.classList.add('hidden');
+        chevron.style.transform = 'rotate(0deg)';
+        delete detalhe_do_curso_modulosAbertos[idx];
+      } else {
+        el.classList.remove('hidden');
+        chevron.style.transform = 'rotate(180deg)';
+        detalhe_do_curso_modulosAbertos[idx] = true;
+      }
+    }
+
+    function detalhe_do_curso_toggleVideo() {
+      var area = document.getElementById('video-player-area');
+      var label = document.getElementById('video-label');
+      if (area.dataset.playing === 'true') {
+        area.dataset.playing = 'false';
+        area.innerHTML = '<div class="text-center"><div class="w-16 h-16 rounded-full bg-white/10 flex items-center justify-center mb-2 backdrop-blur-sm border border-white/20"><svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><p class="text-white/80 font-body text-sm">' + label.textContent + '</p></div>';
+        area.classList.add('bg-gradient-to-br', 'from-marca-800', 'to-marca-900');
+        toast('Vídeo pausado', 'info');
+      } else {
+        area.dataset.playing = 'true';
+        area.innerHTML = '<div class="text-center"><div class="w-16 h-16 rounded-full bg-white/10 flex items-center justify-center mb-2 backdrop-blur-sm border border-white/20"><svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/></svg></div><p class="text-white/80 font-body text-sm">Reproduzindo...</p></div>';
+        area.classList.remove('bg-gradient-to-br', 'from-marca-800', 'to-marca-900');
+        toast('Reproduzindo vídeo-aula', 'ok');
+      }
+    }
+
+    function detalhe_do_curso_downloadPDF(nome) {
+      toast('Baixando "' + nome + '"...', 'ok');
+    }
+
+    function detalhe_do_curso_abrirMateriais() {
+      detalhe_do_curso_aba('materiais');
+    }
+
+    function detalhe_do_curso_verOferta(idx) {
+      var ofertas = [
+        { nome: 'AutoPeças Brasil', cupom: 'ALUNO30', desc: '30% off em pastilhas e discos de freio para Honda Civic, Corolla e HB20' },
+        { nome: 'Ferramentas Pro', cupom: 'PROALUNO25', desc: '25% off no kit de ferramentas para freio ABS (extração de sensor, torquímetro digital)' },
+        { nome: 'Escola Técnica Senac', cupom: 'SENAC50', desc: '2ª matrícula com 50% OFF no curso "Injeção Eletrônica Avançada"' },
+        { nome: 'Certificação CFC', cupom: 'GRÁTIS', desc: 'Exame de certificação oficial GRÁTIS para alunos da plataforma' }
+      ];
+      var oferta = ofertas[idx];
+      var html = '<div class="p-4 text-center"><div class="w-16 h-16 rounded-full bg-amber-100 flex items-center justify-center mx-auto mb-3"><svg class="w-8 h-8 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/></svg></div><p class="font-display font-bold text-marca-900 text-lg mb-1">' + oferta.nome + '</p><p class="font-body text-sm text-marca-700 mb-3">' + oferta.desc + '</p><div class="bg-marca-100 rounded-xl p-3 mb-4"><p class="font-body text-xs text-marca-700/60 mb-1">Código do cupom</p><p class="font-display font-bold text-marca-900 text-xl tracking-wider">' + oferta.cupom + '</p></div><button onclick="toast(\'Cupom copiado!\', \'ok\'); fecharModal();" class="w-full py-3 bg-amber-500 text-white font-body font-bold rounded-xl active:scale-95 transition-all">Copiar Cupom</button></div>';
+      abrirModal(html, 'Oferta Exclusiva');
+    }
+
+    // Inicializa a primeira aba
+    detalhe_do_curso_aba('conteudo');
+  </script>
+</section>
+
     <!-- TELAS -->
             </div>
         </main>
