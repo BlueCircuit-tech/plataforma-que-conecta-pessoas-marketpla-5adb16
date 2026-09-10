@@ -140,7 +140,297 @@
 
         <main id="main-scroll" class="flex-1 overflow-y-auto scroll-hide bg-cream relative">
             <div id="app-content" class="min-h-full pb-20">
-                <!-- TELAS -->
+                <section data-tela="home" class="hidden">
+      <!-- Cabeçalho -->
+      <div class="px-5 pt-5 pb-3 fade-in">
+        <div class="flex items-center justify-between mb-1">
+          <div>
+            <p class="text-sm text-stone-500 font-body">Bom dia,</p>
+            <h1 class="text-xl font-display font-bold text-stone-900 leading-tight">Carlos Mendes</h1>
+          </div>
+          <button onclick="home_toggleNotificacoes()" class="relative w-10 h-10 rounded-full bg-white shadow-sm border border-stone-200 flex items-center justify-center active:scale-95 transition-transform">
+            <svg class="w-5 h-5 text-stone-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg>
+            <span id="badge-notif" class="absolute -top-0.5 -right-0.5 w-5 h-5 bg-red-500 text-white text-[10px] font-bold rounded-full flex items-center justify-center">4</span>
+          </button>
+        </div>
+        <p class="text-xs text-stone-400 font-body">Continue seus estudos e confira as novidades</p>
+      </div>
+
+      <!-- Busca -->
+      <div class="px-5 pb-3 fade-in">
+        <div class="relative">
+          <svg class="absolute left-3.5 top-1/2 -translate-y-1/2 w-4.5 h-4.5 text-stone-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+          <input id="home-busca" type="text" placeholder="Buscar cursos, vagas, oficinas..." oninput="home_buscar(this.value)" class="w-full pl-11 pr-4 py-3 bg-white rounded-xl border border-stone-200 text-sm font-body text-stone-800 placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-orange-500/30 focus:border-orange-500 transition-all shadow-sm">
+        </div>
+      </div>
+
+      <!-- Acesso Rápido -->
+      <div class="px-5 py-3 fade-in">
+        <div class="grid grid-cols-4 gap-2">
+          <button onclick="mostrarTela('cursos')" class="flex flex-col items-center gap-1.5 py-3 rounded-xl bg-white border border-stone-100 shadow-sm active:scale-95 transition-all hover:border-orange-200">
+            <div class="w-10 h-10 rounded-full bg-orange-50 flex items-center justify-center"><svg class="w-5 h-5 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg></div>
+            <span class="text-[11px] font-medium text-stone-600 font-body">Cursos</span>
+          </button>
+          <button onclick="mostrarTela('oportunidades')" class="flex flex-col items-center gap-1.5 py-3 rounded-xl bg-white border border-stone-100 shadow-sm active:scale-95 transition-all hover:border-orange-200">
+            <div class="w-10 h-10 rounded-full bg-orange-50 flex items-center justify-center relative"><svg class="w-5 h-5 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M12 18h.01M7 21h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg><span class="absolute -top-1 -right-1 w-4 h-4 bg-red-500 text-white text-[9px] font-bold rounded-full flex items-center justify-center">2</span></div>
+            <span class="text-[11px] font-medium text-stone-600 font-body">Vagas</span>
+          </button>
+          <button onclick="mostrarTela('oficinas')" class="flex flex-col items-center gap-1.5 py-3 rounded-xl bg-white border border-stone-100 shadow-sm active:scale-95 transition-all hover:border-orange-200">
+            <div class="w-10 h-10 rounded-full bg-orange-50 flex items-center justify-center"><svg class="w-5 h-5 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.067 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.067-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.573-1.066z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div>
+            <span class="text-[11px] font-medium text-stone-600 font-body">Oficinas</span>
+          </button>
+          <button onclick="mostrarTela('patrocinadores')" class="flex flex-col items-center gap-1.5 py-3 rounded-xl bg-white border border-stone-100 shadow-sm active:scale-95 transition-all hover:border-orange-200">
+            <div class="w-10 h-10 rounded-full bg-orange-50 flex items-center justify-center"><svg class="w-5 h-5 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg></div>
+            <span class="text-[11px] font-medium text-stone-600 font-body">Patrocinadores</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Destaque - Cursos -->
+      <div class="px-5 py-3 fade-in">
+        <div class="flex items-center justify-between mb-3">
+          <h2 class="text-base font-display font-bold text-stone-900">Cursos em Destaque</h2>
+          <button onclick="mostrarTela('cursos')" class="text-xs font-medium text-orange-600 hover:text-orange-700 transition-colors">Ver todos &rarr;</button>
+        </div>
+        <div class="relative">
+          <div id="carousel-cursos" class="flex gap-3 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-2 -mx-5 px-5" style="scrollbar-width:none;-webkit-overflow-scrolling:touch;">
+            <div onclick="mostrarTela('detalhe-do-curso')" class="card snap-start min-w-[260px] bg-white rounded-2xl border border-stone-100 shadow-sm overflow-hidden active:scale-[0.97] transition-all cursor-pointer">
+              <div class="h-32 bg-gradient-to-br from-orange-700 via-orange-600 to-orange-800 flex items-center justify-center relative">
+                <svg class="w-14 h-14 text-white/25" fill="currentColor" viewBox="0 0 24 24"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z"/></svg>
+                <span class="absolute top-2.5 left-2.5 bg-white/20 backdrop-blur-sm text-white text-[10px] font-bold px-2 py-0.5 rounded-md">8 Aulas</span>
+              </div>
+              <div class="p-3.5">
+                <h3 class="text-sm font-display font-bold text-stone-900 leading-snug mb-1">Manutenção Preventiva de Freios</h3>
+                <p class="text-xs text-stone-500 font-body mb-2.5">Instrutor: Prof. Roberto Lima</p>
+                <div class="flex items-center justify-between">
+                  <span class="badge bg-orange-100 text-orange-800 text-[10px] px-2 py-0.5 rounded-md font-medium">Parceiro</span>
+                  <span class="text-xs text-stone-400 font-body">2h 30min</span>
+                </div>
+              </div>
+            </div>
+            <div onclick="mostrarTela('detalhe-do-curso')" class="card snap-start min-w-[260px] bg-white rounded-2xl border border-stone-100 shadow-sm overflow-hidden active:scale-[0.97] transition-all cursor-pointer">
+              <div class="h-32 bg-gradient-to-br from-amber-700 via-orange-600 to-amber-800 flex items-center justify-center relative">
+                <svg class="w-14 h-14 text-white/25" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                <span class="absolute top-2.5 left-2.5 bg-white/20 backdrop-blur-sm text-white text-[10px] font-bold px-2 py-0.5 rounded-md">PDF Incluído</span>
+              </div>
+              <div class="p-3.5">
+                <h3 class="text-sm font-display font-bold text-stone-900 leading-snug mb-1">Troca de Óleo e Filtros</h3>
+                <p class="text-xs text-stone-500 font-body mb-2.5">Instrutor: Mec. Ana Souza</p>
+                <div class="flex items-center justify-between">
+                  <span class="badge bg-orange-100 text-orange-800 text-[10px] px-2 py-0.5 rounded-md font-medium">Parceiro</span>
+                  <span class="text-xs text-stone-400 font-body">1h 45min</span>
+                </div>
+              </div>
+            </div>
+            <div onclick="mostrarTela('detalhe-do-curso')" class="card snap-start min-w-[260px] bg-white rounded-2xl border border-stone-100 shadow-sm overflow-hidden active:scale-[0.97] transition-all cursor-pointer">
+              <div class="h-32 bg-gradient-to-br from-yellow-700 via-orange-500 to-orange-700 flex items-center justify-center relative">
+                <svg class="w-14 h-14 text-white/25" fill="currentColor" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-8 12.5v-9l6 4.5-6 4.5z"/></svg>
+                <span class="absolute top-2.5 left-2.5 bg-red-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-md">MAIS VENDIDO</span>
+              </div>
+              <div class="p-3.5">
+                <h3 class="text-sm font-display font-bold text-stone-900 leading-snug mb-1">Eletrônica Automotiva Básica</h3>
+                <p class="text-xs text-stone-500 font-body mb-2.5">Instrutor: Eng. Carlos Dias</p>
+                <div class="flex items-center justify-between">
+                  <span class="badge bg-orange-100 text-orange-800 text-[10px] px-2 py-0.5 rounded-md font-medium">Parceiro</span>
+                  <span class="text-xs text-stone-400 font-body">4h 10min</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Vagas Recentes -->
+      <div class="px-5 py-3 fade-in">
+        <div class="flex items-center justify-between mb-3">
+          <h2 class="text-base font-display font-bold text-stone-900">Vagas Recentes</h2>
+          <button onclick="mostrarTela('oportunidades')" class="text-xs font-medium text-orange-600 hover:text-orange-700 transition-colors">Ver todas &rarr;</button>
+        </div>
+        <div id="lista-vagas" class="space-y-2.5">
+          <div onclick="home_abrirVaga(0)" class="card bg-white rounded-xl border border-stone-100 shadow-sm p-3.5 flex items-start gap-3 cursor-pointer active:scale-[0.98] transition-all">
+            <div class="w-11 h-11 rounded-full bg-gradient-to-br from-orange-600 to-orange-800 flex items-center justify-center flex-shrink-0"><span class="text-white text-sm font-bold font-display">AP</span></div>
+            <div class="flex-1 min-w-0">
+              <h3 class="text-sm font-display font-bold text-stone-900 truncate">Mecânico de Manutenção</h3>
+              <p class="text-xs text-stone-500 font-body truncate">AutoPeças Brasil — São Paulo, SP</p>
+              <div class="flex items-center gap-2 mt-1.5"><span class="badge bg-green-100 text-green-700 text-[10px] px-2 py-0.5 rounded-md font-medium">CLT</span><span class="text-[11px] text-stone-400 font-body">Há 2 horas</span></div>
+            </div>
+            <svg class="w-4 h-4 text-stone-300 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          </div>
+          <div onclick="home_abrirVaga(1)" class="card bg-white rounded-xl border border-stone-100 shadow-sm p-3.5 flex items-start gap-3 cursor-pointer active:scale-[0.98] transition-all">
+            <div class="w-11 h-11 rounded-full bg-gradient-to-br from-amber-500 to-orange-700 flex items-center justify-center flex-shrink-0"><span class="text-white text-sm font-bold font-display">TR</span></div>
+            <div class="flex-1 min-w-0">
+              <h3 class="text-sm font-display font-bold text-stone-900 truncate">Eletricista Automotivo</h3>
+              <p class="text-xs text-stone-500 font-body truncate">TrocarRápido — Belo Horizonte, MG</p>
+              <div class="flex items-center gap-2 mt-1.5"><span class="badge bg-blue-100 text-blue-700 text-[10px] px-2 py-0.5 rounded-md font-medium">PJ</span><span class="text-[11px] text-stone-400 font-body">Há 5 horas</span></div>
+            </div>
+            <svg class="w-4 h-4 text-stone-300 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          </div>
+          <div onclick="home_abrirVaga(2)" class="card bg-white rounded-xl border border-stone-100 shadow-sm p-3.5 flex items-start gap-3 cursor-pointer active:scale-[0.98] transition-all">
+            <div class="w-11 h-11 rounded-full bg-gradient-to-br from-stone-600 to-stone-800 flex items-center justify-center flex-shrink-0"><span class="text-white text-sm font-bold font-display">OF</span></div>
+            <div class="flex-1 min-w-0">
+              <h3 class="text-sm font-display font-bold text-stone-900 truncate">Auxiliar de Oficina</h3>
+              <p class="text-xs text-stone-500 font-body truncate">Oficina Central — Curitiba, PR</p>
+              <div class="flex items-center gap-2 mt-1.5"><span class="badge bg-green-100 text-green-700 text-[10px] px-2 py-0.5 rounded-md font-medium">CLT</span><span class="text-[11px] text-stone-400 font-body">Ontem</span></div>
+            </div>
+            <svg class="w-4 h-4 text-stone-300 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          </div>
+          <div onclick="home_abrirVaga(3)" class="card bg-white rounded-xl border border-stone-100 shadow-sm p-3.5 flex items-start gap-3 cursor-pointer active:scale-[0.98] transition-all">
+            <div class="w-11 h-11 rounded-full bg-gradient-to-br from-red-600 to-orange-800 flex items-center justify-center flex-shrink-0"><span class="text-white text-sm font-bold font-display">RV</span></div>
+            <div class="flex-1 min-w-0">
+              <h3 class="text-sm font-display font-bold text-stone-900 truncate">Recepcionista — Concessionária</h3>
+              <p class="text-xs text-stone-500 font-body truncate">Revista Motor — Rio de Janeiro, RJ</p>
+              <div class="flex items-center gap-2 mt-1.5"><span class="badge bg-purple-100 text-purple-700 text-[10px] px-2 py-0.5 rounded-md font-medium">Estágio</span><span class="text-[11px] text-stone-400 font-body">Ontem</span></div>
+            </div>
+            <svg class="w-4 h-4 text-stone-300 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Patrocinadores -->
+      <div class="px-5 py-3 pb-24 fade-in">
+        <div class="flex items-center justify-between mb-3">
+          <h2 class="text-base font-display font-bold text-stone-900">Ofertas dos Parceiros</h2>
+        </div>
+        <div id="lista-patroc" class="space-y-2.5">
+          <div onclick="home_abrirOferta(0)" class="card bg-gradient-to-r from-orange-700 to-orange-600 rounded-xl shadow-sm p-4 cursor-pointer active:scale-[0.98] transition-all text-white">
+            <div class="flex items-center gap-3">
+              <div class="w-12 h-12 bg-white/15 rounded-xl flex items-center justify-center flex-shrink-0"><svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z"/></svg></div>
+              <div class="flex-1 min-w-0">
+                <h3 class="text-sm font-display font-bold">AutoPeças Brasil</h3>
+                <p class="text-xs text-white/80 font-body">20% OFF em peças originais</p>
+              </div>
+              <svg class="w-4 h-4 text-white/60 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            </div>
+          </div>
+          <div onclick="home_abrirOferta(1)" class="card bg-gradient-to-r from-amber-700 to-orange-600 rounded-xl shadow-sm p-4 cursor-pointer active:scale-[0.98] transition-all text-white">
+            <div class="flex items-center gap-3">
+              <div class="w-12 h-12 bg-white/15 rounded-xl flex items-center justify-center flex-shrink-0"><svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/></svg></div>
+              <div class="flex-1 min-w-0">
+                <h3 class="text-sm font-display font-bold">Oficina Premium</h3>
+                <p class="text-xs text-white/80 font-body">Revisão completa por R$ 199</p>
+              </div>
+              <svg class="w-4 h-4 text-white/60 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            </div>
+          </div>
+          <div onclick="home_abrirOferta(2)" class="card bg-gradient-to-r from-stone-700 to-stone-600 rounded-xl shadow-sm p-4 cursor-pointer active:scale-[0.98] transition-all text-white">
+            <div class="flex items-center gap-3">
+              <div class="w-12 h-12 bg-white/15 rounded-xl flex items-center justify-center flex-shrink-0"><svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></div>
+              <div class="flex-1 min-w-0">
+                <h3 class="text-sm font-display font-bold">Seguro Auto Fácil</h3>
+                <p class="text-xs text-white/80 font-body">Cotação grátis em 2 minutos</p>
+              </div>
+              <svg class="w-4 h-4 text-white/60 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sem resultados (busca) -->
+      <div id="home-sem-resultados" class="hidden px-5 py-20 text-center">
+        <svg class="w-16 h-16 text-stone-300 mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+        <p class="text-sm font-display font-bold text-stone-500 mb-1">Nenhum resultado encontrado</p>
+        <p class="text-xs text-stone-400 font-body">Tente buscar por outro termo</p>
+      </div>
+
+      <script>
+        var home_vagas = [
+          {titulo:'Mecânico de Manutenção',empresa:'AutoPeças Brasil',local:'São Paulo, SP',tipo:'CLT',cor:'bg-green-100 text-green-700',iniciais:'AP',grad:'from-orange-600 to-orange-800',tempo:'Há 2 horas',desc:'Manutenção preventiva e corretiva em veículos leves e pesados. Experiência mínima de 2 anos. Benefícios: VT, VR, plano de saúde.',salario:'R$ 3.500 – R$ 5.000'},
+          {titulo:'Eletricista Automotivo',empresa:'TrocarRápido',local:'Belo Horizonte, MG',tipo:'PJ',cor:'bg-blue-100 text-blue-700',iniciais:'TR',grad:'from-amber-500 to-orange-700',tempo:'Há 5 horas',desc:'Diagnóstico e reparo em sistemas elétricos e eletrônicos automotivos. Ferramentas próprias necessárias.',salario:'R$ 150 – R$ 250/dia'},
+          {titulo:'Auxiliar de Oficina',empresa:'Oficina Central',local:'Curitiba, PR',tipo:'CLT',cor:'bg-green-100 text-green-700',iniciais:'OF',grad:'from-stone-600 to-stone-800',tempo:'Ontem',desc:'Auxiliar nas atividades de mecânica, organização de ferramentas e atendimento ao cliente. Sem experiência prévia.',salario:'R$ 1.800 – R$ 2.200'},
+          {titulo:'Recepcionista — Concessionária',empresa:'Revista Motor',local:'Rio de Janeiro, RJ',tipo:'Estágio',cor:'bg-purple-100 text-purple-700',iniciais:'RV',grad:'from-red-600 to-orange-800',tempo:'Ontem',desc:'Atendimento ao cliente, agendamento de serviços e suporte administrativo. Cursando Administração ou Secretariado.',salario:'R$ 1.600 + benefícios'},
+          {titulo:'Instrutor de Curso Técnico',empresa:'AutoEscola Tech',local:'Porto Alegre, RS',tipo:'CLT',cor:'bg-green-100 text-green-700',iniciais:'AE',grad:'from-orange-500 to-orange-700',tempo:'Há 2 dias',desc:'Lecionar cursos de mecânica automotiva básica e avançada. Certificação técnica desejável.',salario:'R$ 4.000 – R$ 6.000'},
+          {titulo:'Vendedor de Peças',empresa:'Peças & Cia',local:'Campinas, SP',tipo:'CLT',cor:'bg-green-100 text-green-700',iniciais:'PC',grad:'from-yellow-600 to-orange-700',tempo:'Há 3 dias',desc:'Vendas de peças automotivas, atendimento a frotas e oficinas. Conhecimento do ramo é diferencial.',salario:'R$ 2.200 + comissão'}
+        ];
+        var home_oficinas = [
+          {nome:'Oficina Central',avaliacao:4.8,endereco:'Av. Brasil, 1200 — Centro',cidade:'São Paulo, SP',servicos:'Freios, suspensão, elétrica',detalhe:'Oficina completa com 15 anos de mercado. Equipe de 8 mecânicos certificados. Atendemos todas as marcas.'},
+          {nome:'AutoFix Serviços',avaliacao:4.5,endereco:'Rua das Flores, 350 — Jardins',cidade:'Campinas, SP',servicos:'Motor, câmbio, injeção',detalhe:'Especialistas em injeção eletrônica e diagnóstico computadorizado. Orçamento sem compromisso.'},
+          {nome:'Mecânica Rápida Silva',avaliacao:4.2,endereco:'Av. Getúlio Vargas, 890',cidade:'Curitiba, PR',servicos:'Troca de óleo, filtros, revisão',detalhe:'Serviços rápidos sem agendamento. Troca de óleo em até 30 minutos. Aceitamos todos os cartões.'},
+          {nome:'Premium Auto Center',avaliacao:4.9,endereco:'Rua Oscar Freire, 100',cidade:'São Paulo, SP',servicos:'Suspensão, freios, pintura',detalhe:'Centro automotivo premium. Atendimento VIP, sala de espera climatizada. Garantia de 12 meses nos serviços.'}
+        ];
+        var home_ofertas = [
+          {empresa:'AutoPeças Brasil',desconto:'20% OFF',desc:'Em peças originais para veículos nacionais e importados. Cupom: AUTO20',validade:'Válido até 31/12/2025'},
+          {empresa:'Oficina Premium',desconto:'Revisão R$ 199',desc:'Revisão completa com troca de óleo, filtros e checagem de 30 itens.',validade:'Válido até 15/12/2025'},
+          {empresa:'Seguro Auto Fácil',desconto:'Cotação Grátis',desc:'Cotação em 2 minutos sem compromisso. Atendimento 24h com Guinho incluso.',validade:'Vigência imediata'}
+        ];
+
+        function home_buscar(termo) {
+          var t = termo.toLowerCase().trim();
+          var vEls = document.querySelectorAll('#lista-vagas .card');
+          var pEls = document.querySelectorAll('#lista-patroc .card');
+          var vCount = 0, pCount = 0, el;
+          vEls.forEach(function(el){ el.style.display = 'none'; });
+          pEls.forEach(function(el){ el.style.display = 'none'; });
+          document.querySelectorAll('#carousel-cursos .card').forEach(function(el){ el.style.display = 'none'; });
+          if (t === '') {
+            vEls.forEach(function(el){ el.style.display = ''; });
+            pEls.forEach(function(el){ el.style.display = ''; });
+            document.querySelectorAll('#carousel-cursos .card').forEach(function(el){ el.style.display = ''; });
+            document.getElementById('home-sem-resultados').classList.add('hidden');
+            return;
+          }
+          vEls.forEach(function(el) {
+            var txt = el.textContent.toLowerCase();
+            if (txt.includes(t)) { el.style.display = ''; vCount++; }
+          });
+          pEls.forEach(function(el) {
+            var txt = el.textContent.toLowerCase();
+            if (txt.includes(t)) { el.style.display = ''; pCount++; }
+          });
+          document.querySelectorAll('#carousel-cursos .card').forEach(function(el) {
+            var txt = el.textContent.toLowerCase();
+            if (txt.includes(t)) { el.style.display = ''; }
+          });
+          if (vCount + pCount === 0) {
+            document.getElementById('home-sem-resultados').classList.remove('hidden');
+          } else {
+            document.getElementById('home-sem-resultados').classList.add('hidden');
+          }
+        }
+
+        function home_abrirVaga(i) {
+          var v = home_vagas[i];
+          var html = '<div class="p-5">' +
+            '<div class="flex items-center gap-3 mb-4">' +
+              '<div class="w-12 h-12 rounded-full bg-gradient-to-br ' + v.grad + ' flex items-center justify-center"><span class="text-white font-bold font-display">' + v.iniciais + '</span></div>' +
+              '<div><h3 class="text-base font-display font-bold text-stone-900">' + v.titulo + '</h3><p class="text-xs text-stone-500 font-body">' + v.empresa + '</p></div>' +
+            '</div>' +
+            '<div class="flex flex-wrap gap-2 mb-4">' +
+              '<span class="' + v.cor + ' text-xs font-medium px-3 py-1 rounded-lg">' + v.tipo + '</span>' +
+              '<span class="bg-stone-100 text-stone-600 text-xs font-medium px-3 py-1 rounded-lg">' + v.local + '</span>' +
+              '<span class="bg-stone-100 text-stone-600 text-xs font-medium px-3 py-1 rounded-lg">' + v.salario + '</span>' +
+            '</div>' +
+            '<p class="text-sm text-stone-600 font-body mb-4 leading-relaxed">' + v.desc + '</p>' +
+            '<p class="text-xs text-stone-400 font-body mb-5">Publicado ' + v.tempo + '</p>' +
+            '<button onclick="home_candidatarVaga(\'' + v.titulo + '\'); fecharModal();" class="btn w-full bg-orange-600 text-white font-display font-bold text-sm py-3 rounded-xl active:scale-95 transition-all">Candidatar-se</button>' +
+          '</div>';
+          abrirModal(html, 'Detalhe da Vaga');
+        }
+
+        function home_abrirOferta(i) {
+          var o = home_ofertas[i];
+          var html = '<div class="p-5">' +
+            '<div class="w-full h-32 bg-gradient-to-br from-orange-700 to-orange-600 rounded-xl flex items-center justify-center mb-4">' +
+              '<div class="text-center text-white"><p class="text-2xl font-display font-bold">' + o.desconto + '</p><p class="text-xs text-white/80 font-body mt-1">' + o.empresa + '</p></div>' +
+            '</div>' +
+            '<p class="text-sm text-stone-600 font-body mb-2 leading-relaxed">' + o.desc + '</p>' +
+            '<p class="text-xs text-stone-400 font-body mb-1"><strong>Validade:</strong> ' + o.validade + '</p>' +
+            '<p class="text-xs text-stone-400 font-body mb-5">Promoção exclusiva para alunos da plataforma.</p>' +
+            '<button onclick="home_aceitarOferta(\'' + o.empresa + '\'); fecharModal();" class="btn w-full bg-orange-600 text-white font-display font-bold text-sm py-3 rounded-xl active:scale-95 transition-all">Resgatar Oferta</button>' +
+          '</div>';
+          abrirModal(html, 'Oferta do Patrocinador');
+        }
+
+        function home_candidatarVaga(titulo) { toast('Candidatura enviada para: ' + titulo, 'ok'); }
+        function home_aceitarOferta(empresa) { toast('Oferta de ' + empresa + ' resgatada!', 'ok'); }
+
+        function home_toggleNotificacoes() {
+          var b = document.getElementById('badge-notif');
+          if (b) { b.style.display = 'none'; toast('Você tem 4 notificações pendentes', 'info'); }
+        }
+      </script>
+    </section>
+
+    <!-- TELAS -->
             </div>
         </main>
 
