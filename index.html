@@ -3328,6 +3328,672 @@ oficinas_renderizar(oficinas_dados);
       </script>
     </section>
 
+    <section data-tela="painel-administrativo" class="hidden">
+  <div class="px-4 pt-4 pb-2">
+    <div class="flex items-center justify-between mb-1">
+      <div>
+        <h1 class="font-display text-xl font-bold text-marca-900">Painel Administrativo</h1>
+        <p class="text-sm text-marca-600 mt-0.5">Gestão completa da plataforma</p>
+      </div>
+      <div class="flex gap-2">
+        <button onclick="painel_administrativo_exportar()" class="btn bg-marca-800 text-white text-xs px-3 py-2 rounded-lg flex items-center gap-1.5 active:scale-95 transition-all">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+          Exportar
+        </button>
+        <button onclick="painel_administrativo_notificacoes()" class="btn bg-white border border-marca-200 text-marca-800 text-xs px-3 py-2 rounded-lg flex items-center gap-1.5 active:scale-95 transition-all relative">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg>
+          <span class="absolute -top-1 -right-1 w-4 h-4 bg-red-500 text-white text-[10px] rounded-full flex items-center justify-center font-bold">3</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- KPI Cards -->
+  <div class="px-4 grid grid-cols-2 gap-2.5 mb-4">
+    <div class="card p-3 border-l-4 border-l-marca-700 cursor-default">
+      <div class="flex items-center justify-between mb-1">
+        <span class="text-[11px] font-medium text-marca-500 uppercase tracking-wide">Usuários</span>
+        <div class="w-8 h-8 rounded-lg bg-marca-100 flex items-center justify-center">
+          <svg class="w-4 h-4 text-marca-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+        </div>
+      </div>
+      <p class="font-display text-2xl font-bold text-marca-900">12.847</p>
+      <p class="text-[11px] text-green-600 font-medium flex items-center gap-0.5">
+        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/></svg>
+        +18.3% este mês
+      </p>
+    </div>
+    <div class="card p-3 border-l-4 border-l-orange-400 cursor-default">
+      <div class="flex items-center justify-between mb-1">
+        <span class="text-[11px] font-medium text-marca-500 uppercase tracking-wide">Cursos</span>
+        <div class="w-8 h-8 rounded-lg bg-orange-100 flex items-center justify-center">
+          <svg class="w-4 h-4 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 4.168 6.253v13C4.168 19.977 5.754 20 7.5 20s3.332.477 3.332 2.253v13C10.832 21.977 12.416 22 14.25 22s3.332-.477 3.332-1.253v-13C17.582 6.477 16 6 14.25 6s-3.332.477-3.332 2.253"/></svg>
+        </div>
+      </div>
+      <p class="font-display text-2xl font-bold text-marca-900">284</p>
+      <p class="text-[11px] text-green-600 font-medium flex items-center gap-0.5">
+        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/></svg>
+        +12 novos
+      </p>
+    </div>
+    <div class="card p-3 border-l-4 border-l-emerald-500 cursor-default">
+      <div class="flex items-center justify-between mb-1">
+        <span class="text-[11px] font-medium text-marca-500 uppercase tracking-wide">Vagas Ativas</span>
+        <div class="w-8 h-8 rounded-lg bg-emerald-100 flex items-center justify-center">
+          <svg class="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M12 18h.01M7 21h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+        </div>
+      </div>
+      <p class="font-display text-2xl font-bold text-marca-900">1.356</p>
+      <p class="text-[11px] text-green-600 font-medium flex items-center gap-0.5">
+        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/></svg>
+        +89 esta semana
+      </p>
+    </div>
+    <div class="card p-3 border-l-4 border-l-blue-500 cursor-default">
+      <div class="flex items-center justify-between mb-1">
+        <span class="text-[11px] font-medium text-marca-500 uppercase tracking-wide">Oficinas</span>
+        <div class="w-8 h-8 rounded-lg bg-blue-100 flex items-center justify-center">
+          <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+        </div>
+      </div>
+      <p class="font-display text-2xl font-bold text-marca-900">432</p>
+      <p class="text-[11px] text-marca-500 font-medium">34 cidades</p>
+    </div>
+  </div>
+
+  <div class="px-4 grid grid-cols-1 gap-2.5 mb-4">
+    <div class="card p-4 cursor-default">
+      <div class="flex items-center justify-between mb-3">
+        <span class="text-xs font-semibold text-marca-700">Receita de Patrocinadores</span>
+        <span class="text-[11px] text-green-600 font-medium bg-green-50 px-2 py-0.5 rounded-full">+24.5% vs mês anterior</span>
+      </div>
+      <p class="font-display text-3xl font-bold text-marca-900">R$ 287.450</p>
+      <p class="text-xs text-marca-500 mt-0.5">Acumulado nos últimos 30 dias</p>
+      <div class="mt-3 flex items-end gap-1 h-16">
+        <div class="flex-1 bg-marca-100 rounded-t" style="height:35%"></div>
+        <div class="flex-1 bg-marca-200 rounded-t" style="height:48%"></div>
+        <div class="flex-1 bg-marca-300 rounded-t" style="height:42%"></div>
+        <div class="flex-1 bg-marca-300 rounded-t" style="height:55%"></div>
+        <div class="flex-1 bg-marca-400 rounded-t" style="height:60%"></div>
+        <div class="flex-1 bg-marca-400 rounded-t" style="height:52%"></div>
+        <div class="flex-1 bg-marca-500 rounded-t" style="height:68%"></div>
+        <div class="flex-1 bg-marca-600 rounded-t" style="height:75%"></div>
+        <div class="flex-1 bg-marca-700 rounded-t" style="height:70%"></div>
+        <div class="flex-1 bg-marca-700 rounded-t" style="height:82%"></div>
+        <div class="flex-1 bg-marca-800 rounded-t" style="height:90%"></div>
+        <div class="flex-1 bg-marca-900 rounded-t" style="height:100%"></div>
+      </div>
+      <div class="flex justify-between mt-1">
+        <span class="text-[9px] text-marca-400">Jan</span>
+        <span class="text-[9px] text-marca-400">Fev</span>
+        <span class="text-[9px] text-marca-400">Mar</span>
+        <span class="text-[9px] text-marca-400">Abr</span>
+        <span class="text-[9px] text-marca-400">Mai</span>
+        <span class="text-[9px] text-marca-400">Jun</span>
+        <span class="text-[9px] text-marca-400">Jul</span>
+        <span class="text-[9px] text-marca-400">Ago</span>
+        <span class="text-[9px] text-marca-400">Set</span>
+        <span class="text-[9px] text-marca-400">Out</span>
+        <span class="text-[9px] text-marca-400">Nov</span>
+        <span class="text-[9px] text-marca-700 font-bold">Dez</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tabs Navigation -->
+  <div class="px-4 mb-2">
+    <div class="flex gap-1 overflow-x-auto pb-1 scrollbar-hide" id="admin-tabs">
+      <button onclick="painel_administrativo_aba('usuarios')" data-aba="usuarios" class="aba-btn active whitespace-nowrap text-[11px] font-semibold px-3 py-2 rounded-lg transition-all">Usuários</button>
+      <button onclick="painel_administrativo_aba('conteudos')" data-aba="conteudos" class="aba-btn whitespace-nowrap text-[11px] font-semibold px-3 py-2 rounded-lg transition-all">Conteúdos</button>
+      <button onclick="painel_administrativo_aba('vagas')" data-aba="vagas" class="aba-btn whitespace-nowrap text-[11px] font-semibold px-3 py-2 rounded-lg transition-all">Vagas</button>
+      <button onclick="painel_administrativo_aba('oficinas')" data-aba="oficinas" class="aba-btn whitespace-nowrap text-[11px] font-semibold px-3 py-2 rounded-lg transition-all">Oficinas</button>
+      <button onclick="painel_administrativo_aba('patrocinadores')" data-aba="patrocinadores" class="aba-btn whitespace-nowrap text-[11px] font-semibold px-3 py-2 rounded-lg transition-all">Patrocinadores</button>
+      <button onclick="painel_administrativo_aba('configuracoes')" data-aba="configuracoes" class="aba-btn whitespace-nowrap text-[11px] font-semibold px-3 py-2 rounded-lg transition-all">Configurações</button>
+    </div>
+  </div>
+
+  <!-- Tab: Usuários -->
+  <div id="tab-usuarios" class="tab-panel">
+    <div class="px-4 mb-2">
+      <div class="relative">
+        <svg class="w-4 h-4 absolute left-3 top-2.5 text-marca-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+        <input type="text" id="busca-usuarios" oninput="painel_administrativo_buscarUsuarios()" placeholder="Buscar usuário por nome ou e-mail..." class="w-full pl-9 pr-4 py-2.5 text-sm border border-marca-200 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-marca-500 focus:border-transparent placeholder:text-marca-300">
+      </div>
+    </div>
+    <div class="px-4 space-y-2" id="lista-usuarios"></div>
+    <div id="vazio-usuarios" class="hidden px-4 py-8 text-center">
+      <svg class="w-12 h-12 mx-auto text-marca-300 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+      <p class="text-sm text-marca-500">Nenhum usuário encontrado</p>
+    </div>
+  </div>
+
+  <!-- Tab: Conteúdos -->
+  <div id="tab-conteudos" class="tab-panel hidden">
+    <div class="px-4 mb-2">
+      <div class="relative">
+        <svg class="w-4 h-4 absolute left-3 top-2.5 text-marca-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+        <input type="text" id="busca-conteudos" oninput="painel_administrativo_buscarConteudos()" placeholder="Buscar conteúdo por título..." class="w-full pl-9 pr-4 py-2.5 text-sm border border-marca-200 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-marca-500 focus:border-transparent placeholder:text-marca-300">
+      </div>
+    </div>
+    <div class="px-4 space-y-2" id="lista-conteudos"></div>
+    <div id="vazio-conteudos" class="hidden px-4 py-8 text-center">
+      <svg class="w-12 h-12 mx-auto text-marca-300 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 4.168 6.253v13C4.168 19.977 5.754 20 7.5 20s3.332.477 3.332 2.253v13C10.832 21.977 12.416 22 14.25 22s3.332-.477 3.332-1.253v-13C17.582 6.477 16 6 14.25 6s-3.332.477-3.332 2.253"/></svg>
+      <p class="text-sm text-marca-500">Nenhum conteúdo encontrado</p>
+    </div>
+  </div>
+
+  <!-- Tab: Vagas -->
+  <div id="tab-vagas" class="tab-panel hidden">
+    <div class="px-4 mb-2">
+      <div class="relative">
+        <svg class="w-4 h-4 absolute left-3 top-2.5 text-marca-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+        <input type="text" id="busca-vagas" oninput="painel_administrativo_buscarVagas()" placeholder="Buscar vaga por título ou empresa..." class="w-full pl-9 pr-4 py-2.5 text-sm border border-marca-200 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-marca-500 focus:border-transparent placeholder:text-marca-300">
+      </div>
+    </div>
+    <div class="px-4 space-y-2" id="lista-vagas"></div>
+    <div id="vazio-vagas" class="hidden px-4 py-8 text-center">
+      <svg class="w-12 h-12 mx-auto text-marca-300 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M12 18h.01M7 21h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+      <p class="text-sm text-marca-500">Nenhuma vaga encontrada</p>
+    </div>
+  </div>
+
+  <!-- Tab: Oficinas -->
+  <div id="tab-oficinas" class="tab-panel hidden">
+    <div class="px-4 mb-2">
+      <div class="relative">
+        <svg class="w-4 h-4 absolute left-3 top-2.5 text-marca-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+        <input type="text" id="busca-oficinas" oninput="painel_administrativo_buscarOficinas()" placeholder="Buscar oficina por nome ou cidade..." class="w-full pl-9 pr-4 py-2.5 text-sm border border-marca-200 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-marca-500 focus:border-transparent placeholder:text-marca-300">
+      </div>
+    </div>
+    <div class="px-4 space-y-2" id="lista-oficinas"></div>
+    <div id="vazio-oficinas" class="hidden px-4 py-8 text-center">
+      <svg class="w-12 h-12 mx-auto text-marca-300 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+      <p class="text-sm text-marca-500">Nenhuma oficina encontrada</p>
+    </div>
+  </div>
+
+  <!-- Tab: Patrocinadores -->
+  <div id="tab-patrocinadores" class="tab-panel hidden">
+    <div class="px-4 mb-2">
+      <div class="relative">
+        <svg class="w-4 h-4 absolute left-3 top-2.5 text-marca-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+        <input type="text" id="busca-patrocinadores" oninput="painel_administrativo_buscarPatrocinadores()" placeholder="Buscar patrocinador..." class="w-full pl-9 pr-4 py-2.5 text-sm border border-marca-200 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-marca-500 focus:border-transparent placeholder:text-marca-300">
+      </div>
+    </div>
+    <div class="px-4 space-y-2" id="lista-patrocinadores"></div>
+    <div id="vazio-patrocinadores" class="hidden px-4 py-8 text-center">
+      <svg class="w-12 h-12 mx-auto text-marca-300 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"/></svg>
+      <p class="text-sm text-marca-500">Nenhum patrocinador encontrado</p>
+    </div>
+  </div>
+
+  <!-- Tab: Configurações -->
+  <div id="tab-configuracoes" class="tab-panel hidden">
+    <div class="px-4 space-y-3">
+      <div class="card p-4">
+        <h3 class="font-display text-sm font-bold text-marca-900 mb-3">Configurações Gerais</h3>
+        <div class="space-y-3">
+          <div>
+            <label class="text-xs font-medium text-marca-700 block mb-1">Nome da Plataforma</label>
+            <input type="text" value="AutoPro Capacitação Automotiva" class="w-full px-3 py-2 text-sm border border-marca-200 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-marca-500">
+          </div>
+          <div>
+            <label class="text-xs font-medium text-marca-700 block mb-1">E-mail de Suporte</label>
+            <input type="email" value="suporte@autopro.com.br" class="w-full px-3 py-2 text-sm border border-marca-200 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-marca-500">
+          </div>
+          <div>
+            <label class="text-xs font-medium text-marca-700 block mb-1">URL do App</label>
+            <input type="url" value="https://autopro.com.br" class="w-full px-3 py-2 text-sm border border-marca-200 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-marca-500">
+          </div>
+        </div>
+      </div>
+      <div class="card p-4">
+        <h3 class="font-display text-sm font-bold text-marca-900 mb-3">Aprovação de Conteúdo</h3>
+        <div class="space-y-3">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-sm font-medium text-marca-800">Cursos requerem aprovação</p>
+              <p class="text-[11px] text-marca-500">Novos cursos precisam ser aprovados por admin</p>
+            </div>
+            <button onclick="this.classList.toggle('bg-marca-700');this.classList.toggle('bg-marca-300');this.querySelector('span').classList.toggle('translate-x-5');toast('Configuração atualizada','ok')" class="w-11 h-6 bg-marca-700 rounded-full relative transition-colors">
+              <span class="absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full shadow translate-x-5 transition-transform"></span>
+            </button>
+          </div>
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-sm font-medium text-marca-800">Moderar avaliações de oficinas</p>
+              <p class="text-[11px] text-marca-500">Avaliações passam por moderação</p>
+            </div>
+            <button onclick="this.classList.toggle('bg-marca-700');this.classList.toggle('bg-marca-300');this.querySelector('span').classList.toggle('translate-x-5');toast('Configuração atualizada','ok')" class="w-11 h-6 bg-marca-700 rounded-full relative transition-colors">
+              <span class="absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full shadow translate-x-5 transition-transform"></span>
+            </button>
+          </div>
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-sm font-medium text-marca-800">Notificações push ativas</p>
+              <p class="text-[11px] text-marca-500">Enviar notificações para usuários</p>
+            </div>
+            <button onclick="this.classList.toggle('bg-marca-700');this.classList.toggle('bg-marca-300');this.querySelector('span').classList.toggle('translate-x-5');toast('Configuração atualizada','ok')" class="w-11 h-6 bg-marca-700 rounded-full relative transition-colors">
+              <span class="absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full shadow translate-x-5 transition-transform"></span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="card p-4">
+        <h3 class="font-display text-sm font-bold text-marca-900 mb-3">Administradores</h3>
+        <div class="space-y-2" id="lista-admins"></div>
+      </div>
+      <button onclick="toast('Configurações salvas com sucesso!','ok')" class="btn w-full bg-marca-700 text-white font-semibold py-3 rounded-xl text-sm active:scale-95 transition-all">
+        Salvar Configurações
+      </button>
+    </div>
+  </div>
+
+  <div class="h-6"></div>
+</section>
+
+<script>
+(function(){
+var usuariosData = [
+  {nome:'Carlos Eduardo Silva',email:'carlos.silva@email.com',tipo:'Aluno',status:'ativo',data:'2025-01-15',cursos:12,avatar:'CS'},
+  {nome:'Marina Oliveira Costa',email:'marina.costa@email.com',tipo:'Aluno',status:'ativo',data:'2025-02-03',cursos:8,avatar:'MO'},
+  {nome:'João Pedro Ferreira',email:'joao.ferreira@email.com',tipo:'Instrutor',status:'ativo',data:'2024-11-20',cursos:34,avatar:'JF'},
+  {nome:'Ana Beatriz Souza',email:'ana.souza@email.com',tipo:'Aluno',status:'pendente',data:'2025-03-10',cursos:2,avatar:'AS'},
+  {nome:'Roberto Lima Junior',email:'roberto.lima@email.com',tipo:'Oficina',status:'ativo',data:'2024-09-05',cursos:0,avatar:'RL'},
+  {nome:'Fernanda Martins',email:'fernanda.m@email.com',tipo:'Aluno',status:'ativo',data:'2025-01-28',cursos:15,avatar:'FM'},
+  {nome:'Paulo Henrique Dias',email:'paulo.dias@email.com',tipo:'Instrutor',status:'inativo',data:'2024-06-14',cursos:22,avatar:'PD'},
+  {nome:'Juliana Rocha',email:'juliana.rocha@email.com',tipo:'Aluno',status:'ativo',data:'2025-03-01',cursos:5,avatar:'JR'},
+  {nome:'Ricardo Almeida',email:'ricardo.almeida@email.com',tipo:'Patrocinador',status:'ativo',data:'2024-08-22',cursos:0,avatar:'RA'},
+  {nome:'Camila Nascimento',email:'camila.n@email.com',tipo:'Aluno',status:'pendente',data:'2025-03-12',cursos:1,avatar:'CN'}
+];
+
+var conteudosData = [
+  {titulo:'Sistema de Freios ABS: Diagnóstico Completo',tipo:'Vídeo Aula',autor:'João Pedro',status:'aprovado',categoria:'Mecânica',data:'2025-02-20',views:2340},
+  {titulo:'Manutenção Preventiva do Motor',tipo:'PDF',autor:'Fernanda Martins',status:'aprovado',categoria:'Motor',data:'2025-03-01',views:1890},
+  {titulo:'Eletricidade Automotiva Básica',tipo:'Vídeo Aula',autor:'João Pedro',status:'pendente',categoria:'Elétrica',data:'2025-03-10',views:0},
+  {titulo:'Troca de Óleo: Passo a Passo',tipo:'Tutorial',autor:'Carlos Eduardo',status:'aprovado',categoria:'Manutenção',data:'2025-01-15',views:4120},
+  {titulo:'Diagnóstico por Scanner OBD-II',tipo:'Vídeo Aula',autor:'Paulo Henrique',status:'rejeitado',categoria:'Diagnóstico',data:'2025-02-28',views:156},
+  {titulo:'Alinhamento e Balanceamento',tipo:'Vídeo Aula',autor:'João Pedro',status:'aprovado',categoria:'Suspensão',data:'2025-03-05',views:980},
+  {titulo:'Guia: Troca de Correia Dentada',tipo:'PDF',autor:'Fernanda Martins',status:'pendente',categoria:'Motor',data:'2025-03-12',views:0},
+  {titulo:'Sistema de Arrefecimento',tipo:'Tutorial',autor:'Carlos Eduardo',status:'aprovado',categoria:'Motor',data:'2025-02-10',views:2780}
+];
+
+var vagasData = [
+  {titulo:'Mecânico de Manutenção',empresa:'Auto Center São Paulo',local:'São Paulo, SP',tipo:'CLT',status:'ativa',salario:'R$ 3.500',data:'2025-03-08',candidatos:23},
+  {titulo:'Eletricista Automotivo',empresa:'Oficina Central',local:'Campinas, SP',tipo:'CLT',status:'ativa',salario:'R$ 2.800',data:'2025-03-05',candidatos:15},
+  {titulo:'Instrutor de Mecânica',empresa:'AutoPro Educação',local:'Remoto',tipo:'PJ',status:'ativa',salario:'R$ 5.000',data:'2025-03-10',candidatos:8},
+  {titulo:'Auxiliar de Funilaria',empresa:'Funilaria Premium',local:'Santos, SP',tipo:'CLT',status:'pendente',salario:'R$ 2.200',data:'2025-03-12',candidatos:0},
+  {titulo:'Gerente de Oficina',empresa:'Rede AutoMax',local:'Guarulhos, SP',tipo:'CLT',status:'ativa',salario:'R$ 6.500',data:'2025-02-25',candidatos:45},
+  {titulo:'Pintor Automotivo',empresa:'Auto Pinturas',local:'Osasco, SP',tipo:'PJ',status:'rejeitada',salario:'R$ 3.200',data:'2025-02-20',candidatos:0},
+  {titulo:'Vendedor de Peças',empresa:'Peças & Cia',local:'São Bernardo, SP',tipo:'CLT',status:'ativa',salario:'R$ 2.400',data:'2025-03-09',candidatos:31},
+  {titulo:'Técnico em Diagnóstico',empresa:'TechAuto',local:'Barueri, SP',tipo:'PJ',status:'ativa',salario:'R$ 4.500',data:'2025-03-11',candidatos:12}
+];
+
+var oficinasData = [
+  {nome:'Oficina Central SP',cidade:'São Paulo',avaliacao:4.5,avaliacoes:128,status:'verificada',especialidades:'Geral',data:'2024-08-15',votos:45},
+  {nome:'Auto Center Premium',cidade:'Campinas',avaliacao:4.8,avaliacoes:89,status:'verificada',especialidades:'Eletrônica',data:'2024-10-02',votos:32},
+  {nome:'Funilaria Silva',cidade:'Santos',avaliacao:3.9,avaliacoes:56,status:'verificada',especialidades:'Funilaria e Pintura',data:'2025-01-10',votos:18},
+  {nome:'Auto Mecânica Rápida',cidade:'Osasco',avaliacao:4.2,avaliacoes:201,status:'verificada',especialidades:'Geral',data:'2024-06-20',votos:67},
+  {nome:'Diesel Tech Oficina',cidade:'Guarulhos',avaliacao:3.5,avaliacoes:34,status:'pendente',especialidades:'Diesel',data:'2025-02-15',votos:8},
+  {nome:'Oficina do João',cidade:'São Bernardo',avaliacao:2.8,avaliacoes:12,status:'rejeitada',especialidades:'Geral',data:'2025-03-01',votos:0}
+];
+
+var patrocinadoresData = [
+  {nome:'Bosch Automotive',plano:'Premium',investimento:45000,status:'ativo',inicio:'2024-01-01',expiracao:'2025-12-31',leads:2840,avatar:'BA'},
+  {nome:'Motul Lubrificantes',plano:'Premium',investimento:38000,status:'ativo',inicio:'2024-06-01',expiracao:'2025-06-01',leads:1920,avatar:'ML'},
+  {nome:'Castrol Brasil',plano:'Padrão',investimento:22000,status:'ativo',inicio:'2024-09-01',expiracao:'2025-09-01',leads:1450,avatar:'CB'},
+  {nome:'Auto Parts Distribuidora',plano:'Padrão',investimento:18000,status:'ativo',inicio:'2025-01-01',expiracao:'2026-01-01',leads:980,avatar:'AP'},
+  {nome:'Mann Filter',plano:'Básico',investimento:12000,status:'pendente',inicio:'2025-03-01',expiracao:'2026-03-01',leads:0,avatar:'MF'}
+];
+
+var adminsData = [
+  {nome:'Ricardo Mendes',email:'ricardo.mendes@autopro.com',perfil:'Super Admin',ultimoAcesso:'2025-03-12 14:32'},
+  {nome:'Patrícia Alves',email:'patricia.alves@autopro.com',perfil:'Admin',ultimoAcesso:'2025-03-12 09:15'}
+];
+
+var abaAtual = 'usuarios';
+
+window.painel_administrativo_aba = function(aba) {
+  abaAtual = aba;
+  document.querySelectorAll('.aba-btn').forEach(function(b) {
+    b.classList.remove('active','bg-marca-700','text-white');
+    b.classList.add('bg-marca-100','text-marca-600');
+  });
+  var btn = document.querySelector('[data-aba="'+aba+'"]');
+  if (btn) {
+    btn.classList.add('active','bg-marca-700','text-white');
+    btn.classList.remove('bg-marca-100','text-marca-600');
+  }
+  document.querySelectorAll('.tab-panel').forEach(function(p) { p.classList.add('hidden'); });
+  var panel = document.getElementById('tab-'+aba);
+  if (panel) panel.classList.remove('hidden');
+};
+
+function initAbaStyles() {
+  document.querySelectorAll('.aba-btn').forEach(function(b) {
+    if (b.classList.contains('active')) {
+      b.classList.add('bg-marca-700','text-white');
+      b.classList.remove('bg-marca-100','text-marca-600');
+    } else {
+      b.classList.remove('bg-marca-700','text-white');
+      b.classList.add('bg-marca-100','text-marca-600');
+    }
+  });
+}
+
+function badgeStatus(status) {
+  var map = {
+    ativo: 'bg-green-100 text-green-700',
+    pendente: 'bg-yellow-100 text-yellow-700',
+    rejeitado: 'bg-red-100 text-red-700',
+    inativo: 'bg-gray-100 text-gray-600',
+    aprovado: 'bg-green-100 text-green-700',
+    rejeitada: 'bg-red-100 text-red-700',
+    verificada: 'bg-green-100 text-green-700'
+  };
+  var labels = {ativo:'Ativo',pendente:'Pendente',rejeitado:'Rejeitado',inativo:'Inativo',aprovado:'Aprovado',rejeitada:'Rejeitada',verificada:'Verificada'};
+  return '<span class="badge text-[10px] font-semibold px-2 py-0.5 rounded-full '+(map[status]||'bg-gray-100 text-gray-600')+'">'+(labels[status]||status)+'</span>';
+}
+
+function avatarIniciais(iniciais, cor) {
+  var cores = ['bg-marca-700','bg-orange-500','bg-emerald-600','bg-blue-600','bg-purple-600','bg-pink-600'];
+  var c = cor || cores[Math.floor(Math.random()*cores.length)];
+  return '<div class="w-9 h-9 rounded-full '+c+' text-white flex items-center justify-center text-xs font-bold flex-shrink-0">'+iniciais+'</div>';
+}
+
+function acoesConteudo(status) {
+  if (status === 'pendente') {
+    return '<div class="flex gap-1.5 flex-shrink-0">'+
+      '<button onclick="painel_administrativo_acaoConteudo(this,\'aprovado\')" class="text-[10px] bg-green-100 text-green-700 px-2.5 py-1 rounded-md font-semibold active:scale-95 transition-all">Aprovar</button>'+
+      '<button onclick="painel_administrativo_acaoConteudo(this,\'rejeitado\')" class="text-[10px] bg-red-100 text-red-700 px-2.5 py-1 rounded-md font-semibold active:scale-95 transition-all">Rejeitar</button>'+
+    '</div>';
+  }
+  return '<button onclick="painel_administrativo_verConteudo(this)" class="text-[10px] bg-marca-100 text-marca-700 px-2.5 py-1 rounded-md font-semibold active:scale-95 transition-all">Ver</button>';
+}
+
+window.painel_administrativo_acaoConteudo = function(btn, acao) {
+  var card = btn.closest('.card');
+  if (!card) return;
+  var statusBadge = card.querySelector('[data-status-badge]');
+  var acoesDiv = card.querySelector('[data-acoes]');
+  var novoStatus = acao === 'aprovado' ? 'aprovado' : 'rejeitado';
+  if (statusBadge) statusBadge.outerHTML = badgeStatus(novoStatus);
+  if (acoesDiv) acoesDiv.innerHTML = '<button onclick="painel_administrativo_verConteudo(this)" class="text-[10px] bg-marca-100 text-marca-700 px-2.5 py-1 rounded-md font-semibold active:scale-95 transition-all">Ver</button>';
+  toast(acao === 'aprovado' ? 'Conteúdo aprovado com sucesso!' : 'Conteúdo rejeitado', acao === 'aprovado' ? 'ok' : 'erro');
+};
+
+window.painel_administrativo_verConteudo = function(btn) {
+  var card = btn.closest('.card');
+  var titulo = card ? card.querySelector('h4') ? card.querySelector('h4').textContent : 'Conteúdo' : 'Conteúdo';
+  abrirModal(
+    '<div class="space-y-3">'+
+      '<div class="flex items-center gap-3">'+avatarIniciais('PDF','bg-blue-600')+'<div><p class="font-semibold text-sm text-marca-900">'+titulo+'</p><p class="text-xs text-marca-500">Vídeo aula · 45 min</p></div></div>'+
+      '<div class="grid grid-cols-2 gap-2"><div class="bg-marca-50 p-2 rounded-lg"><p class="text-[10px] text-marca-500">Visualizações</p><p class="font-bold text-sm text-marca-900">2.340</p></div><div class="bg-marca-50 p-2 rounded-lg"><p class="text-[10px] text-marca-500">Categoria</p><p class="font-bold text-sm text-marca-900">Mecânica</p></div></div>'+
+      '<p class="text-xs text-marca-600">Conteúdo aprovado e disponível para todos os alunos da plataforma. Acesso liberado desde 20/02/2025.</p>'+
+      '<div class="flex gap-2 pt-2"><button onclick="toast(\'Link copiado!\',\'ok\');fecharModal()" class="btn flex-1 bg-marca-700 text-white text-xs py-2.5 rounded-lg font-semibold active:scale-95 transition-all">Copiar Link</button><button onclick="fecharModal()" class="btn flex-1 bg-marca-100 text-marca-700 text-xs py-2.5 rounded-lg font-semibold active:scale-95 transition-all">Fechar</button></div>'+
+    '</div>',
+    'Detalhes do Conteúdo'
+  );
+};
+
+function cardUsuario(u) {
+  return '<div class="card p-3 flex items-center gap-3 cursor-pointer hover:shadow-md transition-all" onclick="painel_administrativo_detalheUsuario(\''+u.nome+'\',\''+u.email+'\',\''+u.tipo+'\',\''+u.status+'\',\''+u.data+'\','+u.cursos+')">'+
+    avatarIniciais(u.avatar)+
+    '<div class="flex-1 min-w-0">'+
+      '<div class="flex items-center gap-2"><h4 class="text-sm font-semibold text-marca-900 truncate">'+u.nome+'</h4>'+badgeStatus(u.status)+'</div>'+
+      '<p class="text-[11px] text-marca-500 truncate">'+u.email+'</p>'+
+      '<div class="flex items-center gap-3 mt-1">'+
+        '<span class="text-[10px] text-marca-400">'+u.tipo+'</span>'+
+        '<span class="text-[10px] text-marca-400">'+u.cursos+' cursos</span>'+
+        '<span class="text-[10px] text-marca-400">Cad: '+u.data+'</span>'+
+      '</div>'+
+    '</div>'+
+    '<svg class="w-4 h-4 text-marca-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>'+
+  '</div>';
+}
+
+window.painel_administrativo_detalheUsuario = function(nome,email,tipo,status,data,cursos) {
+  abrirModal(
+    '<div class="space-y-3">'+
+      '<div class="flex items-center gap-3">'+avatarIniciais(nome.split(' ').map(function(w){return w[0]}).join('').slice(0,2).toUpperCase(),'bg-marca-700')+'<div><p class="font-semibold text-sm text-marca-900">'+nome+'</p><p class="text-xs text-marca-500">'+email+'</p></div></div>'+
+      '<div class="grid grid-cols-2 gap-2">'+
+        '<div class="bg-marca-50 p-2.5 rounded-lg"><p class="text-[10px] text-marca-500">Tipo</p><p class="font-bold text-sm text-marca-900">'+tipo+'</p></div>'+
+        '<div class="bg-marca-50 p-2.5 rounded-lg"><p class="text-[10px] text-marca-500">Status</p>'+badgeStatus(status)+'</div>'+
+        '<div class="bg-marca-50 p-2.5 rounded-lg"><p class="text-[10px] text-marca-500">Cursos</p><p class="font-bold text-sm text-marca-900">'+cursos+'</p></div>'+
+        '<div class="bg-marca-50 p-2.5 rounded-lg"><p class="text-[10px] text-marca-500">Cadastro</p><p class="font-bold text-sm text-marca-900">'+data+'</p></div>'+
+      '</div>'+
+      '<div class="flex gap-2 pt-2">'+
+        '<button onclick="if(\''+status+'\'===\'pendente\'){toast(\'Usuário aprovado\',\'ok\')}else if(\''+status+'\'===\'ativo\'){toast(\'Usuário suspenso\',\'erro\')}else{toast(\'Usuário ativado\',\'ok\')};fecharModal()" class="btn flex-1 bg-marca-700 text-white text-xs py-2.5 rounded-lg font-semibold active:scale-95 transition-all">'+(status==='pendente'?'Aprovar':status==='ativo'?'Suspender':'Ativar')+'</button>'+
+        '<button onclick="fecharModal()" class="btn flex-1 bg-marca-100 text-marca-700 text-xs py-2.5 rounded-lg font-semibold active:scale-95 transition-all">Fechar</button>'+
+      '</div>'+
+    '</div>',
+    'Detalhes do Usuário'
+  );
+};
+
+function cardConteudo(c) {
+  var icone = c.tipo === 'PDF' ? '<div class="w-8 h-8 rounded-lg bg-red-100 flex items-center justify-center flex-shrink-0"><svg class="w-4 h-4 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg></div>'
+    : c.tipo === 'Vídeo Aula' ? '<div class="w-8 h-8 rounded-lg bg-purple-100 flex items-center justify-center flex-shrink-0"><svg class="w-4 h-4 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>'
+    : '<div class="w-8 h-8 rounded-lg bg-blue-100 flex items-center justify-center flex-shrink-0"><svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg></div>';
+  return '<div class="card p-3 flex items-center gap-3 cursor-pointer hover:shadow-md transition-all">'+
+    icone+
+    '<div class="flex-1 min-w-0">'+
+      '<div class="flex items-center gap-2 flex-wrap"><h4 class="text-sm font-semibold text-marca-900 truncate">'+c.titulo+'</h4>'+badgeStatus(c.status)+'</div>'+
+      '<p class="text-[11px] text-marca-500 mt-0.5">'+c.autor+' · '+c.categoria+' · '+c.views.toLocaleString('pt-BR')+' views</p>'+
+    '</div>'+
+    '<div data-acoes class="flex-shrink-0">'+acoesConteudo(c.status)+'</div>'+
+  '</div>';
+}
+
+function cardVaga(v) {
+  return '<div class="card p-3 cursor-pointer hover:shadow-md transition-all" onclick="painel_administrativo_detalheVagaAdmin(\''+v.titulo+'\',\''+v.empresa+'\',\''+v.local+'\',\''+v.tipo+'\',\''+v.salario+'\','+v.candidatos+',\''+v.status+'\')">'+
+    '<div class="flex items-center gap-3">'+
+      avatarIniciais(v.empresa.split(' ').map(function(w){return w[0]}).join('').slice(0,2).toUpperCase(),'bg-blue-600')+
+      '<div class="flex-1 min-w-0">'+
+        '<div class="flex items-center gap-2"><h4 class="text-sm font-semibold text-marca-900 truncate">'+v.titulo+'</h4>'+badgeStatus(v.status)+'</div>'+
+        '<p class="text-[11px] text-marca-500">'+v.empresa+' · '+v.local+'</p>'+
+        '<div class="flex items-center gap-3 mt-1">'+
+          '<span class="text-[10px] text-marca-400">'+v.tipo+'</span>'+
+          '<span class="text-[10px] text-marca-400 font-medium text-green-600">'+v.salario+'</span>'+
+          '<span class="text-[10px] text-marca-400">'+v.candidatos+' candidatos</span>'+
+        '</div>'+
+      '</div>'+
+      '<svg class="w-4 h-4 text-marca-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>'+
+    '</div>'+
+  '</div>';
+}
+
+window.painel_administrativo_detalheVagaAdmin = function(titulo,empresa,local,tipo,salario,candidatos,status) {
+  abrirModal(
+    '<div class="space-y-3">'+
+      '<h3 class="font-display text-base font-bold text-marca-900">'+titulo+'</h3>'+
+      '<div class="grid grid-cols-2 gap-2">'+
+        '<div class="bg-marca-50 p-2.5 rounded-lg"><p class="text-[10px] text-marca-500">Empresa</p><p class="font-bold text-sm text-marca-900">'+empresa+'</p></div>'+
+        '<div class="bg-marca-50 p-2.5 rounded-lg"><p class="text-[10px] text-marca-500">Local</p><p class="font-bold text-sm text-marca-900">'+local+'</p></div>'+
+        '<div class="bg-marca-50 p-2.5 rounded-lg"><p class="text-[10px] text-marca-500">Tipo</p><p class="font-bold text-sm text-marca-900">'+tipo+'</p></div>'+
+        '<div class="bg-marca-50 p-2.5 rounded-lg"><p class="text-[10px] text-marca-500">Salário</p><p class="font-bold text-sm text-marca-900">'+salario+'</p></div>'+
+      '</div>'+
+      '<div class="flex items-center justify-between bg-yellow-50 p-2.5 rounded-lg"><span class="text-xs text-yellow-700">Candidatos</span><span class="font-bold text-sm text-yellow-900">'+candidatos+'</span></div>'+
+      '<div class="flex gap-2 pt-2">'+
+        '<button onclick="if(\''+status+'\'===\'pendente\'){toast(\'Vaga aprovada\',\'ok\')}else if(\''+status+'\'===\'ativa\'){toast(\'Vaga pausada\',\'erro\')}else{toast(\'Vaga reativada\',\'ok\')};fecharModal()" class="btn flex-1 bg-marca-700 text-white text-xs py-2.5 rounded-lg font-semibold active:scale-95 transition-all">'+(status==='pendente'?'Aprovar':status==='ativa'?'Pausar':'Reativar')+'</button>'+
+        '<button onclick="fecharModal()" class="btn flex-1 bg-marca-100 text-marca-700 text-xs py-2.5 rounded-lg font-semibold active:scale-95 transition-all">Fechar</button>'+
+      '</div>'+
+    '</div>',
+    'Detalhes da Vaga'
+  );
+};
+
+function cardOficina(o) {
+  return '<div class="card p-3 cursor-pointer hover:shadow-md transition-all" onclick="painel_administrativo_detalheOficinaAdmin(\''+o.nome+'\',\''+o.cidade+'\','+o.avaliacao+','+o.avaliacoes+',\''+o.status+'\',\''+o.especialidades+'\','+o.votos+')">'+
+    '<div class="flex items-center gap-3">'+
+      avatarIniciais(o.nome.split(' ').slice(0,2).map(function(w){return w[0]}).join('').toUpperCase().slice(0,2),'bg-blue-600')+
+      '<div class="flex-1 min-w-0">'+
+        '<div class="flex items-center gap-2"><h4 class="text-sm font-semibold text-marca-900 truncate">'+o.nome+'</h4>'+badgeStatus(o.status)+'</div>'+
+        '<p class="text-[11px] text-marca-500">'+o.cidade+' · '+o.especialidades+'</p>'+
+        '<div class="flex items-center gap-3 mt-1">'+
+          '<span class="text-[10px] text-marca-400">★ '+o.avaliacao+' ('+o.avaliacoes+' avaliações)</span>'+
+          '<span class="text-[10px] text-marca-400">'+o.votos+' votos úteis</span>'+
+        '</div>'+
+      '</div>'+
+      '<svg class="w-4 h-4 text-marca-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>'+
+    '</div>'+
+  '</div>';
+}
+
+window.painel_administrativo_detalheOficinaAdmin = function(nome,cidade,avaliacao,avaliacoes,status,especialidades,votos) {
+  abrirModal(
+    '<div class="space-y-3">'+
+      '<h3 class="font-display text-base font-bold text-marca-900">'+nome+'</h3>'+
+      '<div class="grid grid-cols-2 gap-2">'+
+        '<div class="bg-marca-50 p-2.5 rounded-lg"><p class="text-[10px] text-marca-500">Cidade</p><p class="font-bold text-sm text-marca-900">'+cidade+'</p></div>'+
+        '<div class="bg-marca-50 p-2.5 rounded-lg"><p class="text-[10px] text-marca-500">Avaliação</p><p class="font-bold text-sm text-marca-900">★ '+avaliacao+'</p></div>'+
+        '<div class="bg-marca-50 p-2.5 rounded-lg"><p class="text-[10px] text-marca-500">Especialidades</p><p class="font-bold text-sm text-marca-900">'+especialidades+'</p></div>'+
+        '<div class="bg-marca-50 p-2.5 rounded-lg"><p class="text-[10px] text-marca-500">Status</p>'+badgeStatus(status)+'</div>'+
+      '</div>'+
+      '<div class="bg-yellow-50 p-2.5 rounded-lg flex items-center justify-between"><span class="text-xs text-yellow-700">Votos úteis de usuários</span><span class="font-bold text-sm text-yellow-900">'+votos+'</span></div>'+
+      '<div class="flex gap-2 pt-2">'+
+        '<button onclick="if(\''+status+'\'===\'pendente\"){toast(\"Oficina verificada\",\'ok\')}else{toast(\"Oficina suspensa\",\'erro\')};fecharModal()" class="btn flex-1 bg-marca-700 text-white text-xs py-2.5 rounded-lg font-semibold active:scale-95 transition-all">'+(status==='pendente'?'Verificar':'Suspender')+'</button>'+
+        '<button onclick="fecharModal()" class="btn flex-1 bg-marca-100 text-marca-700 text-xs py-2.5 rounded-lg font-semibold active:scale-95 transition-all">Fechar</button>'+
+      '</div>'+
+    '</div>',
+    'Detalhes da Oficina'
+  );
+};
+
+function cardPatrocinador(p) {
+  return '<div class="card p-3 flex items-center gap-3 cursor-pointer hover:shadow-md transition-all" onclick="painel_administrativo_detalhePatrocinador(\''+p.nome+'\',\''+p.plano+'\','+p.investimento+',\''+p.status+'\',\''+p.inicio+'\',\''+p.expiracao+'\','+p.leads+')">'+
+    avatarIniciais(p.avatar,'bg-emerald-600')+
+    '<div class="flex-1 min-w-0">'+
+      '<div class="flex items-center gap-2"><h4 class="text-sm font-semibold text-marca-900 truncate">'+p.nome+'</h4>'+badgeStatus(p.status)+'</div>'+
+      '<p class="text-[11px] text-marca-500">'+p.plano+' · R$ '+p.investimento.toLocaleString('pt-BR')+'</p>'+
+      '<p class="text-[10px] text-marca-400 mt-0.5">Expira: '+p.expiracao+' · '+p.leads+' leads</p>'+
+    '</div>'+
+    '<svg class="w-4 h-4 text-marca-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>'+
+  '</div>';
+}
+
+window.painel_administrativo_detalhePatrocinador = function(nome,plano,investimento,status,inicio,expiracao,leads) {
+  abrirModal(
+    '<div class="space-y-3">'+
+      '<div class="flex items-center gap-3">'+avatarIniciais(nome.split(' ').map(function(w){return w[0]}).join('').slice(0,2).toUpperCase(),'bg-emerald-600')+'<div><p class="font-semibold text-sm text-marca-900">'+nome+'</p><p class="text-xs text-marca-500">Plano '+plano+'</p></div></div>'+
+      '<div class="grid grid-cols-2 gap-2">'+
+        '<div class="bg-marca-50 p-2.5 rounded-lg"><p class="text-[10px] text-marca-500">Investimento</p><p class="font-bold text-sm text-marca-900">R$ '+investimento.toLocaleString('pt-BR')+'</p></div>'+
+        '<div class="bg-marca-50 p-2.5 rounded-lg"><p class="text-[10px] text-marca-500">Status</p>'+badgeStatus(status)+'</div>'+
+        '<div class="bg-marca-50 p-2.5 rounded-lg"><p class="text-[10px] text-marca-500">Início</p><p class="font-bold text-sm text-marca-900">'+inicio+'</p></div>'+
+        '<div class="bg-marca-50 p-2.5 rounded-lg"><p class="text-[10px] text-marca-500">Expiração</p><p class="font-bold text-sm text-marca-900">'+expiracao+'</p></div>'+
+      '</div>'+
+      '<div class="bg-emerald-50 p-2.5 rounded-lg flex items-center justify-between"><span class="text-xs text-emerald-700">Leads gerados</span><span class="font-bold text-sm text-emerald-900">'+leads.toLocaleString('pt-BR')+'</span></div>'+
+      '<div class="flex gap-2 pt-2">'+
+        '<button onclick="toast(\'Renovação enviada ao patrocinador\',\'ok\');fecharModal()" class="btn flex-1 bg-marca-700 text-white text-xs py-2.5 rounded-lg font-semibold active:scale-95 transition-all">Renovar Contrato</button>'+
+        '<button onclick="fecharModal()" class="btn flex-1 bg-marca-100 text-marca-700 text-xs py-2.5 rounded-lg font-semibold active:scale-95 transition-all">Fechar</button>'+
+      '</div>'+
+    '</div>',
+    'Detalhes do Patrocinador'
+  );
+};
+
+window.painel_administrativo_buscarUsuarios = function() {
+  var q = document.getElementById('busca-usuarios').value.toLowerCase();
+  var lista = document.getElementById('lista-usuarios');
+  var vazio = document.getElementById('vazio-usuarios');
+  var filtrados = usuariosData.filter(function(u) {
+    return u.nome.toLowerCase().indexOf(q) !== -1 || u.email.toLowerCase().indexOf(q) !== -1;
+  });
+  lista.innerHTML = filtrados.map(cardUsuario).join('');
+  vazio.classList.toggle('hidden', filtrados.length > 0);
+  lista.classList.toggle('hidden', filtrados.length === 0);
+};
+
+window.painel_administrativo_buscarConteudos = function() {
+  var q = document.getElementById('busca-conteudos').value.toLowerCase();
+  var lista = document.getElementById('lista-conteudos');
+  var vazio = document.getElementById('vazio-conteudos');
+  var filtrados = conteudosData.filter(function(c) {
+    return c.titulo.toLowerCase().indexOf(q) !== -1;
+  });
+  lista.innerHTML = filtrados.map(cardConteudo).join('');
+  vazio.classList.toggle('hidden', filtrados.length > 0);
+  lista.classList.toggle('hidden', filtrados.length === 0);
+};
+
+window.painel_administrativo_buscarVagas = function() {
+  var q = document.getElementById('busca-vagas').value.toLowerCase();
+  var lista = document.getElementById('lista-vagas');
+  var vazio = document.getElementById('vazio-vagas');
+  var filtrados = vagasData.filter(function(v) {
+    return v.titulo.toLowerCase().indexOf(q) !== -1 || v.empresa.toLowerCase().indexOf(q) !== -1;
+  });
+  lista.innerHTML = filtrados.map(cardVaga).join('');
+  vazio.classList.toggle('hidden', filtrados.length > 0);
+  lista.classList.toggle('hidden', filtrados.length === 0);
+};
+
+window.painel_administrativo_buscarOficinas = function() {
+  var q = document.getElementById('busca-oficinas').value.toLowerCase();
+  var lista = document.getElementById('lista-oficinas');
+  var vazio = document.getElementById('vazio-oficinas');
+  var filtrados = oficinasData.filter(function(o) {
+    return o.nome.toLowerCase().indexOf(q) !== -1 || o.cidade.toLowerCase().indexOf(q) !== -1;
+  });
+  lista.innerHTML = filtrados.map(cardOficina).join('');
+  vazio.classList.toggle('hidden', filtrados.length > 0);
+  lista.classList.toggle('hidden', filtrados.length === 0);
+};
+
+window.painel_administrativo_buscarPatrocinadores = function() {
+  var q = document.getElementById('busca-patrocinadores').value.toLowerCase();
+  var lista = document.getElementById('lista-patrocinadores');
+  var vazio = document.getElementById('vazio-patrocinadores');
+  var filtrados = patrocinadoresData.filter(function(p) {
+    return p.nome.toLowerCase().indexOf(q) !== -1;
+  });
+  lista.innerHTML = filtrados.map(cardPatrocinador).join('');
+  vazio.classList.toggle('hidden', filtrados.length > 0);
+  lista.classList.toggle('hidden', filtrados.length === 0);
+};
+
+window.painel_administrativo_exportar = function() {
+  toast('Relatório exportado em CSV com sucesso!','ok');
+};
+
+window.painel_administrativo_notificacoes = function() {
+  abrirModal(
+    '<div class="space-y-2">'+
+      '<div class="flex items-start gap-3 p-2.5 bg-yellow-50 rounded-lg"><div class="w-8 h-8 rounded-full bg-yellow-200 flex items-center justify-center flex-shrink-0"><svg class="w-4 h-4 text-yellow-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z"/></svg></div><div><p class="text-xs font-semibold text-marca-900">3 conteúdos pendentes de aprovação</p><p class="text-[11px] text-marca-500">Curso de Eletricidade e dois PDFs aguardando revisão</p></div></div>'+
+      '<div class="flex items-start gap-3 p-2.5 bg-blue-50 rounded-lg"><div class="w-8 h-8 rounded-full bg-blue-200 flex items-center justify-center flex-shrink-0"><svg class="w-4 h-4 text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div><div><p class="text-xs font-semibold text-marca-900">Contrato do patrocinador Mann Filter expira em 18 dias</p><p class="text-[11px] text-marca-500">Investimento de R$ 12.000/mês. Entrar em contato para renovação.</p></div></div>'+
+      '<div class="flex items-start gap-3 p-2.5 bg-red-50 rounded-lg"><div class="w-8 h-8 rounded-full bg-red-200 flex items-center justify-center flex-shrink-0"><svg class="w-4 h-4 text-red-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div><div><p class="text-xs font-semibold text-marca-900">1 oficina com avaliação abaixo de 3.0</p><p class="text-[11px] text-marca-500">Oficina do João — 2.8 estrelas. Revisar avaliações e entrar em contato.</p></div></div>'+
+      '<button onclick="fecharModal()" class="btn w-full bg-marca-700 text-white text-xs py-2.5 rounded-lg font-semibold active:scale-95 transition-all mt-2">Fechar</button>'+
+    '</div>',
+    'Notificações'
+  );
+};
+
+function renderAdmins() {
+  var el = document.getElementById('lista-admins');
+  if (!el) return;
+  el.innerHTML = adminsData.map(function(a) {
+    return '<div class="flex items-center gap-3 py-2 border-b border-marca-100 last:border-0">'+
+      avatarIniciais(a.nome.split(' ').map(function(w){return w[0]}).join('').slice(0,2).toUpperCase(),'bg-marca-800')+
+      '<div class="flex-1 min-w-0"><p class="text-sm font-medium text-marca-900 truncate">'+a.nome+'</p><p class="text-[11px] text-marca-500">'+a.email+'</p></div>'+
+      '<div class="text-right"><p class="text-[10px] font-medium text-marca-700">'+a.perfil+'</p><p class="text-[10px] text-marca-400">'+a.ultimoAcesso+'</p></div>'+
+    '</div>';
+  }).join('');
+}
+
+function renderAllTabs() {
+  document.getElementById('lista-usuarios').innerHTML = usuariosData.map(cardUsuario).join('');
+  document.getElementById('lista-conteudos').innerHTML = conteudosData.map(cardConteudo).join('');
+  document.getElementById('lista-vagas').innerHTML = vagasData.map(cardVaga).join('');
+  document.getElementById('lista-oficinas').innerHTML = oficinasData.map(cardOficina).join('');
+  document.getElementById('lista-patrocinadores').innerHTML = patrocinadoresData.map(cardPatrocinador).join('');
+  renderAdmins();
+}
+
+renderAllTabs();
+initAbaStyles();
+})();
+</script>
+
     <!-- TELAS -->
             </div>
         </main>
