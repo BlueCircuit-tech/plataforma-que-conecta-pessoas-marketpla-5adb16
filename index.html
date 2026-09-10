@@ -2718,6 +2718,616 @@ oficinas_renderizar(oficinas_dados);
 })();
 </script>
 
+    <section data-tela="minha-conta" class="hidden">
+      <!-- Header com gradiente -->
+      <div class="bg-gradient-to-br from-marca-800 via-marca-700 to-marca-600 px-5 pt-12 pb-6 rounded-b-[2rem] shadow-lg relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-40 h-40 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/4"></div>
+        <div class="absolute bottom-0 left-0 w-32 h-32 bg-white/5 rounded-full translate-y-1/2 -translate-x-1/4"></div>
+
+        <div class="flex items-center gap-4 mb-4 relative z-10">
+          <button onclick="mostrarTela('home')" class="w-10 h-10 flex items-center justify-center rounded-full bg-white/15 hover:bg-white/25 active:scale-90 transition-all duration-200">
+            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+          </button>
+          <h1 class="font-display text-xl font-bold text-white tracking-tight">Minha Conta</h1>
+        </div>
+
+        <div class="flex items-center gap-4 relative z-10">
+          <div id="avatar-principal" class="w-16 h-16 rounded-full bg-gradient-to-br from-marca-400 to-marca-600 flex items-center justify-center shadow-lg ring-3 ring-white/30 cursor-pointer" onclick="mostrarTela('home')">
+            <span class="text-white font-display text-xl font-bold">RCM</span>
+          </div>
+          <div class="flex-1 min-w-0">
+            <h2 id="nome-usuario" class="text-white font-display font-bold text-lg truncate">Rafael Carvalho Mendes</h2>
+            <span id="tipo-perfil" class="inline-flex items-center gap-1.5 mt-1 px-3 py-0.5 rounded-full bg-white/20 text-white/90 text-xs font-semibold tracking-wide uppercase">
+              <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              Profissional
+            </span>
+          </div>
+        </div>
+
+        <div class="flex gap-2 mt-5 relative z-10">
+          <button onclick="abrirModalEditarPerfil()" class="flex-1 flex items-center justify-center gap-2 bg-white/15 hover:bg-white/25 active:scale-[0.97] transition-all duration-200 text-white font-semibold text-sm py-2.5 rounded-xl">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/></svg>
+            Editar Perfil
+          </button>
+          <button onclick="mostrarTela('home')" class="flex-1 flex items-center justify-center gap-2 bg-white/15 hover:bg-white/25 active:scale-[0.97] transition-all duration-200 text-white font-semibold text-sm py-2.5 rounded-xl">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m7-7l7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+            Home
+          </button>
+        </div>
+      </div>
+
+      <!-- Conteúdo scrollável -->
+      <div class="px-4 pt-4 pb-24 space-y-5">
+
+        <!-- MEUS CURSOS -->
+        <section>
+          <div class="flex items-center justify-between mb-3">
+            <div class="flex items-center gap-2">
+              <div class="w-8 h-8 rounded-lg bg-marca-100 flex items-center justify-center">
+                <svg class="w-4 h-4 text-marca-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l6.16-3.422A12.083 12.083 0 0112 21.5a12.083 12.083 0 01-6.16-10.922L12 14z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14v7"/></svg>
+              </div>
+              <h3 class="font-display font-bold text-marca-900 text-base">Meus Cursos</h3>
+            </div>
+            <span class="text-xs text-marca-500 font-semibold">3 ativos</span>
+          </div>
+          <div id="lista-cursos" class="space-y-3"></div>
+        </section>
+
+        <!-- MINHAS CANDIDATURAS -->
+        <section>
+          <div class="flex items-center justify-between mb-3">
+            <div class="flex items-center gap-2">
+              <div class="w-8 h-8 rounded-lg bg-marca-100 flex items-center justify-center">
+                <svg class="w-4 h-4 text-marca-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+              </div>
+              <h3 class="font-display font-bold text-marca-900 text-base">Minhas Candidaturas</h3>
+            </div>
+            <span class="text-xs text-marca-500 font-semibold">4 enviadas</span>
+          </div>
+          <div id="lista-candidaturas" class="space-y-2.5"></div>
+        </section>
+
+        <!-- MINHAS AVALIAÇÕES -->
+        <section>
+          <div class="flex items-center justify-between mb-3">
+            <div class="flex items-center gap-2">
+              <div class="w-8 h-8 rounded-lg bg-marca-100 flex items-center justify-center">
+                <svg class="w-4 h-4 text-marca-700" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              </div>
+              <h3 class="font-display font-bold text-marca-900 text-base">Minhas Avaliações</h3>
+            </div>
+            <span class="text-xs text-marca-500 font-semibold">3 feitas</span>
+          </div>
+          <div id="lista-avaliacoes" class="space-y-2.5"></div>
+        </section>
+
+        <!-- MEUS FAVORITOS -->
+        <section>
+          <div class="flex items-center justify-between mb-3">
+            <div class="flex items-center gap-2">
+              <div class="w-8 h-8 rounded-lg bg-marca-100 flex items-center justify-center">
+                <svg class="w-4 h-4 text-marca-700" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"/></svg>
+              </div>
+              <h3 class="font-display font-bold text-marca-900 text-base">Favoritos</h3>
+            </div>
+            <span class="text-xs text-marca-500 font-semibold">5 itens</span>
+          </div>
+          <div id="lista-favoritos" class="space-y-2.5"></div>
+        </section>
+
+        <!-- CONFIGURAÇÕES -->
+        <section>
+          <div class="flex items-center gap-2 mb-3">
+            <div class="w-8 h-8 rounded-lg bg-marca-100 flex items-center justify-center">
+              <svg class="w-4 h-4 text-marca-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+            </div>
+            <h3 class="font-display font-bold text-marca-900 text-base">Configurações</h3>
+          </div>
+          <div class="bg-white rounded-2xl shadow-sm border border-marca-100 divide-y divide-marca-100 overflow-hidden">
+            <!-- Notificações Push -->
+            <div class="flex items-center justify-between p-4">
+              <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-xl bg-orange-50 flex items-center justify-center">
+                  <svg class="w-5 h-5 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg>
+                </div>
+                <div>
+                  <p class="text-sm font-semibold text-marca-900">Notificações Push</p>
+                  <p class="text-xs text-marca-400">Receber alertas no celular</p>
+                </div>
+              </div>
+              <button id="toggle-push" onclick="minha_conta_togglePush()" class="relative w-12 h-7 bg-marca-200 rounded-full transition-colors duration-300 active:scale-95">
+                <span id="toggle-push-dot" class="absolute top-1 left-1 w-5 h-5 bg-white rounded-full shadow transition-all duration-300"></span>
+              </button>
+            </div>
+            <!-- Preferências -->
+            <button onclick="mostrarTela('home')" class="w-full flex items-center justify-between p-4 hover:bg-marca-50 active:scale-[0.99] transition-all duration-200">
+              <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-xl bg-orange-50 flex items-center justify-center">
+                  <svg class="w-5 h-5 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"/></svg>
+                </div>
+                <div class="text-left">
+                  <p class="text-sm font-semibold text-marca-900">Preferências de Conteúdo</p>
+                  <p class="text-xs text-marca-400">Categorias de interesse</p>
+                </div>
+              </div>
+              <svg class="w-4 h-4 text-marca-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            </button>
+            <!-- Dados Pessoais -->
+            <button onclick="abrirModalDadosPessoais()" class="w-full flex items-center justify-between p-4 hover:bg-marca-50 active:scale-[0.99] transition-all duration-200">
+              <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-xl bg-orange-50 flex items-center justify-center">
+                  <svg class="w-5 h-5 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+                </div>
+                <div class="text-left">
+                  <p class="text-sm font-semibold text-marca-900">Dados Pessoais</p>
+                  <p class="text-xs text-marca-400">Nome, CPF, e-mail, telefone</p>
+                </div>
+              </div>
+              <svg class="w-4 h-4 text-marca-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            </button>
+            <!-- Documentos -->
+            <button onclick="abrirModalDocumentos()" class="w-full flex items-center justify-between p-4 hover:bg-marca-50 active:scale-[0.99] transition-all duration-200">
+              <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-xl bg-orange-50 flex items-center justify-center">
+                  <svg class="w-5 h-5 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                </div>
+                <div class="text-left">
+                  <p class="text-sm font-semibold text-marca-900">Documentos para Verificação</p>
+                  <p class="text-xs text-marca-400">RG, CPF, comprovante de residência</p>
+                </div>
+              </div>
+              <span class="text-xs font-semibold text-green-600 bg-green-50 px-2 py-0.5 rounded-full">2 enviados</span>
+            </button>
+          </div>
+        </section>
+
+        <!-- MEU ACESSO -->
+        <section>
+          <div class="flex items-center gap-2 mb-3">
+            <div class="w-8 h-8 rounded-lg bg-marca-100 flex items-center justify-center">
+              <svg class="w-4 h-4 text-marca-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </div>
+            <h3 class="font-display font-bold text-marca-900 text-base">Meu Acesso</h3>
+          </div>
+          <div class="bg-white rounded-2xl shadow-sm border border-marca-100 p-4 space-y-4">
+            <div class="grid grid-cols-3 gap-3">
+              <div class="text-center p-3 bg-marca-50 rounded-xl">
+                <p class="text-lg font-display font-bold text-marca-800">47</p>
+                <p class="text-[10px] text-marca-500 font-medium mt-0.5">Vídeos vistos</p>
+              </div>
+              <div class="text-center p-3 bg-marca-50 rounded-xl">
+                <p class="text-lg font-display font-bold text-marca-800">2</p>
+                <p class="text-[10px] text-marca-500 font-medium mt-0.5">Certificados</p>
+              </div>
+              <div class="text-center p-3 bg-marca-50 rounded-xl">
+                <p class="text-lg font-display font-bold text-marca-800">12h</p>
+                <p class="text-[10px] text-marca-500 font-medium mt-0.5">Tempo total</p>
+              </div>
+            </div>
+            <div class="border-t border-marca-100 pt-3">
+              <p class="text-xs font-semibold text-marca-700 mb-2.5">Histórico recente</p>
+              <div id="lista-historico" class="space-y-2"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- CONQUISTAS -->
+        <section>
+          <div class="flex items-center gap-2 mb-3">
+            <div class="w-8 h-8 rounded-lg bg-marca-100 flex items-center justify-center">
+              <svg class="w-4 h-4 text-marca-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
+            </div>
+            <h3 class="font-display font-bold text-marca-900 text-base">Conquistas</h3>
+          </div>
+          <div id="lista-conquistas" class="flex gap-3 overflow-x-auto pb-2 -mx-1 px-1 snap-x snap-mandatory"></div>
+        </section>
+
+        <!-- BOTÃO SAIR -->
+        <section class="pt-2">
+          <button onclick="minha_conta_sair()" class="w-full flex items-center justify-center gap-2 bg-red-50 hover:bg-red-100 active:scale-[0.97] text-red-700 font-semibold text-sm py-3.5 rounded-2xl transition-all duration-200 border border-red-100">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg>
+            Sair da Conta
+          </button>
+          <p class="text-center text-[11px] text-marca-300 mt-3">AutoMec Academy v2.4.1</p>
+        </section>
+      </div>
+
+      <!-- Navigation Bar (gerenciada globalmente, mas precisa estar aqui também para a tela funcionar) -->
+      <nav id="nav-bar" class="fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-lg border-t border-marca-100 z-50 shadow-[0_-4px_20px_rgba(0,0,0,0.05)]">
+        <div class="max-w-[430px] mx-auto flex items-center justify-around py-2 px-2">
+          <button onclick="mostrarTela('home')" class="nav-btn flex flex-col items-center gap-0.5 p-1.5 rounded-xl transition-all duration-200" data-nav="home">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m7-7l7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+            <span class="text-[10px] font-medium">Home</span>
+          </button>
+          <button onclick="mostrarTela('cursos')" class="nav-btn flex flex-col items-center gap-0.5 p-1.5 rounded-xl transition-all duration-200" data-nav="cursos">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l6.16-3.422A12.083 12.083 0 0112 21.5a12.083 12.083 0 01-6.16-10.922L12 14z"/></svg>
+            <span class="text-[10px] font-medium">Cursos</span>
+          </button>
+          <button onclick="mostrarTela('oportunidades')" class="nav-btn flex flex-col items-center gap-0.5 p-1.5 rounded-xl transition-all duration-200 relative" data-nav="oportunidades">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M12 18h.01M7 21h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+            <span class="text-[10px] font-medium">Vagas</span>
+            <span class="absolute -top-0.5 right-0.5 w-4 h-4 bg-orange-500 rounded-full text-white text-[9px] font-bold flex items-center justify-center">2</span>
+          </button>
+          <button onclick="mostrarTela('oficinas')" class="nav-btn flex flex-col items-center gap-0.5 p-1.5 rounded-xl transition-all duration-200" data-nav="oficinas">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+            <span class="text-[10px] font-medium">Oficinas</span>
+          </button>
+          <button onclick="mostrarTela('minha-conta')" class="nav-btn flex flex-col items-center gap-0.5 p-1.5 rounded-xl transition-all duration-200 text-marca-700" data-nav="minha-conta">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+            <span class="text-[10px] font-semibold">Conta</span>
+          </button>
+        </div>
+        <div class="h-[env(safe-area-inset-bottom)]"></div>
+      </nav>
+
+      <script>
+        // Dados do usuário logado
+        const dadosUsuario = {
+          nome: 'Rafael Carvalho Mendes',
+          tipo: 'Profissional',
+          iniciais: 'RCM',
+          corAvatar: 'from-marca-400 to-marca-600',
+          pushAtivo: true
+        };
+
+        // Dados dos cursos
+        const cursosUsuario = [
+          { id: 1, titulo: 'Sistemas de Freio ABS e ESP', categoria: 'Sistemas de Segurança', progresso: 78, aulasConcluidas: 14, totalAulas: 18, certificado: true, cor: 'from-red-500 to-red-600', duracao: '8h' },
+          { id: 2, titulo: 'Diagnóstico de Motor com Scanner', categoria: 'Diagnóstico Eletrônico', progresso: 45, aulasConcluidas: 9, totalAulas: 20, certificado: false, cor: 'from-orange-500 to-orange-600', duracao: '12h' },
+          { id: 3, titulo: 'Manutenção de Transmissão Automática', categoria: 'Transmissão', progresso: 12, aulasConcluidas: 3, totalAulas: 25, certificado: false, cor: 'from-amber-500 to-amber-600', duracao: '15h' }
+        ];
+
+        // Candidaturas
+        const candidaturas = [
+          { id: 1, vaga: 'Mecânico de Suspensão', empresa: 'AutoCenter São Paulo', logo: 'AS', cor: 'from-blue-500 to-blue-600', status: 'em-triagem', statusLabel: 'Em Triagem', statusCor: 'bg-yellow-100 text-yellow-700', data: '2025-01-10' },
+          { id: 2, vaga: 'Eletricista Automotivo', empresa: 'Oficina Central', logo: 'OC', cor: 'from-green-500 to-green-600', status: 'entrevista', statusLabel: 'Entrevista', statusCor: 'bg-blue-100 text-blue-700', data: '2025-01-08' },
+          { id: 3, vaga: 'Diagnostista Sênior', empresa: 'Rede Bosch Car Service', logo: 'RB', cor: 'from-red-500 to-red-600', status: 'aprovado', statusLabel: 'Aprovado', statusCor: 'bg-green-100 text-green-700', data: '2025-01-05' },
+          { id: 4, vaga: 'Auxiliar de Mecânica', empresa: 'Posto Shell Express', logo: 'PS', cor: 'from-yellow-500 to-yellow-600', status: 'rejeitado', statusLabel: 'Não Selecionado', statusCor: 'bg-red-100 text-red-700', data: '2024-12-28' }
+        ];
+
+        // Avaliações feitas
+        const avaliacoes = [
+          { id: 1, nome: 'AutoCenter Paulista', tipo: 'Oficina', estrelas: 5, comentario: 'Atendimento excelente, serviço rápido e bem feito.', data: '2025-01-12' },
+          { id: 2, nome: 'Curso de Injeção Eletrônica', tipo: 'Curso', estrelas: 4, comentario: 'Conteúdo muito bom, instrutor domina o assunto.', data: '2025-01-06' },
+          { id: 3, nome: 'Peças & Cia', tipo: 'Loja de Peças', estrelas: 4, comentario: 'Preços justos e entrega rápida.', data: '2024-12-20' }
+        ];
+
+        // Favoritos
+        const favoritos = [
+          { id: 1, nome: 'Oficina do Zé', tipo: 'oficina', subtipo: 'Oficina Mecânica', cor: 'from-marca-600 to-marca-700', icone: 'wrench' },
+          { id: 2, nome: 'EAD Mecânica Pro', tipo: 'curso', subtipo: 'Curso Online', cor: 'from-blue-600 to-blue-700', icone: 'book' },
+          { id: 3, nome: 'AutoPeças BR', tipo: 'loja', subtipo: 'Loja de Peças', cor: 'from-green-600 to-green-700', icone: 'store' },
+          { id: 4, nome: 'Diagnóstico Total', tipo: 'curso', subtipo: 'Curso Online', cor: 'from-purple-600 to-purple-700', icone: 'book' },
+          { id: 5, nome: 'Rodar Auto Center', tipo: 'oficina', subtipo: 'Oficina Mecânica', cor: 'from-marca-500 to-marca-600', icone: 'wrench' }
+        ];
+
+        // Histórico
+        const historico = [
+          { acao: 'Assistiu', item: 'Sistemas de Freio ABS', tempo: 'há 2h' },
+          { acao: 'Baixou PDF', item: 'Manual de Scanner OBD2', tempo: 'há 5h' },
+          { acao: 'Assistiu', item: 'Diagnóstico de Motor', tempo: 'ontem' },
+          { acao: 'Candidatou-se', item: 'Mecânico de Suspensão', tempo: '2 dias' },
+          { acao: 'Avaliou', item: 'AutoCenter Paulista', tempo: '3 dias' }
+        ];
+
+        // Conquistas
+        const conquistas = [
+          { id: 1, icone: 'play', titulo: 'Primeiro Vídeo', desc: 'Assistiu seu primeiro vídeo', cor: 'bg-green-500', desbloqueada: true },
+          { id: 2, icone: 'cert', titulo: 'Estudante Dedicado', desc: '10 horas de curso', cor: 'bg-blue-500', desbloqueada: true },
+          { id: 3, icone: 'cert', titulo: 'Primeiro Certificado', desc: 'Completou um curso', cor: 'bg-marca-600', desbloqueada: true },
+          { id: 4, icone: 'star', titulo: 'Colaborador', desc: 'Fez sua primeira avaliação', cor: 'bg-yellow-500', desbloqueada: true },
+          { id: 5, icone: 'brief', titulo: 'Candidato Ativo', desc: 'Candidatou-se a 3 vagas', cor: 'bg-purple-500', desbloqueada: true },
+          { id: 6, icone: 'heart', titulo: 'Explorador', desc: 'Favoritou 5 itens', cor: 'bg-pink-500', desbloqueada: true }
+        ];
+
+        // SVG icons helpers
+        function iconWrench() { return '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>'; }
+        function iconBook() { return '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>'; }
+        function iconStore() { return '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>'; }
+
+        function estrelasHTML(qtd) {
+          let h = '';
+          for (let i = 0; i < 5; i++) {
+            h += `<svg class="w-3.5 h-3.5 ${i < qtd ? 'text-yellow-400' : 'text-gray-300'}" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>`;
+          }
+          return h;
+        }
+
+        // Renderizar cursos
+        function renderCursos() {
+          const el = document.getElementById('lista-cursos');
+          el.innerHTML = cursosUsuario.map(c => {
+            const certBadge = c.certificado ? '<span class="text-[10px] font-bold text-green-700 bg-green-50 px-2 py-0.5 rounded-full flex items-center gap-1"><svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Certificado</span>' : '';
+            return `
+              <div onclick="mostrarTela('detalhe-do-curso')" class="bg-white rounded-2xl shadow-sm border border-marca-100 p-3.5 active:scale-[0.98] transition-all duration-200 cursor-pointer hover:shadow-md">
+                <div class="flex gap-3">
+                  <div class="w-14 h-14 rounded-xl bg-gradient-to-br ${c.cor} flex items-center justify-center flex-shrink-0 shadow-sm">
+                    <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                  </div>
+                  <div class="flex-1 min-w-0">
+                    <div class="flex items-start justify-between gap-2">
+                      <h4 class="text-sm font-bold text-marca-900 leading-tight line-clamp-2">${c.titulo}</h4>
+                      ${certBadge}
+                    </div>
+                    <p class="text-[11px] text-marca-400 mt-1 font-medium">${c.categoria} · ${c.duracao}</p>
+                    <div class="mt-2 flex items-center gap-2">
+                      <div class="flex-1 h-1.5 bg-marca-100 rounded-full overflow-hidden">
+                        <div class="h-full bg-gradient-to-r from-marca-500 to-orange-400 rounded-full transition-all duration-700" style="width:${c.progresso}%"></div>
+                      </div>
+                      <span class="text-[11px] font-bold text-marca-600 flex-shrink-0">${c.progresso}%</span>
+                    </div>
+                    <p class="text-[10px] text-marca-400 mt-1">${c.aulasConcluidas}/${c.totalAulas} aulas · ${c.certificado ? 'Certificado disponível' : 'Em andamento'}</p>
+                  </div>
+                </div>
+              </div>`;
+          }).join('');
+        }
+
+        // Renderizar candidaturas
+        function renderCandidaturas() {
+          const el = document.getElementById('lista-candidaturas');
+          el.innerHTML = candidaturas.map(c => `
+            <div onclick="mostrarTela('detalhe-da-vaga')" class="bg-white rounded-xl shadow-sm border border-marca-100 p-3 flex items-center gap-3 active:scale-[0.98] transition-all duration-200 cursor-pointer hover:shadow-md">
+              <div class="w-10 h-10 rounded-xl bg-gradient-to-br ${c.cor} flex items-center justify-center flex-shrink-0 shadow-sm">
+                <span class="text-white font-display font-bold text-xs">${c.logo}</span>
+              </div>
+              <div class="flex-1 min-w-0">
+                <h4 class="text-sm font-semibold text-marca-900 truncate">${c.vaga}</h4>
+                <p class="text-[11px] text-marca-400 font-medium">${c.empresa} · ${dataBR(c.data)}</p>
+              </div>
+              <span class="text-[11px] font-bold ${c.statusCor} px-2.5 py-1 rounded-full flex-shrink-0">${c.statusLabel}</span>
+            </div>`).join('');
+        }
+
+        // Renderizar avaliações
+        function renderAvaliacoes() {
+          const el = document.getElementById('lista-avaliacoes');
+          el.innerHTML = avaliacoes.map(a => `
+            <div class="bg-white rounded-xl shadow-sm border border-marca-100 p-3.5">
+              <div class="flex items-start gap-3">
+                <div class="w-9 h-9 rounded-lg bg-marca-100 flex items-center justify-center flex-shrink-0">
+                  <svg class="w-4 h-4 text-marca-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg>
+                </div>
+                <div class="flex-1 min-w-0">
+                  <div class="flex items-center justify-between">
+                    <h4 class="text-sm font-semibold text-marca-900">${a.nome}</h4>
+                    <span class="text-[10px] text-marca-400">${a.tipo}</span>
+                  </div>
+                  <div class="flex items-center gap-0.5 mt-0.5">${estrelasHTML(a.estrelas)}</div>
+                  <p class="text-xs text-marca-500 mt-1 line-clamp-1">"${a.comentario}"</p>
+                </div>
+              </div>
+            </div>`).join('');
+        }
+
+        // Renderizar favoritos
+        function renderFavoritos() {
+          const el = document.getElementById('lista-favoritos');
+          const iconeMap = { wrench: iconWrench, book: iconBook, store: iconStore };
+          el.innerHTML = favoritos.map(f => `
+            <div class="bg-white rounded-xl shadow-sm border border-marca-100 p-3 flex items-center gap-3 active:scale-[0.98] transition-all duration-200 cursor-pointer hover:shadow-md">
+              <div class="w-10 h-10 rounded-xl bg-gradient-to-br ${f.cor} flex items-center justify-center flex-shrink-0 text-white shadow-sm">
+                ${iconeMap[f.icone] ? iconeMap[f.icone]() : ''}
+              </div>
+              <div class="flex-1 min-w-0">
+                <h4 class="text-sm font-semibold text-marca-900 truncate">${f.nome}</h4>
+                <p class="text-[11px] text-marca-400 font-medium">${f.subtipo}</p>
+              </div>
+              <button onclick="event.stopPropagation(); minha_conta_removerFavorito(${f.id})" class="w-8 h-8 flex items-center justify-center rounded-full hover:bg-red-50 active:scale-90 transition-all duration-200 text-red-400 hover:text-red-600">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"/></svg>
+              </button>
+            </div>`).join('');
+        }
+
+        // Renderizar histórico
+        function renderHistorico() {
+          const el = document.getElementById('lista-historico');
+          el.innerHTML = historico.map(h => `
+            <div class="flex items-center gap-3 py-1">
+              <div class="w-1.5 h-1.5 rounded-full bg-marca-300 flex-shrink-0"></div>
+              <p class="text-xs text-marca-600 flex-1"><span class="font-semibold">${h.acao}</span> ${h.item}</p>
+              <span class="text-[10px] text-marca-400 flex-shrink-0">${h.tempo}</span>
+            </div>`).join('');
+        }
+
+        // Renderizar conquistas
+        function renderConquistas() {
+          const el = document.getElementById('lista-conquistas');
+          const iconeMap = { play: 'M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z M21 12a9 9 0 11-18 0 9 9 0 0118 0z', cert: 'M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z', star: 'M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z', brief: 'M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4', heart: 'M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z' };
+          el.innerHTML = conquistas.map(c => `
+            <div class="flex-shrink-0 w-[100px] snap-start">
+              <div class="w-16 h-16 mx-auto rounded-2xl ${c.desbloqueada ? c.cor : 'bg-marca-200'} flex items-center justify-center shadow-sm ${c.desbloqueada ? '' : 'opacity-50'}">
+                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="${iconeMap[c.icone] || ''}"/></svg>
+              </div>
+              <p class="text-[11px] font-bold text-marca-800 text-center mt-2 leading-tight">${c.titulo}</p>
+              <p class="text-[10px] text-marca-400 text-center leading-tight mt-0.5">${c.desc}</p>
+            </div>`).join('');
+        }
+
+        // Ações
+        function minha_conta_togglePush() {
+          dadosUsuario.pushAtivo = !dadosUsuario.pushAtivo;
+          const btn = document.getElementById('toggle-push');
+          const dot = document.getElementById('toggle-push-dot');
+          if (dadosUsuario.pushAtivo) {
+            btn.className = 'relative w-12 h-7 bg-marca-500 rounded-full transition-colors duration-300 active:scale-95';
+            dot.className = 'absolute top-1 right-1 w-5 h-5 bg-white rounded-full shadow transition-all duration-300';
+            toast('Notificações push ativadas', 'ok');
+          } else {
+            btn.className = 'relative w-12 h-7 bg-marca-200 rounded-full transition-colors duration-300 active:scale-95';
+            dot.className = 'absolute top-1 left-1 w-5 h-5 bg-white rounded-full shadow transition-all duration-300';
+            toast('Notificações push desativadas', 'info');
+          }
+        }
+
+        function minha_conta_removerFavorito(id) {
+          const idx = favoritos.findIndex(f => f.id === id);
+          if (idx > -1) {
+            const nome = favoritos[idx].nome;
+            favoritos.splice(idx, 1);
+            renderFavoritos();
+            toast(`"${nome}" removido dos favoritos`, 'info');
+          }
+        }
+
+        function minha_conta_sair() {
+          abrirModal(`
+            <div class="text-center py-4">
+              <div class="w-16 h-16 mx-auto rounded-full bg-red-100 flex items-center justify-center mb-4">
+                <svg class="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg>
+              </div>
+              <h3 class="font-display font-bold text-marca-900 text-lg">Deseja sair?</h3>
+              <p class="text-sm text-marca-500 mt-2">Você precisará fazer login novamente para acessar a plataforma.</p>
+            </div>
+          `, 'Confirmar Saída');
+          document.querySelector('#modal-overlay .btn-confirmar')?.addEventListener('click', () => {
+            fecharModal();
+            toast('Você saiu da sua conta. Até logo!', 'info');
+            setTimeout(() => mostrarTela('home'), 600);
+          });
+        }
+
+        function abrirModalEditarPerfil() {
+          abrirModal(`
+            <div class="space-y-4">
+              <div class="flex justify-center mb-4">
+                <div class="w-20 h-20 rounded-full bg-gradient-to-br from-marca-400 to-marca-600 flex items-center justify-center shadow-lg ring-4 ring-marca-100">
+                  <span class="text-white font-display text-2xl font-bold">${dadosUsuario.iniciais}</span>
+                </div>
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-marca-700 mb-1">Nome Completo</label>
+                <input type="text" value="${dadosUsuario.nome}" class="w-full px-4 py-3 rounded-xl border border-marca-200 text-sm text-marca-900 focus:border-marca-500 focus:ring-2 focus:ring-marca-200 outline-none transition-all bg-marca-50/50" />
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-marca-700 mb-1">Tipo de Perfil</label>
+                <select class="w-full px-4 py-3 rounded-xl border border-marca-200 text-sm text-marca-900 focus:border-marca-500 focus:ring-2 focus:ring-marca-200 outline-none transition-all bg-marca-50/50">
+                  <option ${dadosUsuario.tipo === 'Profissional' ? 'selected' : ''}>Profissional</option>
+                  <option ${dadosUsuario.tipo === 'Estudante' ? 'selected' : ''}>Estudante</option>
+                  <option ${dadosUsuario.tipo === 'Proprietário' ? 'selected' : ''}>Proprietário</option>
+                </select>
+              </div>
+              <div class="grid grid-cols-2 gap-3">
+                <div>
+                  <label class="block text-xs font-semibold text-marca-700 mb-1">E-mail</label>
+                  <input type="email" value="rafael.mendes@email.com" class="w-full px-4 py-3 rounded-xl border border-marca-200 text-sm text-marca-900 focus:border-marca-500 focus:ring-2 focus:ring-marca-200 outline-none transition-all bg-marca-50/50" />
+                </div>
+                <div>
+                  <label class="block text-xs font-semibold text-marca-700 mb-1">Telefone</label>
+                  <input type="tel" value="(11) 98765-4321" class="w-full px-4 py-3 rounded-xl border border-marca-200 text-sm text-marca-900 focus:border-marca-500 focus:ring-2 focus:ring-marca-200 outline-none transition-all bg-marca-50/50" />
+                </div>
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-marca-700 mb-1">Cidade / Estado</label>
+                <input type="text" value="São Paulo, SP" class="w-full px-4 py-3 rounded-xl border border-marca-200 text-sm text-marca-900 focus:border-marca-500 focus:ring-2 focus:ring-marca-200 outline-none transition-all bg-marca-50/50" />
+              </div>
+            </div>
+          `, 'Editar Perfil');
+          const confirmBtn = document.querySelector('#modal-overlay .btn-confirmar');
+          if (confirmBtn) {
+            confirmBtn.onclick = () => {
+              fecharModal();
+              toast('Perfil atualizado com sucesso!', 'ok');
+            };
+          }
+        }
+
+        function abrirModalDadosPessoais() {
+          abrirModal(`
+            <div class="space-y-3">
+              <div class="flex justify-between py-2 border-b border-marca-100">
+                <span class="text-sm text-marca-500">Nome completo</span>
+                <span class="text-sm font-semibold text-marca-900">${dadosUsuario.nome}</span>
+              </div>
+              <div class="flex justify-between py-2 border-b border-marca-100">
+                <span class="text-sm text-marca-500">E-mail</span>
+                <span class="text-sm font-semibold text-marca-900">rafael.mendes@email.com</span>
+              </div>
+              <div class="flex justify-between py-2 border-b border-marca-100">
+                <span class="text-sm text-marca-500">CPF</span>
+                <span class="text-sm font-semibold text-marca-900">123.456.789-00</span>
+              </div>
+              <div class="flex justify-between py-2 border-b border-marca-100">
+                <span class="text-sm text-marca-500">Telefone</span>
+                <span class="text-sm font-semibold text-marca-900">(11) 98765-4321</span>
+              </div>
+              <div class="flex justify-between py-2 border-b border-marca-100">
+                <span class="text-sm text-marca-500">Data de nascimento</span>
+                <span class="text-sm font-semibold text-marca-900">15/03/1992</span>
+              </div>
+              <div class="flex justify-between py-2">
+                <span class="text-sm text-marca-500">Endereço</span>
+                <span class="text-sm font-semibold text-marca-900 text-right max-w-[180px]">Rua Augusta, 1200 - Consolação, SP</span>
+              </div>
+            </div>
+          `, 'Dados Pessoais');
+        }
+
+        function abrirModalDocumentos() {
+          abrirModal(`
+            <div class="space-y-3">
+              <div class="flex items-center gap-3 p-3 bg-green-50 rounded-xl border border-green-100">
+                <div class="w-10 h-10 rounded-lg bg-green-100 flex items-center justify-center flex-shrink-0">
+                  <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                </div>
+                <div class="flex-1">
+                  <p class="text-sm font-semibold text-green-800">RG - Verificado</p>
+                  <p class="text-[11px] text-green-600">Enviado em 10/01/2025</p>
+                </div>
+                <span class="text-[10px] font-bold text-green-700 bg-green-100 px-2 py-0.5 rounded-full">Aprovado</span>
+              </div>
+              <div class="flex items-center gap-3 p-3 bg-green-50 rounded-xl border border-green-100">
+                <div class="w-10 h-10 rounded-lg bg-green-100 flex items-center justify-center flex-shrink-0">
+                  <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                </div>
+                <div class="flex-1">
+                  <p class="text-sm font-semibold text-green-800">CPF - Verificado</p>
+                  <p class="text-[11px] text-green-600">Enviado em 10/01/2025</p>
+                </div>
+                <span class="text-[10px] font-bold text-green-700 bg-green-100 px-2 py-0.5 rounded-full">Aprovado</span>
+              </div>
+              <div class="flex items-center gap-3 p-3 bg-yellow-50 rounded-xl border border-yellow-100">
+                <div class="w-10 h-10 rounded-lg bg-yellow-100 flex items-center justify-center flex-shrink-0">
+                  <svg class="w-5 h-5 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                </div>
+                <div class="flex-1">
+                  <p class="text-sm font-semibold text-yellow-800">Comprovante de Residência</p>
+                  <p class="text-[11px] text-yellow-600">Aguardando envio</p>
+                </div>
+                <span class="text-[10px] font-bold text-yellow-700 bg-yellow-100 px-2 py-0.5 rounded-full">Pendente</span>
+              </div>
+              <button onclick="fecharModal(); toast('Upload de documento iniciado', 'info')" class="w-full py-3 bg-marca-700 hover:bg-marca-800 active:scale-[0.97] text-white font-semibold text-sm rounded-xl transition-all duration-200 mt-2">
+                + Enviar Novo Documento
+              </button>
+            </div>
+          `, 'Meus Documentos');
+        }
+
+        // Inicialização
+        function minha_conta_inicializar() {
+          renderCursos();
+          renderCandidaturas();
+          renderAvaliacoes();
+          renderFavoritos();
+          renderHistorico();
+          renderConquistas();
+
+          // Atualizar nav bar
+          document.querySelectorAll('.nav-btn').forEach(btn => {
+            btn.classList.remove('text-marca-700');
+            btn.classList.add('text-marca-300');
+            if (btn.dataset.nav === 'minha-conta') {
+              btn.classList.remove('text-marca-300');
+              btn.classList.add('text-marca-700');
+            }
+          });
+        }
+
+        // Executar ao carregar a tela
+        minha_conta_inicializar();
+      </script>
+    </section>
+
     <!-- TELAS -->
             </div>
         </main>
