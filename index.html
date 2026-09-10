@@ -1686,6 +1686,221 @@
     </script>
 </section>
 
+    <section data-tela="detalhe-da-vaga" class="hidden flex flex-col animate-fadein px-0 pb-3 pt-0 min-h-screen bg-marca-50 font-body">
+  <!-- Cabeçalho -->
+  <div class="pt-4 px-5 pb-3 flex flex-col gap-1 border-b border-marca-100 bg-marca-50">
+    <button onclick="mostrarTela('oportunidades')" class="absolute left-3 top-[18px] rounded-full bg-marca-200 hover:bg-marca-300 transition p-[7px] active:scale-95" aria-label="Voltar para oportunidades">
+      <svg class="w-5 h-5 text-marca-800" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+    </button>
+    <h1 class="font-display text-lg text-marca-900 font-semibold pl-7">Mecânico de Suspensão Automotiva</h1>
+    <div class="pl-7 flex items-center gap-2 text-marca-600 text-sm">
+      <span>Oficina GoParts • Centro Automotivo</span>
+      <svg class="w-1 h-1 mx-2 fill-marca-300" viewBox="0 0 8 8"><circle cx="4" cy="4" r="4"/></svg>
+      <span class="text-marca-500">Belo Horizonte/MG</span>
+    </div>
+    <div class="flex mt-2 gap-2 ml-7">
+      <button onclick="detalhe_da_vaga_abrirCandidatura()" id="btn-candidatar" class="btn bg-marca-700 text-marca-50 font-semibold px-4 py-2 rounded-lg transition shadow hover:bg-marca-800 active:scale-95 flex items-center gap-2">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 20 20"><path d="M11 4h2a2 2 0 012 2v7.5a2 2 0 01-2 2h-6a2 2 0 01-2-2V6a2 2 0 012-2h2"/><path d="M9 12V6m0 0l-2 2m2-2l2 2"/></svg>
+        Enviar Currículo
+      </button>
+      <button onclick="detalhe_da_vaga_salvarVaga()" id="btn-salvar-vaga" class="btn bg-marca-200 text-marca-800 font-semibold px-4 py-2 rounded-lg border border-marca-300 hover:bg-marca-300 transition active:scale-95 flex items-center gap-2 min-w-[44px]">
+        <svg id="ic-salvar-vaga" class="w-5 h-5 transition-colors" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 20 20"><path stroke-linecap="round" d="M5 5a2 2 0 012-2h6a2 2 0 012 2v13l-7-4-7 4V5z"/></svg>
+        <span class="hidden md:inline">Salvar Vaga</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Empresa e Detalhes -->
+  <div class="p-5 flex flex-col gap-5 items-stretch">
+    <!-- Sobre a vaga -->
+    <div class="card p-4 flex flex-col gap-2 shadow-sm">
+      <h2 class="font-display text-marca-700 text-base font-semibold flex items-center gap-2">
+        <svg class="w-5 h-5 text-marca-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 20 20"><path d="M16 7a4 4 0 01-8 0V4a4 4 0 018 0v3zm-10 9a2 2 0 002-2v-1a2 2 0 012-2h2a2 2 0 012 2v1a2 2 0 002 2H6z"/></svg>
+        Sobre a vaga
+      </h2>
+      <p class="text-marca-800 text-[15px] leading-relaxed">
+        Atuação na área de manutenção e revisão de sistemas de suspensão em veículos leves. Realização de diagnóstico técnico, troca de componentes, alinhamento e montagem de kits. Busca-se profissional comprometido, atento aos detalhes e atualizado sobre tecnologias do segmento automotivo.
+      </p>
+      <div class="flex items-center gap-4 mt-3 text-marca-600 text-sm">
+        <span class="flex items-center gap-1"><svg class="w-4 h-4 text-marca-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 18 18"><path d="M4 6h10M4 10h10M4 14h10"/></svg> CLT</span>
+        <span class="flex items-center gap-1"><svg class="w-4 h-4 text-marca-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 20 20"><path d="M12 8V4M8 8V4M4 8V4"/></svg> Integral</span>
+        <span class="flex items-center gap-1"><svg class="w-4 h-4 text-marca-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 18 18"><path d="M6 9l4 4 6-6"/></svg> 2 Vagas</span>
+      </div>
+      <div class="flex items-center mt-2 gap-4">
+        <span class="badge bg-marca-100 text-marca-700 font-semibold px-2 py-1">
+          R$ 2.500 - R$ 3.000
+        </span>
+        <span class="badge bg-marca-50 text-marca-600 border border-marca-100 px-2 py-1">
+          Efetivo (CLT)
+        </span>
+      </div>
+    </div>
+
+    <!-- Requisitos e Benefícios -->
+    <div class="flex flex-row gap-3">
+      <div class="card p-4 flex-1 min-w-0 flex flex-col gap-3">
+        <h3 class="font-display text-marca-700 font-semibold text-sm flex items-center gap-1 mb-1">
+          <svg class="w-4 h-4 text-marca-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 20 20"><path d="M13 16h-1v-4h-2v4H7V8h6v8z"/></svg>
+          Requisitos
+        </h3>
+        <ul class="text-marca-800 text-sm list-disc pl-5 space-y-1">
+          <li>Experiência prévia em suspensão automotiva</li>
+          <li>Ensino médio completo</li>
+          <li>Noções de alinhamento e balanceamento</li>
+          <li>Leitura de manuais técnicos</li>
+        </ul>
+      </div>
+      <div class="card p-4 flex-1 min-w-0 flex flex-col gap-3">
+        <h3 class="font-display text-marca-700 font-semibold text-sm flex items-center gap-1 mb-1">
+          <svg class="w-4 h-4 text-marca-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8"/><path d="M10 6v4l2 2"/></svg>
+          Benefícios
+        </h3>
+        <ul class="text-marca-800 text-sm list-disc pl-5 space-y-1">
+          <li>Vale-transporte</li>
+          <li>Vale-refeição</li>
+          <li>Plano de saúde</li>
+          <li>Uniforme</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Empresa -->
+    <div class="card p-4 flex flex-col gap-3 shadow-lg">
+      <div class="flex items-center gap-3">
+        <div class="w-11 h-11 rounded-full bg-gradient-to-br from-marca-200 to-marca-400 flex items-center justify-center font-display text-lg font-bold text-marca-800 border-2 border-marca-100">GP</div>
+        <div>
+          <div class="font-display text-marca-900 font-semibold">Oficina GoParts</div>
+          <div class="text-marca-500 text-xs">Centro Automotivo • 13 anos no mercado</div>
+        </div>
+      </div>
+      <div class="flex flex-col gap-2 text-marca-800 text-sm mt-1">
+        <div class="flex items-center gap-1"><svg class="w-4 h-4 text-marca-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 20 20"><path d="M17.657 16.657L13.414 12.414a8 8 0 111.414-1.414l4.243 4.243a1 1 0 01-1.414 1.414z"/></svg>
+          <span>Rua dos Andradas, 2197, Centro, Belo Horizonte/MG</span>
+        </div>
+        <div class="flex items-center gap-1">
+          <svg class="w-4 h-4 text-marca-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 20 20"><path d="M12 4v1m0 6v1m0-6v6m-2-6h4"/></svg>
+          <span>www.goparts.com.br</span>
+          <a href="https://www.goparts.com.br" target="_blank" class="ml-1 underline text-marca-600 hover:text-marca-700 transition">Acessar</a>
+        </div>
+      </div>
+      <div id="mapa-empresa" class="w-full h-[135px] mt-2 rounded-lg overflow-hidden shadow relative bg-gradient-to-tr from-marca-50 to-marca-100 border border-marca-100 flex items-center justify-center">
+        <svg class="absolute w-full h-full object-cover" viewBox="0 0 350 135" fill="none"><rect width="350" height="135" rx="14" fill="url(#grad1)"/><defs><linearGradient id="grad1" x1="0" y1="0" x2="0" y2="135" gradientUnits="userSpaceOnUse"><stop stop-color="#FFF7ED"/><stop offset="1" stop-color="#F97316" stop-opacity="0.07"/></linearGradient></defs>
+          <circle cx="175" cy="67.5" r="36" fill="#F97316" fill-opacity="0.14"/>
+          <ellipse cx="175" cy="67.5" rx="48" ry="14" fill="#7C2D12" fill-opacity="0.12"/>
+          <path d="M175 60a5 5 0 015 5c0 3.5-5 12.5-5 12.5S170 68.5 170 65a5 5 0 015-5z" fill="#F97316"/>
+          <circle cx="175" cy="65" r="3" fill="#7C2D12"/>
+        </svg>
+        <span class="relative z-10 bg-marca-50/80 py-1 px-3 rounded text-xs text-marca-700">Localização da empresa</span>
+      </div>
+    </div>
+
+    <!-- Vagas semelhantes -->
+    <div>
+      <h2 class="font-display text-marca-800 text-base font-semibold mb-2 flex items-center gap-2">
+        <svg class="w-5 h-5 text-marca-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect width="6" height="6" x="4" y="4" rx="1.5"/><rect width="6" height="6" x="14" y="4" rx="1.5"/><rect width="6" height="6" x="4" y="14" rx="1.5"/><rect width="6" height="6" x="14" y="14" rx="1.5"/></svg>
+        Vagas semelhantes
+      </h2>
+      <div class="flex flex-col gap-2" id="detalhe-da-vaga-similares">
+        <!-- Exemplos de vagas semelhantes -->
+      </div>
+      <button onclick="mostrarTela('oportunidades')" class="btn mt-2 w-full bg-marca-200 text-marca-800 border border-marca-200 font-semibold py-2 rounded-lg hover:bg-marca-300 transition active:scale-95">
+        Ver todas as vagas
+      </button>
+    </div>
+  </div>
+  <script>
+    // Vagas semelhantes: exemplo
+    const detalhe_da_vaga_similares = [
+      {
+        id: 1,
+        titulo: "Eletricista Automotivo",
+        empresa: "Clínica do Carro",
+        local: "Belo Horizonte/MG",
+        tipo: "CLT / Integral",
+        salario: "R$ 2.100 - R$ 2.800",
+        avatar: "CC",
+        cor: "bg-gradient-to-br from-marca-50 to-marca-200",
+        vaga: "detalhe-da-vaga",
+        aberta: true,
+      },
+      {
+        id: 2,
+        titulo: "Técnico em Ar Condicionado",
+        empresa: "FrioAuto Service",
+        local: "Contagem/MG",
+        tipo: "PJ / Parcial",
+        salario: "R$ 3.000",
+        avatar: "FS",
+        cor: "bg-gradient-to-br from-marca-100 to-marca-300",
+        vaga: "detalhe-da-vaga",
+        aberta: true,
+      },
+      {
+        id: 3,
+        titulo: "Auxiliar de Funilaria",
+        empresa: "Master Latas",
+        local: "Belo Horizonte/MG",
+        tipo: "CLT / Meio período",
+        salario: "R$ 1.750",
+        avatar: "ML",
+        cor: "bg-gradient-to-br from-marca-200 to-marca-400",
+        vaga: "detalhe-da-vaga",
+        aberta: true,
+      },
+      {
+        id: 4,
+        titulo: "Balanceador de Rodas",
+        empresa: "Pneufácil",
+        local: "Betim/MG",
+        tipo: "CLT / Integral",
+        salario: "R$ 2.200 - R$ 2.700",
+        avatar: "PF",
+        cor: "bg-gradient-to-br from-marca-300 to-marca-600",
+        vaga: "detalhe-da-vaga",
+        aberta: false,
+      },
+      {
+        id: 5,
+        titulo: "Encarregado de Lavagem",
+        empresa: "Auto+ BH",
+        local: "Belo Horizonte/MG",
+        tipo: "CLT / Integral",
+        salario: "R$ 1.500 - R$ 1.900",
+        avatar: "AB",
+        cor: "bg-gradient-to-br from-marca-100 to-marca-200",
+        vaga: "detalhe-da-vaga",
+        aberta: true,
+      },
+      {
+        id: 6,
+        titulo: "Consultor de Serviços",
+        empresa: "Multicar",
+        local: "Sabará/MG",
+        tipo: "CLT / Integral",
+        salario: "R$ 2.900",
+        avatar: "MC",
+        cor: "bg-gradient-to-br from-marca-50 to-marca-100",
+        vaga: "detalhe-da-vaga",
+        aberta: true,
+      }
+    ];
+
+    function detalhe_da_vaga_renderSimilares() {
+      const el = document.getElementById("detalhe-da-vaga-similares");
+      el.innerHTML = "";
+      detalhe_da_vaga_similares.slice(0, 6).forEach((v) => {
+        el.innerHTML += `
+        <div class="group card flex gap-3 items-center py-3 px-4 cursor-pointer transition shadow-none hover:shadow-[0_6px_24px_-8px_rgba(124,45,18,0.10)] border-l-4 hover:border-marca-700 active:scale-98" onclick="mostrarTela('${v.vaga}')">
+          <div class="w-10 h-10 rounded-full ${v.cor} flex items-center justify-center font-display font-bold text-base text-marca-900 border-2 border-marca-100">${v.avatar}</div>
+          <div class="flex-1 min-w-0">
+            <div class="font-display text-marca-800 font-semibold text-[15px] truncate">${v.titulo}</div>
+            <div class="text-marca-500 text-xs flex items-center gap-2 truncate">${v.empresa}
+              <svg class="w-1 h-1 mx-1 fill-marca-300" viewBox="0 0 8 8"><circle cx="4" cy="4" r="4"/></svg>
+              ${v.local}
+            </div>
+            <div class="flex gap-2 mt-0.5">
+              <span class="badge bg-marca-100 text-marca
+
     <!-- TELAS -->
             </div>
         </main>
