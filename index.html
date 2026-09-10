@@ -1220,6 +1220,472 @@
   </script>
 </section>
 
+    <section data-tela="oportunidades" class="hidden">
+    <!-- Cabeçalho -->
+    <div class="px-4 pt-6 pb-4">
+        <div class="flex items-center justify-between mb-1">
+            <div>
+                <h1 class="font-display text-2xl font-bold text-marca-900">Oportunidades</h1>
+                <p class="text-marca-700 text-sm mt-1">Vagas exclusivas para o setor automotivo</p>
+            </div>
+            <button onclick="abrirModal('', '')" class="w-10 h-10 rounded-full bg-marca-800 text-white flex items-center justify-center active:scale-95 transition-transform">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- Indicadores -->
+    <div class="px-4 pb-3">
+        <div class="grid grid-cols-3 gap-3">
+            <div class="card p-3 text-center">
+                <div class="w-8 h-8 mx-auto mb-1 rounded-lg bg-marca-800 flex items-center justify-center">
+                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M12 18h.01M7 21h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                </div>
+                <p class="font-display font-bold text-marca-900 text-lg">12</p>
+                <p class="text-xs text-marca-700">vagas abertas</p>
+            </div>
+            <div class="card p-3 text-center">
+                <div class="w-8 h-8 mx-auto mb-1 rounded-lg bg-orange-100 flex items-center justify-center">
+                    <svg class="w-4 h-4 text-orange-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                </div>
+                <p class="font-display font-bold text-marca-900 text-lg">8</p>
+                <p class="text-xs text-marca-700">parceiros</p>
+            </div>
+            <div class="card p-3 text-center">
+                <div class="w-8 h-8 mx-auto mb-1 rounded-lg bg-orange-100 flex items-center justify-center">
+                    <svg class="w-4 h-4 text-orange-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+                </div>
+                <p class="font-display font-bold text-marca-900 text-lg">3</p>
+                <p class="text-xs text-marca-700">salvas</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Filtros -->
+    <div class="px-4 pb-3 space-y-3">
+        <!-- Busca -->
+        <div class="relative">
+            <svg class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-marca-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+            <input type="text" id="oportunidades_busca" placeholder="Buscar vaga, cargo ou empresa..." class="w-full pl-9 pr-4 py-2.5 rounded-xl bg-white border border-marca-200 text-sm font-body focus:outline-none focus:ring-2 focus:ring-marca-800 focus:border-transparent placeholder:text-marca-400" oninput="oportunidades_filtrar()">
+        </div>
+
+        <!-- Filtros rápidos -->
+        <div class="flex gap-2 overflow-x-auto pb-1 scrollbar-hide">
+            <button onclick="oportunidades_setFiltro('todos')" id="oportunidades_filtro_todos" class="btn text-xs py-1.5 px-4 rounded-full border-2 border-marca-800 bg-marca-800 text-white whitespace-nowrap">Todos</button>
+            <button onclick="oportunidades_setFiltro('CLT')" id="oportunidades_filtro_CLT" class="btn text-xs py-1.5 px-4 rounded-full border-2 border-marca-200 bg-white text-marca-800 whitespace-nowrap">CLT</button>
+            <button onclick="oportunidades_setFiltro('PJ')" id="oportunidades_filtro_PJ" class="btn text-xs py-1.5 px-4 rounded-full border-2 border-marca-200 bg-white text-marca-800 whitespace-nowrap">PJ</button>
+            <button onclick="oportunidades_setFiltro('estágio')" id="oportunidades_filtro_estágio" class="btn text-xs py-1.5 px-4 rounded-full border-2 border-marca-200 bg-white text-marca-800 whitespace-nowrap">Estágio</button>
+            <button onclick="oportunidades_setFiltro('favoritas')" id="oportunidades_filtro_favoritas" class="btn text-xs py-1.5 px-4 rounded-full border-2 border-marca-200 bg-white text-marca-800 whitespace-nowrap flex items-center gap-1">
+                <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                Salvas
+            </button>
+        </div>
+
+        <!-- Cidade -->
+        <div class="relative">
+            <svg class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-marca-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+            <select id="oportunidades_cidade" onchange="oportunidades_filtrar()" class="w-full pl-9 pr-4 py-2.5 rounded-xl bg-white border border-marca-200 text-sm font-body focus:outline-none focus:ring-2 focus:ring-marca-800 appearance-none">
+                <option value="todas">Todas as cidades</option>
+                <option value="São Paulo">São Paulo</option>
+                <option value="Campinas">Campinas</option>
+                <option value="Guarulhos">Guarulhos</option>
+                <option value="São Bernardo do Campo">São Bernardo do Campo</option>
+                <option value="Osasco">Osasco</option>
+                <option value="Santo André">Santo André</option>
+            </select>
+            <svg class="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-marca-700 pointer-events-none" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+        </div>
+    </div>
+
+    <!-- Lista de vagas -->
+    <div class="px-4 pb-24 space-y-3" id="oportunidades_lista">
+        <!-- Vaga 1 -->
+        <div class="card p-4 cursor-pointer active:scale-[0.98] transition-transform" onclick="oportunidades_abrirDetalhe(0)" data-area="mecânica" data-cidade="São Paulo" data-tipo="CLT">
+            <div class="flex items-start gap-3">
+                <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-marca-800 to-marca-600 flex items-center justify-center text-white font-display font-bold text-sm shrink-0">AS</div>
+                <div class="flex-1 min-w-0">
+                    <div class="flex items-start justify-between gap-2">
+                        <div>
+                            <h3 class="font-display font-semibold text-marca-900 text-sm leading-tight">Mecânico Diesel</h3>
+                            <p class="text-xs text-marca-700 mt-0.5">AutoCenter Silva</p>
+                        </div>
+                        <button onclick="event.stopPropagation(); oportunidades_toggleFavorito(0)" class="w-8 h-8 flex items-center justify-center shrink-0" id="oportunidades_fav_0">
+                            <svg class="w-5 h-5 text-marca-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                        </button>
+                    </div>
+                    <div class="flex flex-wrap items-center gap-2 mt-2">
+                        <span class="badge badge-azul">CLT</span>
+                        <span class="text-xs text-marca-700 flex items-center gap-1">
+                            <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/></svg>
+                            São Paulo, SP
+                        </span>
+                    </div>
+                    <p class="font-display font-semibold text-marca-800 text-sm mt-2">R$ 3.500,00</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Vaga 2 -->
+        <div class="card p-4 cursor-pointer active:scale-[0.98] transition-transform" onclick="oportunidades_abrirDetalhe(1)" data-area="elétrica" data-cidade="Campinas" data-tipo="PJ">
+            <div class="flex items-start gap-3">
+                <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-orange-500 to-orange-400 flex items-center justify-center text-white font-display font-bold text-sm shrink-0">OC</div>
+                <div class="flex-1 min-w-0">
+                    <div class="flex items-start justify-between gap-2">
+                        <div>
+                            <h3 class="font-display font-semibold text-marca-900 text-sm leading-tight">Eletricista Automotivo</h3>
+                            <p class="text-xs text-marca-700 mt-0.5">Oficina Central Campinas</p>
+                        </div>
+                        <button onclick="event.stopPropagation(); oportunidades_toggleFavorito(1)" class="w-8 h-8 flex items-center justify-center shrink-0" id="oportunidades_fav_1">
+                            <svg class="w-5 h-5 text-marca-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                        </button>
+                    </div>
+                    <div class="flex flex-wrap items-center gap-2 mt-2">
+                        <span class="badge badge-roxo">PJ</span>
+                        <span class="text-xs text-marca-700 flex items-center gap-1">
+                            <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/></svg>
+                            Campinas, SP
+                        </span>
+                    </div>
+                    <p class="font-display font-semibold text-marca-800 text-sm mt-2">R$ 4.200,00</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Vaga 3 -->
+        <div class="card p-4 cursor-pointer active:scale-[0.98] transition-transform" onclick="oportunidades_abrirDetalhe(2)" data-area="administrativa" data-cidade="Guarulhos" data-tipo="CLT">
+            <div class="flex items-start gap-3">
+                <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-marca-700 to-marca-500 flex items-center justify-center text-white font-display font-bold text-sm shrink-0">MP</div>
+                <div class="flex-1 min-w-0">
+                    <div class="flex items-start justify-between gap-2">
+                        <div>
+                            <h3 class="font-display font-semibold text-marca-900 text-sm leading-tight">Recepcionista de Oficina</h3>
+                            <p class="text-xs text-marca-700 mt-0.5">Mecânica Premium SP</p>
+                        </div>
+                        <button onclick="event.stopPropagation(); oportunidades_toggleFavorito(2)" class="w-8 h-8 flex items-center justify-center shrink-0" id="oportunidades_fav_2">
+                            <svg class="w-5 h-5 text-marca-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                        </button>
+                    </div>
+                    <div class="flex flex-wrap items-center gap-2 mt-2">
+                        <span class="badge badge-azul">CLT</span>
+                        <span class="text-xs text-marca-700 flex items-center gap-1">
+                            <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/></svg>
+                            Guarulhos, SP
+                        </span>
+                    </div>
+                    <p class="font-display font-semibold text-marca-800 text-sm mt-2">R$ 2.100,00</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Vaga 4 -->
+        <div class="card p-4 cursor-pointer active:scale-[0.98] transition-transform" onclick="oportunidades_abrirDetalhe(3)" data-area="gestão" data-cidade="São Bernardo do Campo" data-tipo="CLT">
+            <div class="flex items-start gap-3">
+                <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-marca-900 to-marca-700 flex items-center justify-center text-white font-display font-bold text-sm shrink-0">SB</div>
+                <div class="flex-1 min-w-0">
+                    <div class="flex items-start justify-between gap-2">
+                        <div>
+                            <h3 class="font-display font-semibold text-marca-900 text-sm leading-tight">Gerente de Oficina</h3>
+                            <p class="text-xs text-marca-700 mt-0.5">Concessionária São Bernauto</p>
+                        </div>
+                        <button onclick="event.stopPropagation(); oportunidades_toggleFavorito(3)" class="w-8 h-8 flex items-center justify-center shrink-0" id="oportunidades_fav_3">
+                            <svg class="w-5 h-5 text-marca-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                        </button>
+                    </div>
+                    <div class="flex flex-wrap items-center gap-2 mt-2">
+                        <span class="badge badge-azul">CLT</span>
+                        <span class="text-xs text-marca-700 flex items-center gap-1">
+                            <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/></svg>
+                            São Bernardo do Campo, SP
+                        </span>
+                    </div>
+                    <p class="font-display font-semibold text-marca-800 text-sm mt-2">R$ 6.800,00</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Vaga 5 -->
+        <div class="card p-4 cursor-pointer active:scale-[0.98] transition-transform" onclick="oportunidades_abrirDetalhe(4)" data-area="mecânica" data-cidade="Osasco" data-tipo="estágio">
+            <div class="flex items-start gap-3">
+                <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-orange-400 to-yellow-400 flex items-center justify-center text-white font-display font-bold text-sm shrink-0">PE</div>
+                <div class="flex-1 min-w-0">
+                    <div class="flex items-start justify-between gap-2">
+                        <div>
+                            <h3 class="font-display font-semibold text-marca-900 text-sm leading-tight">Auxiliar de Mecânico</h3>
+                            <p class="text-xs text-marca-700 mt-0.5">Peças Express Osasco</p>
+                        </div>
+                        <button onclick="event.stopPropagation(); oportunidades_toggleFavorito(4)" class="w-8 h-8 flex items-center justify-center shrink-0" id="oportunidades_fav_4">
+                            <svg class="w-5 h-5 text-marca-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                        </button>
+                    </div>
+                    <div class="flex flex-wrap items-center gap-2 mt-2">
+                        <span class="badge badge-amarelo">Estágio</span>
+                        <span class="text-xs text-marca-700 flex items-center gap-1">
+                            <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/></svg>
+                            Osasco, SP
+                        </span>
+                    </div>
+                    <p class="font-display font-semibold text-marca-800 text-sm mt-2">R$ 1.800,00</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Vaga 6 -->
+        <div class="card p-4 cursor-pointer active:scale-[0.98] transition-transform" onclick="oportunidades_abrirDetalhe(5)" data-area="vendas" data-cidade="Santo André" data-tipo="PJ">
+            <div class="flex items-start gap-3">
+                <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-marca-600 to-marca-400 flex items-center justify-center text-white font-display font-bold text-sm shrink-0">DM</div>
+                <div class="flex-1 min-w-0">
+                    <div class="flex items-start justify-between gap-2">
+                        <div>
+                            <h3 class="font-display font-semibold text-marca-900 text-sm leading-tight">Vendedor de Peças</h3>
+                            <p class="text-xs text-marca-700 mt-0.5">Diesel Master Guarulhos</p>
+                        </div>
+                        <button onclick="event.stopPropagation(); oportunidades_toggleFavorito(5)" class="w-8 h-8 flex items-center justify-center shrink-0" id="oportunidades_fav_5">
+                            <svg class="w-5 h-5 text-marca-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                        </button>
+                    </div>
+                    <div class="flex flex-wrap items-center gap-2 mt-2">
+                        <span class="badge badge-roxo">PJ</span>
+                        <span class="text-xs text-marca-700 flex items-center gap-1">
+                            <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/></svg>
+                            Santo André, SP
+                        </span>
+                    </div>
+                    <p class="font-display font-semibold text-marca-800 text-sm mt-2">R$ 2.800,00</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Vaga 7 -->
+        <div class="card p-4 cursor-pointer active:scale-[0.98] transition-transform" onclick="oportunidades_abrirDetalhe(6)" data-area="funilaria" data-cidade="São Paulo" data-tipo="CLT">
+            <div class="flex items-start gap-3">
+                <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-orange-600 to-orange-500 flex items-center justify-center text-white font-display font-bold text-sm shrink-0">PA</div>
+                <div class="flex-1 min-w-0">
+                    <div class="flex items-start justify-between gap-2">
+                        <div>
+                            <h3 class="font-display font-semibold text-marca-900 text-sm leading-tight">Pintor Automotivo</h3>
+                            <p class="text-xs text-marca-700 mt-0.5">Pinturas Auto SP</p>
+                        </div>
+                        <button onclick="event.stopPropagation(); oportunidades_toggleFavorito(6)" class="w-8 h-8 flex items-center justify-center shrink-0" id="oportunidades_fav_6">
+                            <svg class="w-5 h-5 text-marca-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                        </button>
+                    </div>
+                    <div class="flex flex-wrap items-center gap-2 mt-2">
+                        <span class="badge badge-azul">CLT</span>
+                        <span class="text-xs text-marca-700 flex items-center gap-1">
+                            <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/></svg>
+                            São Paulo, SP
+                        </span>
+                    </div>
+                    <p class="font-display font-semibold text-marca-800 text-sm mt-2">R$ 3.200,00</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Vaga 8 -->
+        <div class="card p-4 cursor-pointer active:scale-[0.98] transition-transform" onclick="oportunidades_abrirDetalhe(7)" data-area="elétrica" data-cidade="Campinas" data-tipo="PJ">
+            <div class="flex items-start gap-3">
+                <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-marca-800 to-orange-600 flex items-center justify-center text-white font-display font-bold text-sm shrink-0">AR</div>
+                <div class="flex-1 min-w-0">
+                    <div class="flex items-start justify-between gap-2">
+                        <div>
+                            <h3 class="font-display font-semibold text-marca-900 text-sm leading-tight">Técnico em Ar Condicionado</h3>
+                            <p class="text-xs text-marca-700 mt-0.5">AutoRefrigeração Campinas</p>
+                        </div>
+                        <button onclick="event.stopPropagation(); oportunidades_toggleFavorito(7)" class="w-8 h-8 flex items-center justify-center shrink-0" id="oportunidades_fav_7">
+                            <svg class="w-5 h-5 text-marca-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                        </button>
+                    </div>
+                    <div class="flex flex-wrap items-center gap-2 mt-2">
+                        <span class="badge badge-roxo">PJ</span>
+                        <span class="text-xs text-marca-700 flex items-center gap-1">
+                            <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/></svg>
+                            Campinas, SP
+                        </span>
+                    </div>
+                    <p class="font-display font-semibold text-marca-800 text-sm mt-2">R$ 2.900,00</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Vaga 9 -->
+        <div class="card p-4 cursor-pointer active:scale-[0.98] transition-transform" onclick="oportunidades_abrirDetalhe(8)" data-area="funilaria" data-cidade="São Paulo" data-tipo="PJ">
+            <div class="flex items-start gap-3">
+                <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-orange-500 to-marca-800 flex items-center justify-center text-white font-display font-bold text-sm shrink-0">SR</div>
+                <div class="flex-1 min-w-0">
+                    <div class="flex items-start justify-between gap-2">
+                        <div>
+                            <h3 class="font-display font-semibold text-marca-900 text-sm leading-tight">Alinhador e Balanceador</h3>
+                            <p class="text-xs text-marca-700 mt-0.5">Serviços Rodoviários SP</p>
+                        </div>
+                        <button onclick="event.stopPropagation(); oportunidades_toggleFavorito(8)" class="w-8 h-8 flex items-center justify-center shrink-0" id="oportunidades_fav_8">
+                            <svg class="w-5 h-5 text-marca-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                        </button>
+                    </div>
+                    <div class="flex flex-wrap items-center gap-2 mt-2">
+                        <span class="badge badge-roxo">PJ</span>
+                        <span class="text-xs text-marca-700 flex items-center gap-1">
+                            <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/></svg>
+                            São Paulo, SP
+                        </span>
+                    </div>
+                    <p class="font-display font-semibold text-marca-800 text-sm mt-2">R$ 2.600,00</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Estado vazio -->
+    <div class="px-4 pb-24 hidden" id="oportunidades_vazio">
+        <div class="text-center py-16">
+            <div class="w-20 h-20 mx-auto mb-4 rounded-full bg-marca-100 flex items-center justify-center">
+                <svg class="w-10 h-10 text-marca-700" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.182 16.318A4.486 4.486 0 0012.016 15a4.486 4.486 0 00-3.198 1.318M21 12a9 9 0 11-18 0 9 9 0 0118 0zM7.5 10.5a.75.75 0 01.75-.75h9a.75.75 0 010 1.5h-9a.75.75 0 01-.75-.75zM7.5 10.5a.75.75 0 01.75-.75h5.25a.75.75 0 010 1.5H8.25a.75.75 0 01-.75-.75z"/></svg>
+            </div>
+            <h3 class="font-display font-semibold text-marca-900 text-base mb-1">Nenhuma vaga encontrada</h3>
+            <p class="text-sm text-marca-700">Tente ajustar seus filtros ou volte mais tarde — novas vagas são publicadas diariamente.</p>
+        </div>
+    </div>
+
+    <script>
+        const oportunidades_dados = [
+            {id: 0, titulo: "Mecânico Diesel", empresa: "AutoCenter Silva", cidade: "São Paulo", tipo: "CLT", faixa: "R$ 3.500,00", area: "mecânica", descricao: "Manutenção preventiva e corretiva de veículos diesel. Experiência mínima de 2 anos.", requisitos: "Ensino médio completo, CNH B, experiência com diesel.", beneficios: "Vale-refeição R$ 600, plano de saúde, seguro de vida, participação nos lucros.", contato: "recrutamento@autocentersilva.com.br", publicada: "2026-01-10", expira: "2026-02-10", logo: "AS", gradiente: "from-marca-800 to-marca-600"},
+            {id: 1, titulo: "Eletricista Automotivo", empresa: "Oficina Central Campinas", cidade: "Campinas", tipo: "PJ", faixa: "R$ 4.200,00", area: "elétrica", descricao: "Diagnóstico e reparo de sistemas elétricos e eletrônicos automotivos.", requisitos: "Curso técnico em eletricidade automotiva, experiência com scanners.", beneficios: "Nota fiscal de prestação de serviços, comissão por produtividade.", contato: "rh@oficinacentralcampinas.com.br", publicada: "2026-01-08", expira: "2026-02-08", logo: "OC", gradiente: "from-orange-500 to-orange-400"},
+            {id: 2, titulo: "Recepcionista de Oficina", empresa: "Mecânica Premium SP", cidade: "Guarulhos", tipo: "CLT", faixa: "R$ 2.100,00", area: "administrativa", descricao: "Atendimento ao cliente, agendamento de serviços, organização de documentos.", requisitos: "Ensino médio completo, conhecimento em Pacote Office, experiência com atendimento.", beneficios: "Vale-transporte, vale-alimentação, plano odontológico.", contato: "pessoal@mecanicapremiumsp.com.br", publicada: "2026-01-12", expira: "2026-02-12", logo: "MP", gradiente: "from-marca-700 to-marca-500"},
+            {id: 3, titulo: "Gerente de Oficina", empresa: "Concessionária São Bernauto", cidade: "São Bernardo do Campo", tipo: "CLT", faixa: "R$ 6.800,00", area: "gestão", descricao: "Gerenciamento de equipe, controle de qualidade, gestão de indicadores e orçamento.", requisitos: "Superior completo, experiência mínima 3 anos em gerência de oficina.", beneficios: "Vale-refeição, plano de saúde familiar, carro da empresa, bônus semestral.", contato: "carreiras@saobernauto.com.br", publicada: "2026-01-05", expira: "2026-02-05", logo: "SB", gradiente: "from-marca-900 to-marca-700"},
+            {id: 4, titulo: "Auxiliar de Mecânico", empresa: "Peças Express Osasco", cidade: "Osasco", tipo: "estágio", faixa: "R$ 1.800,00", area: "mecânica", descricao: "Auxiliar nas atividades de manutenção mecânica, organização de peças e ferramentas.", requisitos: "Cursando técnico em mecânica, disponibilidade para estágio de 6h/dia.", beneficios: "Bolsa estágio, vale-transporte, seguro de vida.", contato: "estagios@pecasexpressosasco.com.br", publicada: "2026-01-14", expira: "2026-02-14", logo: "PE", gradiente: "from-orange-400 to-yellow-400"},
+            {id: 5, titulo: "Vendedor de Peças", empresa: "Diesel Master Guarulhos", cidade: "Santo André", tipo: "PJ", faixa: "R$ 2.800,00", area: "vendas", descricao: "Venda de peças automotivas diesel, atendimento a clientes físicos e online.", requisitos: "Experiência em vendas, conhecimento de peças automotivas.", beneficios: "Comissão de 8% sobre vendas, horário flexível.", contacao: "vendas@dieselmasterguarulhos.com.br", publicada: "2026-01-11", expira: "2026-02-11", logo: "DM", gradiente: "from-marca-600 to-marca-400"},
+            {id: 6, titulo: "Pintor Automotivo", empresa: "Pinturas Auto SP", cidade: "São Paulo", tipo: "CLT", faixa: "R$ 3.200,00", area: "funilaria", descricao: "Pintura de veículos em geral, preparação de superfícies, aplicação de massa e verniz.", requisitos: "Experiência mínima de 3 anos em pintura automotiva.", beneficios: "Vale-refeição, assistência médica, uniforme fornecido.", contato: "rh@pinturasautosp.com.br", publicada: "2026-01-09", expira: "2026-02-09", logo: "PA", gradiente: "from-orange-600 to-orange-500"},
+            {id: 7, titulo: "Técnico em Ar Condicionado", empresa: "AutoRefrigeração Campinas", cidade: "Campinas", tipo: "PJ", faixa: "R$ 2.900,00", area: "elétrica", descricao: "Instalação, manutenção e reparo de sistemas de ar condicionado automotivo.", requisitos: "Curso técnico em refrigeração automotiva, NR-10.", beneficios: "Ferramentas fornecidas, nota fiscal, auxílio combustível.", contato: "tecnico@autorefrigeracaocampinas.com.br", publicada: "2026-01-13", expira: "2026-02-13", logo: "AR", gradiente: "from-marca-800 to-orange-600"},
+            {id: 8, titulo: "Alinhador e Balanceador", empresa: "Serviços Rodoviários SP", cidade: "São Paulo", tipo: "PJ", faixa: "R$ 2.600,00", area: "funilaria", descricao: "Alinhamento, balanceamento e geometria de rodas de veículos leves e pesados.", requisitos: "Experiência com equipamentos de alinhamento 3D.", beneficios: "Comissão por serviço, horário flexível.", contato: "contato@servicosrodoviariosp.com.br", publicada: "2026-01-07", expira: "2026-02-07", logo: "SR", gradiente: "from-orange-500 to-marca-800"}
+        ];
+
+        let oportunidades_favoritos = [0, 3, 6];
+        let oportunidades_filtroAtivo = 'todos';
+
+        function oportunidades_toggleFavorito(idx) {
+            const id = oportunidades_dados[idx].id;
+            const pos = oportunidades_favoritos.indexOf(id);
+            if (pos > -1) {
+                oportunidades_favoritos.splice(pos, 1);
+            } else {
+                oportunidades_favoritos.push(id);
+            }
+            oportunidades_atualizarFavoritoVisual(idx);
+            oportunidades_atualizarContadorFavoritos();
+            if (oportunidades_filtroAtivo === 'favoritas') {
+                oportunidades_filtrar();
+            }
+        }
+
+        function oportunidades_atualizarFavoritoVisual(idx) {
+            const btn = document.getElementById('oportunidades_fav_' + idx);
+            if (!btn) return;
+            const id = oportunidades_dados[idx].id;
+            const svg = btn.querySelector('svg');
+            if (oportunidades_favoritos.indexOf(id) > -1) {
+                svg.classList.remove('text-marca-400');
+                svg.classList.add('text-orange-500');
+            } else {
+                svg.classList.remove('text-orange-500');
+                svg.classList.add('text-marca-400');
+            }
+        }
+
+        function oportunidades_atualizarContadorFavoritos() {
+            const cards = document.querySelectorAll('[id^="oportunidades_fav_"]');
+            cards.forEach((btn, idx) => {
+                oportunidades_atualizarFavoritoVisual(idx);
+            });
+        }
+
+        function oportunidades_setFiltro(filtro) {
+            oportunidades_filtroAtivo = filtro;
+            const botoes = ['todos', 'CLT', 'PJ', 'estágio', 'favoritas'];
+            botoes.forEach(b => {
+                const el = document.getElementById('oportunidades_filtro_' + b);
+                if (b === filtro) {
+                    el.classList.remove('bg-white', 'text-marca-800', 'border-marca-200');
+                    el.classList.add('bg-marca-800', 'text-white', 'border-marca-800');
+                } else {
+                    el.classList.remove('bg-marca-800', 'text-white', 'border-marca-800');
+                    el.classList.add('bg-white', 'text-marca-800', 'border-marca-200');
+                }
+            });
+            oportunidades_filtrar();
+        }
+
+        function oportunidades_filtrar() {
+            const busca = document.getElementById('oportunidades_busca').value.toLowerCase();
+            const cidade = document.getElementById('oportunidades_cidade').value;
+            const cards = document.querySelectorAll('[data-area]');
+            let visiveis = 0;
+            cards.forEach((card, idx) => {
+                const dado = oportunidades_dados[idx];
+                const matchBusca = !busca || dado.titulo.toLowerCase().includes(busca) || dado.empresa.toLowerCase().includes(busca) || dado.area.toLowerCase().includes(busca);
+                const matchCidade = cidade === 'todas' || dado.cidade === cidade;
+                let matchFiltro = true;
+                if (oportunidades_filtroAtivo === 'favoritas') {
+                    matchFiltro = oportunidades_favoritos.indexOf(dado.id) > -1;
+                } else if (oportunidades_filtroAtivo !== 'todos') {
+                    matchFiltro = dado.tipo === oportunidades_filtroAtivo;
+                }
+                if (matchBusca && matchCidade && matchFiltro) {
+                    card.classList.remove('hidden');
+                    visiveis++;
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+            const vazio = document.getElementById('oportunidades_vazio');
+            if (visiveis === 0) {
+                vazio.classList.remove('hidden');
+            } else {
+                vazio.classList.add('hidden');
+            }
+        }
+
+        function oportunidades_abrirDetalhe(idx) {
+            const v = oportunidades_dados[idx];
+            const fav = oportunidades_favoritos.indexOf(v.id) > -1;
+            const favIcone = fav
+                ? '<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>'
+                : '<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>';
+            const html = '<div class="space-y-4">' +
+                '<div class="flex items-center gap-3 pb-4 border-b border-marca-200">' +
+                '<div class="w-14 h-14 rounded-xl bg-gradient-to-br ' + v.gradiente + ' flex items-center justify-center text-white font-display font-bold text-lg">' + v.logo + '</div>' +
+                '<div><h3 class="font-display font-bold text-marca-900 text-lg">' + v.titulo + '</h3><p class="text-sm text-marca-700">' + v.empresa + '</p></div>' +
+                '</div>' +
+                '<div class="space-y-2"><p class="text-xs font-semibold text-marca-700 uppercase tracking-wide">Localização</p><p class="text-sm text-marca-900 flex items-center gap-1"><svg class="w-4 h-4 text-marca-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/></svg>' + v.cidade + ', SP</p></div>' +
+                '<div class="space-y-2"><p class="text-xs font-semibold text-marca-700 uppercase tracking-wide">Tipo de Contrato</p><span class="badge ' + (v.tipo === 'CLT' ? 'badge-azul' : v.tipo === 'PJ' ? 'badge-roxo' : 'badge-amarelo') + '">' + v.tipo + '</span></div>' +
+                '<div class="space-y-2"><p class="text-xs font-semibold text-marca-700 uppercase tracking-wide">Faixa Salarial</p><p class="font-display font-bold text-marca-800 text-xl">' + v.faixa + '</p></div>' +
+                '<div class="space-y-2"><p class="text-xs font-semibold text-marca-700 uppercase tracking-wide">Descrição</p><p class="text-sm text-marca-900 leading-relaxed">' + v.descricao + '</p></div>' +
+                '<div class="space-y-2"><p class="text-xs font-semibold text-marca-700 uppercase tracking-wide">Requisitos</p><p class="text-sm text-marca-900 leading-relaxed">' + v.requisitos + '</p></div>' +
+                '<div class="space-y-2"><p class="text-xs font-semibold text-marca-700 uppercase tracking-wide">Benefícios</p><p class="text-sm text-marca-900 leading-relaxed">' + v.beneficios + '</p></div>' +
+                '<div class="space-y-2"><p class="text-xs font-semibold text-marca-700 uppercase tracking-wide">Contato</p><p class="text-sm text-marca-900">' + v.contato + '</p></div>' +
+                '<div class="space-y-2"><p class="text-xs font-semibold text-marca-700 uppercase tracking-wide">Publicação</p><p class="text-sm text-marca-900">Publicada em ' + v.publicada + ' · Expira em ' + v.expira + '</p></div>' +
+                '<div class="flex gap-3 pt-3 border-t border-marca-200">' +
+                '<button onclick="oportunidades_candidatar(' + v.id + ')" class="btn flex-1 py-3 rounded-xl bg-marca-800 text-white font-display font-semibold text-sm active:scale-95 transition-transform">Candidatar-se</button>' +
+                '<button onclick="oportunidades_toggleFavorito(' + v.id + '); oportunidades_abrirDetalhe(' + v.id + ')" class="btn w-12 h-12 rounded-xl border-2 ' + (fav ? 'border-orange-500 bg-orange-50 text-orange-500' : 'border-marca-200 bg-white text-marca-400') + ' flex items-center justify-center active:scale-95 transition-transform">' + favIcone + '</button>' +
+                '</div>' +
+                '</div>';
+            abrirModal(html, 'Detalhe da Vaga');
+        }
+
+        function oportunidades_candidatar(vagaId) {
+            const v = oportunidades_dados.find(d => d.id === vagaId);
+            fecharModal();
+            setTimeout(() => {
+                const html = '<div class="space-y-4">' +
+                '<div class="w-16 h-16 mx-auto rounded-full bg-green-100 flex items-center justify-center"><svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></div>' +
+                '<div class="text-center"><h3 class="font-display font-bold text-marca-900 text-lg">Candidatura enviada!</h3><p class="text-sm text-marca-700 mt-2">Sua candidatura para a vaga de <strong>' + v.titulo + '</strong> na <strong>' + v.empresa + '</strong> foi registrada com sucesso. Você receberá uma notificação quando a empresa visualizar seu perfil.</p></div>' +
+                '<button onclick="fecharModal()" class="btn w-full py-3 rounded-xl bg-marca-800 text-white font-display font-semibold text-sm active:scale-95 transition-transform">Fechar</button>' +
+                '</div>';
+                abrirModal(html, 'Confirmação');
+                toast('Candidatura enviada com sucesso!', 'ok');
+            }, 300);
+        }
+    </script>
+</section>
+
     <!-- TELAS -->
             </div>
         </main>
