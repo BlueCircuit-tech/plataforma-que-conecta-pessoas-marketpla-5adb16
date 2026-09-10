@@ -1901,6 +1901,294 @@
             <div class="flex gap-2 mt-0.5">
               <span class="badge bg-marca-100 text-marca
 
+    <section data-tela="oficinas" class="hidden">
+    <div class="oficinas-enter">
+        <!-- Header da Tela -->
+        <div class="px-5 pt-4 pb-3">
+            <h1 class="font-display text-2xl font-bold text-marca-900 tracking-tight">Oficinas Parceiras</h1>
+            <p class="text-sm text-stone-500 mt-1 mb-4">Encontre oficinas confiáveis perto de você</p>
+
+            <!-- Barra de Busca -->
+            <div class="relative">
+                <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
+                    <svg class="w-4.5 h-4.5 text-stone-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+                </div>
+                <input id="oficinas-busca" type="text" placeholder="Buscar oficina ou serviço..." oninput="oficinas_filtrar()" class="w-full pl-10 pr-4 py-3 bg-white border border-stone-200 rounded-xl text-sm text-stone-800 placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-marca-200 focus:border-marca-400 transition-all shadow-sm">
+            </div>
+        </div>
+
+        <!-- Filtros -->
+        <div class="px-5 pb-3">
+            <div class="flex gap-2 overflow-x-auto pb-2 -mx-5 px-5 scrollbar-hide" style="scrollbar-width:none;-webkit-overflow-scrolling:touch;">
+                <button onclick="oficinas_filtrarCategoria('todos')" data-cat="todos" class="oficinas-filtro-cat flex-shrink-0 px-4 py-2 rounded-full text-xs font-semibold transition-all active:scale-95 bg-marca-900 text-white">Todos</button>
+                <button onclick="oficinas_filtrarCategoria('mecanica')" data-cat="mecanica" class="oficinas-filtro-cat flex-shrink-0 px-4 py-2 rounded-full text-xs font-semibold transition-all active:scale-95 bg-white text-stone-600 border border-stone-200">Mecânica Geral</button>
+                <button onclick="oficinas_filtrarCategoria('eletrica')" data-cat="eletrica" class="oficinas-filtro-cat flex-shrink-0 px-4 py-2 rounded-full text-xs font-semibold transition-all active:scale-95 bg-white text-stone-600 border border-stone-200">Elétrica</button>
+                <button onclick="oficinas_filtrarCategoria('funilaria')" data-cat="funilaria" class="oficinas-filtro-cat flex-shrink-0 px-4 py-2 rounded-full text-xs font-semibold transition-all active:scale-95 bg-white text-stone-600 border border-stone-200">Funilaria</button>
+                <button onclick="oficinas_filtrarCategoria('revisao')" data-cat="revisao" class="oficinas-filtro-cat flex-shrink-0 px-4 py-2 rounded-full text-xs font-semibold transition-all active:scale-95 bg-white text-stone-600 border border-stone-200">Revisão</button>
+                <button onclick="oficinas_filtrarCategoria('ar-condicionado')" data-cat="ar-condicionado" class="oficinas-filtro-cat flex-shrink-0 px-4 py-2 rounded-full text-xs font-semibold transition-all active:scale-95 bg-white text-stone-600 border border-stone-200">Ar-Condicionado</button>
+            </div>
+        </div>
+
+        <!-- Mapa Simulado -->
+        <div class="mx-5 mb-4 rounded-2xl overflow-hidden border border-stone-200 shadow-sm relative" style="height:180px;">
+            <div class="absolute inset-0 bg-gradient-to-br from-stone-100 to-stone-200">
+                <svg class="w-full h-full opacity-40" viewBox="0 0 400 180">
+                    <pattern id="grid-oficina" width="30" height="30" patternUnits="userSpaceOnUse"><path d="M 30 0 L 0 0 0 30" fill="none" stroke="#d6d3d1" stroke-width="0.5"/></pattern>
+                    <rect width="400" height="180" fill="url(#grid-oficina)"/>
+                    <path d="M0 120 Q100 80 200 100 T400 90" fill="none" stroke="#a8a29e" stroke-width="2" opacity="0.4"/>
+                    <path d="M0 60 Q150 40 250 70 T400 50" fill="none" stroke="#a8a29e" stroke-width="1.5" opacity="0.3"/>
+                    <rect x="30" y="30" width="80" height="50" rx="3" fill="#e7e5e4" opacity="0.6"/>
+                    <rect x="180" y="70" width="100" height="60" rx="3" fill="#e7e5e4" opacity="0.5"/>
+                    <rect x="310" y="25" width="70" height="45" rx="3" fill="#e7e5e4" opacity="0.6"/>
+                    <circle cx="80" cy="60" r="8" fill="#F97316" opacity="0.8"/><circle cx="80" cy="60" r="4" fill="white" opacity="0.9"/>
+                    <circle cx="230" cy="100" r="8" fill="#7C2D12" opacity="0.8"/><circle cx="230" cy="100" r="4" fill="white" opacity="0.9"/>
+                    <circle cx="340" cy="50" r="8" fill="#F97316" opacity="0.8"/><circle cx="340" cy="50" r="4" fill="white" opacity="0.9"/>
+                    <circle cx="160" cy="110" r="8" fill="#7C2D12" opacity="0.8"/><circle cx="160" cy="110" r="4" fill="white" opacity="0.9"/>
+                    <circle cx="60" cy="130" r="8" fill="#F97316" opacity="0.8"/><circle cx="60" cy="130" r="4" fill="white" opacity="0.9"/>
+                </svg>
+            </div>
+            <div class="absolute top-3 left-3 bg-white/90 backdrop-blur-sm rounded-lg px-2.5 py-1.5 shadow-sm">
+                <p class="text-[10px] font-semibold text-marca-900 uppercase tracking-wider">Sua localização</p>
+            </div>
+            <div class="absolute bottom-3 right-3 flex flex-col gap-1.5">
+                <button class="w-9 h-9 bg-white rounded-lg shadow-sm flex items-center justify-center active:scale-90 transition-transform" onclick="toast('Centralizando no mapa...','info')"><svg class="w-4 h-4 text-marca-900" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2v3m0 14v3m10-10h-3M5 12H2"/></svg></button>
+            </div>
+            <div class="absolute bottom-3 left-3 bg-marca-900/90 backdrop-blur-sm rounded-lg px-3 py-1.5">
+                <p class="text-[10px] text-white/80 font-medium">4 oficinas próximas</p>
+            </div>
+        </div>
+
+        <!-- Seção Destaques -->
+        <div class="px-5 mb-4">
+            <div class="flex items-center gap-2 mb-3">
+                <svg class="w-5 h-5 text-amber-500" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <h2 class="font-display text-lg font-bold text-marca-900">Destaques</h2>
+                <span class="text-[10px] bg-amber-100 text-amber-700 px-2 py-0.5 rounded-full font-semibold">Recomendadas</span>
+            </div>
+            <div class="flex gap-3 overflow-x-auto pb-2 -mx-5 px-5 scrollbar-hide" style="scrollbar-width:none;-webkit-overflow-scrolling:touch;">
+                <div onclick="oficinas_abrirDetalhe('auto-center')" class="oficinas-card flex-shrink-0 w-56 bg-white rounded-2xl border border-stone-200 shadow-sm overflow-hidden active:scale-95 transition-all cursor-pointer">
+                    <div class="h-28 bg-gradient-to-br from-marca-800 to-marca-900 relative flex items-center justify-center">
+                        <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center"><span class="text-2xl font-display font-bold text-white">AC</span></div>
+                        <div class="absolute top-2.5 right-2.5 bg-amber-400 rounded-full px-2 py-0.5 flex items-center gap-1"><svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><span class="text-[10px] font-bold text-white">4.9</span></div>
+                    </div>
+                    <div class="p-3.5">
+                        <h3 class="font-display font-bold text-sm text-marca-900 truncate">Auto Center Premium</h3>
+                        <p class="text-[11px] text-stone-500 mt-0.5">Av. Brasil, 1200 — Jardins</p>
+                        <div class="flex items-center justify-between mt-2.5">
+                            <span class="text-[11px] text-stone-500 flex items-center gap-1"><svg class="w-3 h-3 text-marca-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243A8 8 0 1117.657 16.657z"/><circle cx="12" cy="11" r="1.5"/></svg>1.2 km</span>
+                            <button onclick="event.stopPropagation();oficinas_abrirDetalhe('auto-center')" class="text-[11px] font-semibold text-marca-700 bg-marca-50 px-2.5 py-1 rounded-lg active:scale-95 transition-transform">Ver mais</button>
+                        </div>
+                    </div>
+                </div>
+                <div onclick="oficinas_abrirDetalhe('eletro-tech')" class="oficinas-card flex-shrink-0 w-56 bg-white rounded-2xl border border-stone-200 shadow-sm overflow-hidden active:scale-95 transition-all cursor-pointer">
+                    <div class="h-28 bg-gradient-to-br from-stone-700 to-stone-900 relative flex items-center justify-center">
+                        <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center"><span class="text-2xl font-display font-bold text-white">ET</span></div>
+                        <div class="absolute top-2.5 right-2.5 bg-amber-400 rounded-full px-2 py-0.5 flex items-center gap-1"><svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><span class="text-[10px] font-bold text-white">4.7</span></div>
+                    </div>
+                    <div class="p-3.5">
+                        <h3 class="font-display font-bold text-sm text-marca-900 truncate">Eletro Tech</h3>
+                        <p class="text-[11px] text-stone-500 mt-0.5">R. Augusta, 450 — Consolação</p>
+                        <div class="flex items-center justify-between mt-2.5">
+                            <span class="text-[11px] text-stone-500 flex items-center gap-1"><svg class="w-3 h-3 text-marca-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243A8 8 0 1117.657 16.657z"/><circle cx="12" cy="11" r="1.5"/></svg>2.5 km</span>
+                            <button onclick="event.stopPropagation();oficinas_abrirDetalhe('eletro-tech')" class="text-[11px] font-semibold text-marca-700 bg-marca-50 px-2.5 py-1 rounded-lg active:scale-95 transition-transform">Ver mais</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Lista de Oficinas -->
+        <div class="px-5 pb-24">
+            <div class="flex items-center justify-between mb-3">
+                <h2 class="font-display text-lg font-bold text-marca-900">Todas as Oficinas</h2>
+                <span id="oficinas-contador" class="text-xs text-stone-500 font-medium">8 resultados</span>
+            </div>
+            <div id="oficinas-lista" class="flex flex-col gap-3">
+            </div>
+            <div id="oficinas-vazio" class="hidden text-center py-12">
+                <div class="w-16 h-16 bg-stone-100 rounded-full flex items-center justify-center mx-auto mb-3"><svg class="w-7 h-7 text-stone-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg></div>
+                <p class="text-sm text-stone-500 font-medium">Nenhuma oficina encontrada</p>
+                <p class="text-xs text-stone-400 mt-1">Tente ajustar os filtros ou busca</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+function oficinas_renderizar(lista) {
+    const container = document.getElementById('oficinas-lista');
+    const vazio = document.getElementById('oficinas-vazio');
+    const contador = document.getElementById('oficinas-contador');
+    container.innerHTML = '';
+    if (lista.length === 0) {
+        vazio.classList.remove('hidden');
+        contador.textContent = '0 resultados';
+        return;
+    }
+    vazio.classList.add('hidden');
+    contador.textContent = lista.length + ' resultado' + (lista.length > 1 ? 's' : '');
+    lista.forEach(function(of) {
+        const badges = of.servicos.map(function(s) {
+            const cores = { 'mecanica':'bg-blue-50 text-blue-700','eletrica':'bg-amber-50 text-amber-700','funilaria':'bg-purple-50 text-purple-700','revisao':'bg-emerald-50 text-emerald-700','ar-condicionado':'bg-cyan-50 text-cyan-700','pintura':'bg-rose-50 text-rose-700','alinhamento':'bg-teal-50 text-teal-700','balanceamento':'bg-indigo-50 text-indigo-700' };
+            const labels = { 'mecanica':'Mecânica Geral','eletrica':'Elétrica','funilaria':'Funilaria','revisao':'Revisão','ar-condicionado':'Ar-Cond.','pintura':'Pintura','alinhamento':'Alinhamento','balanceamento':'Balanceamento' };
+            return '<span class="inline-block px-2 py-0.5 rounded-md text-[10px] font-semibold ' + (cores[s] || 'bg-stone-100 text-stone-600') + '">' + (labels[s] || s) + '</span>';
+        }).join('');
+        const iniciais = of.nome.split(' ').filter(function(w,i){return i<2;}).map(function(w){return w[0];}).join('').substring(0,2).toUpperCase();
+        const card = '<div class="card bg-white rounded-2xl border border-stone-200 shadow-sm overflow-hidden active:scale-[0.98] transition-all cursor-pointer" onclick="oficinas_abrirDetalhe(\'' + of.id + '\')">' +
+            '<div class="flex p-4 gap-3.5">' +
+                '<div class="flex-shrink-0 w-14 h-14 rounded-xl bg-gradient-to-br from-marca-800 to-marca-900 flex items-center justify-center shadow-md">' +
+                    '<span class="text-lg font-display font-bold text-white">' + iniciais + '</span>' +
+                '</div>' +
+                '<div class="flex-1 min-w-0">' +
+                    '<div class="flex items-start justify-between">' +
+                        '<div class="min-w-0">' +
+                            '<h3 class="font-display font-bold text-sm text-marca-900 truncate">' + of.nome + '</h3>' +
+                            '<p class="text-[11px] text-stone-500 truncate mt-0.5">' + of.endereco + '</p>' +
+                        '</div>' +
+                        '<div class="flex items-center gap-1 bg-amber-50 rounded-full px-1.5 py-0.5 flex-shrink-0 ml-2">' +
+                            '<svg class="w-3 h-3 text-amber-500" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>' +
+                            '<span class="text-[11px] font-bold text-amber-700">' + of.nota.toFixed(1) + '</span>' +
+                        '</div>' +
+                    '</div>' +
+                    '<div class="flex flex-wrap gap-1.5 mt-2">' + badges + '</div>' +
+                    '<div class="flex items-center justify-between mt-2.5">' +
+                        '<span class="text-[11px] text-stone-500 flex items-center gap-1">' +
+                            '<svg class="w-3.5 h-3.5 text-marca-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243A8 8 0 1117.657 16.657z"/><circle cx="12" cy="11" r="1.5"/></svg>' +
+                            of.distancia + ' km' +
+                        '</span>' +
+                        '<span class="text-[11px] text-stone-400">' + of.horario + '</span>' +
+                    '</div>' +
+                '</div>' +
+            '</div>' +
+            '<div class="px-4 pb-4 pt-0">' +
+                '<div class="flex gap-2">' +
+                    '<button onclick="event.stopPropagation();oficinas_agendar(\'' + of.id + '\')" class="btn flex-1 bg-marca-900 text-white text-xs font-semibold py-2.5 rounded-xl active:scale-95 transition-all flex items-center justify-center gap-1.5">' +
+                        '<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>' +
+                        'Agendar Serviço' +
+                    '</button>' +
+                    '<button onclick="event.stopPropagation();oficinas_ligar(\'' + of.telefone + '\')" class="w-10 h-10 bg-marca-50 text-marca-700 rounded-xl flex items-center justify-center active:scale-95 transition-all flex-shrink-0">' +
+                        '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.362 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>' +
+                    '</button>' +
+                '</div>' +
+            '</div>' +
+        '</div>';
+        container.insertAdjacentHTML('beforeend', card);
+    });
+}
+
+function oficinas_filtrar() {
+    const busca = document.getElementById('oficinas-busca').value.toLowerCase();
+    const catAtiva = document.querySelector('.oficinas-filtro-cat.bg-marca-900');
+    const cat = catAtiva ? catAtiva.getAttribute('data-cat') : 'todos';
+    let lista = oficinas_dados;
+    if (cat !== 'todos') {
+        lista = lista.filter(function(o) { return o.categorias.indexOf(cat) !== -1; });
+    }
+    if (busca) {
+        lista = lista.filter(function(o) {
+            return o.nome.toLowerCase().indexOf(busca) !== -1 ||
+                   o.servicos.some(function(s) { return s.indexOf(busca) !== -1; }) ||
+                   o.endereco.toLowerCase().indexOf(busca) !== -1;
+        });
+    }
+    oficinas_renderizar(lista);
+}
+
+function oficinas_filtrarCategoria(cat) {
+    document.querySelectorAll('.oficinas-filtro-cat').forEach(function(btn) {
+        btn.classList.remove('bg-marca-900','text-white');
+        btn.classList.add('bg-white','text-stone-600','border','border-stone-200');
+    });
+    const ativo = document.querySelector('[data-cat="' + cat + '"]');
+    ativo.classList.remove('bg-white','text-stone-600','border','border-stone-200');
+    ativo.classList.add('bg-marca-900','text-white');
+    oficinas_filtrar();
+}
+
+function oficinas_abrirDetalhe(id) {
+    const of = oficinas_dados.find(function(o) { return o.id === id; });
+    if (!of) return;
+    const servBadges = of.servicos.map(function(s) {
+        const labels = { 'mecanica':'Mec. Geral','eletrica':'Elétrica','funilaria':'Funilaria','revisao':'Revisão','ar-condicionado':'Ar-Cond.','pintura':'Pintura','alinhamento':'Alinhamento','balanceamento':'Balanceamento' };
+        return '<span class="badge">' + (labels[s] || s) + '</span>';
+    }).join(' ');
+    const avals = of.avaliacoes.map(function(a) {
+        const estrelas = '★'.repeat(Math.round(a.nota)) + '☆'.repeat(5 - Math.round(a.nota));
+        return '<div class="bg-stone-50 rounded-xl p-3"><div class="flex items-center gap-2 mb-1"><div class="w-7 h-7 rounded-full bg-marca-100 flex items-center justify-center"><span class="text-[10px] font-bold text-marca-800">' + a.cliente[0] + '</span></div><span class="text-xs font-semibold text-stone-800">' + a.cliente + '</span><span class="text-amber-500 text-[11px]">' + estrelas + '</span></div><p class="text-[11px] text-stone-600 ml-9">' + a.texto + '</p></div>';
+    }).join('');
+    const iniciais = of.nome.split(' ').filter(function(w,i){return i<2;}).map(function(w){return w[0];}).join('').substring(0,2).toUpperCase();
+    const html = '<div class="space-y-4">' +
+        '<div class="h-36 bg-gradient-to-br from-marca-800 to-marca-900 rounded-2xl flex items-center justify-center relative">' +
+            '<span class="text-3xl font-display font-bold text-white/90">' + iniciais + '</span>' +
+            '<div class="absolute bottom-3 left-3 bg-white/20 backdrop-blur-sm rounded-lg px-3 py-1 flex items-center gap-1.5"><svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><span class="text-sm font-bold text-white">' + of.nota.toFixed(1) + '</span></div>' +
+        '</div>' +
+        '<div><h3 class="font-display text-xl font-bold text-marca-900">' + of.nome + '</h3><p class="text-sm text-stone-500 mt-1 flex items-center gap-1"><svg class="w-4 h-4 text-marca-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243A8 8 0 1117.657 16.657z"/><circle cx="12" cy="11" r="1.5"/></svg>' + of.endereco + '</p><p class="text-xs text-stone-400 mt-0.5">' + of.horario + ' • Aberto ' + (of.aberto ? 'agora' : 'fechado') + '</p></div>' +
+        '<div class="flex flex-wrap gap-1.5">' + servBadges + '</div>' +
+        '<div class="bg-marca-50 rounded-xl p-3.5"><div class="grid grid-cols-2 gap-3"><div><p class="text-[10px] text-marca-600 uppercase tracking-wider font-semibold">Distância</p><p class="text-sm font-bold text-marca-900">' + of.distancia + ' km</p></div><div><p class="text-[10px] text-marca-600 uppercase tracking-wider font-semibold">Avaliação</p><p class="text-sm font-bold text-marca-900">★ ' + of.nota.toFixed(1) + ' (' + of.totalAvaliacoes + ')</p></div></div></div>' +
+        '<div><h4 class="font-display font-bold text-sm text-marca-900 mb-2">Avaliações</h4><div class="flex flex-col gap-2 max-h-48 overflow-y-auto">' + avals + '</div></div>' +
+        '<div class="flex gap-2 pt-2"><button onclick="oficinas_agendarModal(\'' + of.id + '\')" class="btn flex-1 bg-marca-900 text-white text-sm font-semibold py-3 rounded-xl active:scale-95 transition-all">Agendar Serviço</button><button onclick="oficinas_ligar(\'' + of.telefone + '\')" class="w-12 bg-marca-50 text-marca-700 rounded-xl flex items-center justify-center active:scale-95 transition-all"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.362 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></button></div>' +
+    '</div>';
+    abrirModal(html, of.nome);
+}
+
+function oficinas_agendar(id) {
+    const of = oficinas_dados.find(function(o) { return o.id === id; });
+    if (!of) return;
+    oficinas_agendarModal(id);
+}
+
+function oficinas_agendarModal(id) {
+    const of = oficinas_dados.find(function(o) { return o.id === id; });
+    if (!of) return;
+    const hoje = new Date().toISOString().split('T')[0];
+    const html = '<div class="space-y-4">' +
+        '<p class="text-sm text-stone-600">Agende seu serviço na <strong class="text-marca-900">' + of.nome + '</strong></p>' +
+        '<div><label class="block text-xs font-semibold text-stone-700 mb-1.5">Tipo de Serviço</label><select id="ag-tipo" class="w-full border border-stone-200 rounded-xl px-3 py-2.5 text-sm text-stone-800 focus:outline-none focus:ring-2 focus:ring-marca-200">' + of.servicos.map(function(s){const l={mecanica:'Mecânica Geral',eletrica:'Elétrica',funilaria:'Funilaria',revisao:'Revisão','ar-condicionado':'Ar-Condicionado',pintura:'Pintura',alinhamento:'Alinhamento',balanceamento:'Balanceamento'};return '<option value="'+s+'">'+(l[s]||s)+'</option>';}).join('') + '</select></div>' +
+        '<div><label class="block text-xs font-semibold text-stone-700 mb-1.5">Data</label><input id="ag-data" type="date" min="' + hoje + '" class="w-full border border-stone-200 rounded-xl px-3 py-2.5 text-sm text-stone-800 focus:outline-none focus:ring-2 focus:ring-marca-200"></div>' +
+        '<div><label class="block text-xs font-semibold text-stone-700 mb-1.5">Horário Preferido</label><select id="ag-hora" class="w-full border border-stone-200 rounded-xl px-3 py-2.5 text-sm text-stone-800 focus:outline-none focus:ring-2 focus:ring-marca-200">' +
+            ['08:00','08:30','09:00','09:30','10:00','10:30','11:00','13:00','13:30','14:00','14:30','15:00','15:30','16:00','16:30','17:00'].map(function(h){return '<option value="'+h+'">'+h+'</option>';}).join('') +
+        '</select></div>' +
+        '<div><label class="block text-xs font-semibold text-stone-700 mb-1.5">Veículo</label><input id="ag-veiculo" type="text" placeholder="Ex: Fiat Toro 2022" class="w-full border border-stone-200 rounded-xl px-3 py-2.5 text-sm text-stone-800 placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-marca-200"></div>' +
+        '<div><label class="block text-xs font-semibold text-stone-700 mb-1.5">Observações</label><textarea id="ag-obs" rows="2" placeholder="Descreva o problema ou serviço desejado..." class="w-full border border-stone-200 rounded-xl px-3 py-2.5 text-sm text-stone-800 placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-marca-200 resize-none"></textarea></div>' +
+        '<button onclick="oficinas_confirmarAgendamento(' + of.id + ')" class="btn w-full bg-marca-900 text-white text-sm font-semibold py-3 rounded-xl active:scale-95 transition-all">Confirmar Agendamento</button>' +
+    '</div>';
+    abrirModal(html, 'Agendar — ' + of.nome);
+    document.getElementById('ag-data').value = hoje;
+}
+
+function oficinas_confirmarAgendamento(oficinaId) {
+    const tipo = document.getElementById('ag-tipo').value;
+    const data = document.getElementById('ag-data').value;
+    const hora = document.getElementById('ag-hora').value;
+    const veiculo = document.getElementById('ag-veiculo').value.trim();
+    if (!data || !veiculo) {
+        toast('Preencha data e veículo', 'erro');
+        return;
+    }
+    const labels = { mecanica:'Mecânica Geral', eletrica:'Elétrica', funilaria:'Funilaria', revisao:'Revisão', 'ar-condicionado':'Ar-Condicionado', pintura:'Pintura', alinhamento:'Alinhamento', balanceamento:'Balanceamento' };
+    const dataFmt = data.split('-').reverse().join('/');
+    fecharModal();
+    toast('Agendamento confirmado para ' + dataFmt + ' às ' + hora, 'ok');
+}
+
+function oficinas_ligar(telefone) {
+    toast('Ligando para ' + telefone + '...', 'info');
+}
+
+const oficinas_dados = [
+    { id:'auto-center', nome:'Auto Center Premium', endereco:'Av. Brasil, 1200 — Jardins, SP', telefone:'(11) 3456-7890', distancia:1.2, nota:4.9, totalAvaliacoes:127, horario:'Seg-Sex 08:00-18:00', aberto:true, categorias:['mecanica','revisao','alinhamento'], servicos:['mecanica','revisao','alinhamento','balanceamento'], avaliacoes:[{cliente:'Carlos M.',nota:5,texto:'Excelente atendimento, mecânicos muito capacitados.'},{cliente:'Ana P.',nota:5,texto:'Fiz revisão completa, nota 10!'},{cliente:'Roberto S.',nota:4.5,texto:'Bom preço e serviço de qualidade.'}] },
+    { id:'eletro-tech', nome:'Eletro Tech', endereco:'R. Augusta, 450 — Consolação, SP', telefone:'(11) 3012-3456', distancia:2.5, nota:4.7, totalAvaliacoes:89, horario:'Seg-Sex 08:00-17:30', aberto:true, categorias:['eletrica','ar-condicionado'], servicos:['eletrica','ar-condicionado'], avaliacoes:[{cliente:'Fernanda L.',nota:5,texto:'Resolveu problema elétrico que ninguém conseguia.'},{cliente:'Marcos R.',nota:4.5,texto:'Instalação de ar-condicionado perfeita.'}] },
+    { id:'funilaria-sao-paulo', nome:'Funilaria São Paulo', endereco:'R. da Consolação, 800 — Consolação, SP', telefone:'(11) 3884-2210', distancia:3.1, nota:4.5, totalAvaliacoes:56, horario:'Seg-Sex 08:00-17:00', aberto:true, categorias:['funilaria','pintura'], servicos:['funilaria','pintura'], avaliacoes:[{cliente:'Juliana C.',nota:4.5,texto:'Consertaram a porta amassada, ficou zero.'},{cliente:'Pedro H.',nota:5,texto:'Pintura impecável.'},{cliente:'Lucas B.',nota:4,texto:'Serviço bom e rápido.'}] },
+    { id:'revisao-total', nome:'Revisão Total', endereco:'Av. Paulista, 1500 — Bela Vista, SP', telefone:'(11) 3269-9876', distancia:4.0, nota:4.8, totalAvaliacoes:203, horario:'Seg-Sáb 07:30-18:00', aberto:true, categorias:['revisao','mecanica'], servicos:['revisao','mecanica','alinhamento','balanceamento'], avaliacoes:[{cliente:'Sandra M.',nota:5,texto:'Melhor revisão que já fiz.'},{cliente:'Ricardo F.',nota:4.5,texto:'Confiança total na equipe.'},{cliente:'Patricia A.',nota:5,texto:'Agendamento fácil e atendimento nota 10.'}] },
+    { id:'auto-eletrica-sul', nome:'Auto Elétrica do Sul', endereco:'R. Dom José de Barros, 300 — Luz, SP', telefone:'(11) 3326-1450', distancia:5.2, nota:4.3, totalAvaliacoes:41, horario:'Seg-Sex 08:00-17:00', aberto:false, categorias:['eletrica'], servicos:['eletrica'], avaliacoes:[{cliente:'André V.',nota:4,texto:'Bom serviço, preço justo.'},{cliente:'Carla T.',nota:4.5,texto:'Resolveram rápido.'}] },
+    { id:'ar-condicionado-pro', nome:'Ar Condicionado Pro', endereco:'Av. Rebouças, 2200 — Pinheiros, SP', telefone:'(11) 3863-5512', distancia:3.8, nota:4.6, totalAvaliacoes:72, horario:'Seg-Sex 08:00-18:00', aberto:true, categorias:['ar-condicionado'], servicos:['ar-condicionado'], avaliacoes:[{cliente:'Bruno M.',nota:5,texto:'Instalação limpa e profissional.'},{cliente:'Isabela R.',nota:4.5,texto:'Ar gelando muito bem.'}] },
+    { id:'mecanica-popular', nome:'Mecânica Popular', endereco:'R. 25 de Março, 600 — Centro, SP', telefone:'(11) 3229-8877', distancia:4.7, nota:4.1, totalAvaliacoes:34, horario:'Seg-Sex 08:00-17:30', aberto:true, categorias:['mecanica','revisao'], servicos:['mecanica','revisao'], avaliacoes:[{cliente:'Thiago N.',nota:4,texto:'Atendimento simples e direto.'},{cliente:'Renata P.',nota:4,texto:'Preço acessível.'}] },
+    { id:'oficina-centro', nome:'Oficina Centro', endereco:'R. Líbero Badaró, 150 — Centro, SP', telefone:'(11) 3101-4321', distancia:3.3, nota:4.4, totalAvaliacoes:91, horario:'Seg-Sáb 08:00-18:00', aberto:true, categorias:['mecanica','eletrica','alinhamento'], servicos:['mecanica','eletrica','alinhamento','balanceamento'], avaliacoes:[{cliente:'Gabriel S.',nota:4.5,texto:'Equipe competente.'},{cliente:'Mariana F.',nota:4,texto:'Serviço rápido.'}] },
+];
+
+oficinas_renderizar(oficinas_dados);
+</script>
+
     <!-- TELAS -->
             </div>
         </main>
